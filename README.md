@@ -1,21 +1,51 @@
-<<<<<<< HEAD
-# React + Vite
+# AI Resume & Career Coach
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI Resume & Career Coach is an AI-powered platform designed to empower users to elevate their professional careers. By analyzing resumes, validating ATS (Applicant Tracking System) compatibility, highlighting key skill gaps, offering targeted job recommendations, and generating customized interview prep questions, the platform provides tailored career guidance.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **AI Resume Parsing & Scoring**: Get instantaneous feedback and detailed scores on your resume.
+- **ATS Compatibility Checker**: Optimize your resume structure, format, and keywords for modern Applicant Tracking Systems.
+- **Skill Gap Analysis**: Identify missing critical skills for your target industry or job description.
+- **Personalized Career Pathways**: Get curated recommendations for roles matching your background and aspirations.
+- **Smart Interview Prep**: Generate context-aware interview questions based on your experience and target roles.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- **React 19**
+- **Vite**
+- **TailwindCSS**
+- **Framer Motion** (for premium glassmorphism and animations)
+- **Lucide Icons**
 
-## Expanding the ESLint configuration
+### Backend (Proposed/Planned)
+- **FastAPI**
+- **PostgreSQL**
+- **AI Integrations (Gemini API / LLMs)**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# AI-Resume-Career-Coach
-AI Resume &amp; Career Coach is an AI-powered platform that helps users improve their career opportunities by analyzing resumes, checking ATS compatibility, identifying skill gaps, recommending suitable job roles, and generating personalized interview questions. Built with React, FastAPI, PostgreSQL, and AI technologies to provide smart career guidance
->>>>>>> 1a20c24b03cb839a8e984c216338ca46d9761700
+## Getting Started
+
+### Prerequisites
+Make sure you have Node.js installed.
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/LeonRosario/AI-Resume-Career-Coach.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd AI-Resume-Career-Coach
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Development and Contribution
+Feel free to open issues or submit pull requests to enhance the platform's features, UI/UX, or backend integrations.
