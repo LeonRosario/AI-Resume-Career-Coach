@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, ShieldCheck, Cpu } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import GlassBadge from './GlassBadge';
 import ResumeCard from './ResumeCard';
 
@@ -60,16 +60,17 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-full flex justify-center lg:justify-start"
           >
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="glass-btn flex items-center gap-3 pl-6 pr-2 py-2 text-base md:text-lg font-bold text-white transition-all duration-300 shadow-lg shadow-blue-500/20"
-            >
-              <span>Analyze My Resume</span>
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/25 border border-white/40 shadow-[inset_0px_4px_4px_rgba(255,255,255,0.35)] backdrop-blur-sm">
-                <ArrowRight size={18} className="text-white" />
-              </span>
-            </motion.button>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                to="/register"
+                className="glass-btn inline-flex items-center gap-3 pl-6 pr-2 py-2 text-base md:text-lg font-bold text-white transition-all duration-300 shadow-lg shadow-blue-500/20"
+              >
+                <span>Analyze My Resume</span>
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/25 border border-white/40 shadow-[inset_0px_4px_4px_rgba(255,255,255,0.35)] backdrop-blur-sm">
+                  <ArrowRight size={18} className="text-white" />
+                </span>
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Floating AI Resume Preview Card */}

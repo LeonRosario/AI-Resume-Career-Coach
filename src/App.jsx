@@ -1,19 +1,20 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import TrustedLogos from './components/TrustedLogos';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="relative min-h-screen bg-white text-slate-800 font-sans selection:bg-blue-100 selection:text-blue-900 pb-8 flex flex-col justify-between">
-      <div>
-        <Navbar />
-        <main>
-          <Hero />
-        </main>
-      </div>
-      <TrustedLogos />
-    </div>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
