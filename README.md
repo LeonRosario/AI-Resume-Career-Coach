@@ -1,16 +1,113 @@
-# React + Vite
+CareerAI — AI Resume & Career Coach
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured SaaS frontend built with React, Vite, Tailwind CSS, and Framer Motion. Liquid glass UI throughout, 10 fully-built pages, mock authentication, and a working PDF export.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Tech Stack
 
-## React Compiler
+ToolPurposeReact 18UI frameworkViteDev server & bundlerTailwind CSS 3Utility stylingFramer MotionAnimations & transitionsReact Router 6Client-side routingreact-dropzoneResume drag-and-drop uploadjsPDF + html2canvasClient-side PDF exportLucide ReactIcons
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# 1. Install dependencies
+npm install
+
+# 2. Start the dev server
+npm run dev
+
+Open http://localhost:5173 in your browser.
+
+To build for production:
+
+bashnpm run build
+
+
+Pages
+
+RoutePage/Landing page/loginLogin/registerRegister/appDashboard home/app/resume-analyzerResume Analyzer/app/ats-checkerATS Checker/app/skill-gapSkill Gap Analysis/app/job-matchJob Recommendations/app/interview-prepAI Interview Prep/app/resume-builderResume Builder/app/settingsProfile Settings
+
+Dashboard routes are protected — you must be logged in to access them. Auth state is mocked and persisted to localStorage.
+
+
+Project Structure
+
+src/
+├── components/
+│   ├── auth/          # AuthLayout, AuthVisual
+│   ├── dashboard/     # ResumePreview (live builder preview)
+│   ├── landing/       # Hero, Features, HowItWorks, Testimonials, Pricing, CtaBand
+│   ├── layout/        # Navbar, Sidebar, Topbar, DashboardLayout, Footer
+│   └── ui/            # GlassCard, Button, Input, Badge, ProgressBar,
+│                      # ScoreRing, Aurora, DropzoneUpload, AnalyzingState,
+│                      # PageTransition, Skeleton, Logo
+├── context/
+│   └── AuthContext.jsx
+├── data/
+│   └── mockData.js    # Shared mock data for all dashboard pages
+├── lib/
+│   └── useResumeBuilder.js
+└── pages/
+    ├── Landing.jsx
+    ├── auth/
+    │   ├── Login.jsx
+    │   └── Register.jsx
+    └── dashboard/
+        ├── DashboardHome.jsx
+        ├── ResumeAnalyzer.jsx
+        ├── AtsChecker.jsx
+        ├── SkillGap.jsx
+        ├── JobMatch.jsx
+        ├── InterviewPrep.jsx
+        ├── ResumeBuilder.jsx
+        └── Settings.jsx
+
+
+Design System
+
+Colors
+
+NameValueBackground#FFFFFFInk (text)#0B1220Primary#0084FFGradient start#60B1FFGradient end#319AFF
+
+Glass card spec (every card)
+
+cssbackground: rgba(255, 255, 255, 0.35);
+backdrop-filter: blur(30px);
+border: 1px solid rgba(255, 255, 255, 0.4);
+border-radius: 24px;
+
+Three glass variants are available:
+
+
+.glass — default (35% white)
+.glass-strong — elevated panels (55% white)
+.glass-soft — subtle inset areas (20% white)
+
+
+Typography
+
+
+Headings: Fustat Bold / ExtraBold
+Body & UI: Inter
+
+
+Signature visual element
+
+The Aurora field — three slow-drifting radial gradient blobs fixed behind every page — gives glass surfaces something to refract, making the effect feel liquid rather than static.
+
+
+Key Features
+
+
+Drag-and-drop resume upload with react-dropzone, simulated AI analysis with loading state
+Score ring — animated SVG circle that fills to the resume/match score on mount
+ATS checker — paste any job description, get matched/missing keyword breakdown
+Skill gap roadmap — animated timeline with week-by-week learning plan
+Job match grid — filterable by role, experience level, and location
+AI interview chat — full chat UI with typing indicator, question progression tracker, and end-of-session feedback scoring
+Resume builder — live-preview editor with 5 sections and one-click PDF download
+Profile settings — tabbed interface with resume history and animated toggle switches
+Framer Motion throughout — page fade transitions, floating hero card, hover-lift on all cards, score ring animation, roadmap step reveals
+
+
