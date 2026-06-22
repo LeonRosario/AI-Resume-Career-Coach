@@ -1,98 +1,59 @@
-import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
-import GlassCard from '../ui/GlassCard';
+import { Star } from "lucide-react";
+import GlassCard from "../ui/GlassCard";
 
 const testimonials = [
   {
-    name: 'Sarah Chen',
-    role: 'Software Engineer at Google',
-    avatar: 'SC',
-    rating: 5,
-    text: 'CareerAI helped me rewrite my resume and I got 3x more interview callbacks. The ATS score went from 62 to 94 in one session.',
+    name: "Maya Chen",
+    role: "Software Engineer @ Stripe",
+    quote:
+      "The ATS checker showed me exactly which keywords I was missing. I rewrote two lines and started getting callbacks within a week.",
   },
   {
-    name: 'Marcus Johnson',
-    role: 'Product Manager at Stripe',
-    avatar: 'MJ',
-    rating: 5,
-    text: 'The interview coach is incredible. I practiced behavioral questions for a week and felt completely prepared for my final round.',
+    name: "Daniel Osei",
+    role: "Frontend Developer @ Shopify",
+    quote:
+      "The mock interview feature is the closest thing to a real technical screen I've practiced with. The feedback was specific, not generic.",
   },
   {
-    name: 'Priya Sharma',
-    role: 'Data Scientist at Meta',
-    avatar: 'PS',
-    rating: 5,
-    text: 'The career roadmap showed me exactly which skills to learn. I landed my dream role within 4 months of following the plan.',
-  },
-  {
-    name: 'Alex Rivera',
-    role: 'UX Designer at Airbnb',
-    avatar: 'AR',
-    rating: 5,
-    text: 'Finally a tool that understands design portfolios. The job matching feature found roles I never would have discovered on my own.',
+    name: "Priya Raman",
+    role: "Full Stack Developer @ Linear",
+    quote:
+      "The skill gap roadmap turned a vague 'learn cloud stuff' goal into four concrete weeks. I followed it and it worked.",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-12 lg:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <span className="glass-badge mb-4 inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#0084FF]">
-            Testimonials
+    <section id="testimonials" className="relative px-6 py-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-xs font-bold tracking-widest text-primary-600 uppercase">
+            Real outcomes
           </span>
-          <h2 className="font-fustat text-3xl font-bold text-slate-900 md:text-5xl">
-            Loved by job seekers worldwide
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
+            People who hired CareerAI, then got hired
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-500 md:text-lg">
-            Join thousands of professionals who accelerated their careers with AI-powered coaching.
-          </p>
-        </motion.div>
+        </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              <GlassCard className="relative h-full p-8" float={i % 2 === 0}>
-                <Quote
-                  size={32}
-                  className="absolute right-6 top-6 text-[#0084FF]/15"
-                />
-                <div className="mb-4 flex gap-0.5">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star
-                      key={j}
-                      size={16}
-                      fill="#FF801E"
-                      color="#FF801E"
-                    />
-                  ))}
+            <GlassCard key={t.name} delay={i * 0.1} className="p-7 flex flex-col">
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} size={14} className="fill-primary-400 text-primary-400" />
+                ))}
+              </div>
+              <p className="text-sm text-ink/70 leading-relaxed flex-1">"{t.quote}"</p>
+              <div className="flex items-center gap-3 mt-6 pt-5 border-t border-white/40">
+                <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
+                  {t.name[0]}
                 </div>
-                <p className="mb-6 text-sm leading-relaxed text-slate-600 md:text-base">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#60B1FF] to-[#319AFF] text-sm font-bold text-white">
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-800">{t.name}</p>
-                    <p className="text-xs text-slate-500">{t.role}</p>
-                  </div>
+                <div>
+                  <p className="text-sm font-semibold text-ink">{t.name}</p>
+                  <p className="text-xs text-ink/45">{t.role}</p>
                 </div>
-              </GlassCard>
-            </motion.div>
+              </div>
+            </GlassCard>
           ))}
         </div>
       </div>

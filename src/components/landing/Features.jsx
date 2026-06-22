@@ -1,120 +1,66 @@
-import { motion } from 'framer-motion';
-import {
-  FileSearch,
-  Map,
-  MessageSquare,
-  Target,
-  Sparkles,
-  TrendingUp,
-} from 'lucide-react';
-import GlassCard from '../ui/GlassCard';
+import { FileSearch, Target, Map, MessagesSquare, FileEdit, Briefcase } from "lucide-react";
+import GlassCard from "../ui/GlassCard";
 
 const features = [
   {
     icon: FileSearch,
-    title: 'ATS Resume Analyzer',
-    description:
-      'Upload your resume and get instant ATS compatibility scores, keyword gaps, and formatting fixes.',
-    color: '#0084FF',
+    title: "Resume Analyzer",
+    desc: "Get an instant score on formatting, keywords, and impact — with line-by-line AI suggestions.",
   },
   {
     icon: Target,
-    title: 'Smart Job Matching',
-    description:
-      'AI matches your skills to the right roles and highlights where you stand out against job descriptions.',
-    color: '#319AFF',
+    title: "ATS Checker",
+    desc: "Paste any job description and see exactly how well your resume matches before you apply.",
   },
   {
     icon: Map,
-    title: 'Career Roadmap',
-    description:
-      'Get a personalized learning path with skills to acquire, certifications, and milestones to hit your dream role.',
-    color: '#60B1FF',
+    title: "Skill Gap Roadmap",
+    desc: "We compare your skills to your target role and build a week-by-week plan to close the gap.",
   },
   {
-    icon: MessageSquare,
-    title: 'AI Interview Coach',
-    description:
-      'Practice with realistic mock interviews, receive feedback on answers, and build confidence before the real thing.',
-    color: '#0084FF',
+    icon: Briefcase,
+    title: "Job Matching",
+    desc: "Discover roles ranked by real compatibility, not just keyword overlap.",
   },
   {
-    icon: Sparkles,
-    title: 'Resume Rewriter',
-    description:
-      'Transform bullet points into impact-driven statements tailored to each job you apply for.',
-    color: '#319AFF',
+    icon: MessagesSquare,
+    title: "AI Mock Interviews",
+    desc: "Practice with an AI interviewer that asks follow-ups and scores your answers.",
   },
   {
-    icon: TrendingUp,
-    title: 'Salary Insights',
-    description:
-      'Understand market rates for your role and experience level so you negotiate with confidence.',
-    color: '#60B1FF',
+    icon: FileEdit,
+    title: "Resume Builder",
+    desc: "Build a polished resume section by section, with AI-improved writing throughout.",
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export default function Features() {
   return (
-    <section id="features" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-12 lg:px-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <span className="glass-badge mb-4 inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#0084FF]">
-            Features
+    <section id="features" className="relative px-6 py-24">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <span className="text-xs font-bold tracking-widest text-primary-600 uppercase">
+            Everything you need
           </span>
-          <h2 className="font-fustat text-3xl font-bold text-slate-900 md:text-5xl">
-            Everything you need to land your dream job
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
+            One coach, every stage of the search
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-500 md:text-lg">
-            From resume optimization to interview prep — your AI career coach handles it all in one beautiful dashboard.
+          <p className="text-ink/55 mt-4">
+            From your first draft to your final interview, CareerAI stays with you.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {features.map((feature) => (
-            <motion.div key={feature.title} variants={item}>
-              <GlassCard className="group h-full p-8">
-                <div
-                  className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/40 bg-white/40"
-                  style={{ color: feature.color }}
-                >
-                  <feature.icon size={22} />
-                </div>
-                <h3 className="font-fustat mb-2 text-xl font-bold text-slate-800">
-                  {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-500">
-                  {feature.description}
-                </p>
-              </GlassCard>
-            </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((f, i) => (
+            <GlassCard key={f.title} hover delay={i * 0.07} className="p-7">
+              <div className="w-12 h-12 rounded-2xl bg-brand-gradient-soft flex items-center justify-center mb-5">
+                <f.icon size={22} className="text-primary-600" strokeWidth={2} />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-ink mb-2">{f.title}</h3>
+              <p className="text-sm text-ink/55 leading-relaxed">{f.desc}</p>
+            </GlassCard>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
