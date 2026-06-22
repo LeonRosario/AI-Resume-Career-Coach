@@ -2,14 +2,9 @@ CareerAI — AI Resume & Career Coach
 
 A full-featured SaaS frontend built with React, Vite, Tailwind CSS, and Framer Motion. Liquid glass UI throughout, 10 fully-built pages, mock authentication, and a working PDF export.
 
-
 Tech Stack
-
 ToolPurposeReact 18UI frameworkViteDev server & bundlerTailwind CSS 3Utility stylingFramer MotionAnimations & transitionsReact Router 6Client-side routingreact-dropzoneResume drag-and-drop uploadjsPDF + html2canvasClient-side PDF exportLucide ReactIcons
-
-
 Getting Started
-
 
 # 1. Install dependencies
 npm install
@@ -62,43 +57,6 @@ src/
         ├── InterviewPrep.jsx
         ├── ResumeBuilder.jsx
         └── Settings.jsx
-
-
-Design System
-
-Colors
-
-NameValueBackground#FFFFFFInk (text)#0B1220Primary#0084FFGradient start#60B1FFGradient end#319AFF
-
-Glass card spec (every card)
-
-cssbackground: rgba(255, 255, 255, 0.35);
-backdrop-filter: blur(30px);
-border: 1px solid rgba(255, 255, 255, 0.4);
-border-radius: 24px;
-
-Three glass variants are available:
-
-
-.glass — default (35% white)
-.glass-strong — elevated panels (55% white)
-.glass-soft — subtle inset areas (20% white)
-
-
-Typography
-
-
-Headings: Fustat Bold / ExtraBold
-Body & UI: Inter
-
-
-Signature visual element
-
-The Aurora field — three slow-drifting radial gradient blobs fixed behind every page — gives glass surfaces something to refract, making the effect feel liquid rather than static.
-
-
-Key Features
-
 
 1.Drag-and-drop resume upload with react-dropzone, simulated AI analysis with loading state
 2.Score ring — animated SVG circle that fills to the resume/match score on mount
