@@ -100,14 +100,14 @@ The Aurora field — three slow-drifting radial gradient blobs fixed behind ever
 Key Features
 
 
-Drag-and-drop resume upload with react-dropzone, simulated AI analysis with loading state
-Score ring — animated SVG circle that fills to the resume/match score on mount
-ATS checker — paste any job description, get matched/missing keyword breakdown
-Skill gap roadmap — animated timeline with week-by-week learning plan
-Job match grid — filterable by role, experience level, and location
-AI interview chat — full chat UI with typing indicator, question progression tracker, and end-of-session feedback scoring
-Resume builder — live-preview editor with 5 sections and one-click PDF download
-Profile settings — tabbed interface with resume history and animated toggle switches
-Framer Motion throughout — page fade transitions, floating hero card, hover-lift on all cards, score ring animation, roadmap step reveals
+1.Drag-and-drop resume upload with react-dropzone, simulated AI analysis with loading state
+2.Score ring — animated SVG circle that fills to the resume/match score on mount
+3.ATS checker — paste any job description, get matched/missing keyword breakdown
+4.Skill gap roadmap — animated timeline with week-by-week learning plan
+5.Job match grid — filterable by role, experience level, and location
+6.AI interview chat — full chat UI with typing indicator, question progression tracker, and end-of-session feedback scoring
+7.Resume builder — live-preview editor with 5 sections and one-click PDF download
+8.Profile settings — tabbed interface with resume history and animated toggle switches
+9.Framer Motion throughout — page fade transitions, floating hero card, hover-lift on all cards, score ring animation, roadmap step reveals
 
 
