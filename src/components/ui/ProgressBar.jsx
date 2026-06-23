@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
 
 export default function ProgressBar({
-  value = 0,
-  label,
+  value,
+  completed,
+  total,
+  label = "Progress",
   showValue = true,
   size = "md",
   color = "brand",
   delay = 0,
 }) {
-  const heights = { sm: "h-1.5", md: "h-2.5", lg: "h-3.5" };
+  const heights = { sm: "h-1.5", md: "h-2.5", lg: "h-3" };
   const colorMap = {
     brand: "bg-brand-gradient",
     green: "bg-gradient-to-r from-emerald-400 to-emerald-500",
@@ -16,22 +18,33 @@ export default function ProgressBar({
     red: "bg-gradient-to-r from-rose-400 to-rose-500",
   };
 
+  const hasCount = typeof completed === "number" && typeof total === "number";
+  const percent = hasCount
+    ? total > 0
+      ? Math.round((completed / total) * 100)
+      : 0
+    : value ?? 0;
+
   return (
-    <div className="w-full">
-      {(label || showValue) && (
-        <div className="flex items-center justify-between mb-1.5">
-          {label && <span className="text-sm font-medium text-ink/75">{label}</span>}
-          {showValue && (
-            <span className="text-sm font-semibold text-ink/90">{value}%</span>
-          )}
-        </div>
-      )}
-      <div className={`w-full ${heights[size]} rounded-full bg-primary-900/8 overflow-hidden`}>
+    <div className="w-full min-w-[180px]">
+      <div className="mb-2 flex items-end justify-between gap-3">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/50">
+          {label}
+        </span>
+        {showValue && hasCount && (
+          <span className="text-xs font-semibold text-ink/70">
+            {completed} / {total} skills completed
+          </span>
+        )}
+        {showValue && !hasCount && (
+          <span className="text-xs font-semibold text-ink/70">{percent}%</span>
+        )}
+      </div>
+      <div className={`w-full overflow-hidden rounded-full bg-ink/10 ${heights[size]}`}>
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: `${value}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ width: `${percent}%` }}
+          transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
           className={`${heights[size]} rounded-full ${colorMap[color]}`}
         />
       </div>

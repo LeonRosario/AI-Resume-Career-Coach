@@ -21,18 +21,6 @@ export const atsResult = {
   missing: ["AWS", "Docker", "Kubernetes"],
 };
 
-export const skillGap = {
-  targetRole: "Full Stack Developer",
-  current: ["React", "Node.js", "MongoDB", "JavaScript", "Git"],
-  missing: ["Docker", "Cloud (AWS)", "System Design"],
-  roadmap: [
-    { week: "Week 1", title: "Learn Docker", detail: "Containers, images, docker-compose basics", done: true },
-    { week: "Week 2", title: "AWS Basics", detail: "EC2, S3, IAM fundamentals", done: false },
-    { week: "Week 3", title: "System Design", detail: "Scalability, load balancing, caching", done: false },
-    { week: "Week 4", title: "Deploy Project", detail: "Ship a containerized app to the cloud", done: false },
-  ],
-};
-
 export const jobs = [
   {
     id: 1,
