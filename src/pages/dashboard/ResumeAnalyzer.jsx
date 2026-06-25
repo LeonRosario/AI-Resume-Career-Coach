@@ -9,20 +9,44 @@ import ProgressBar from "../../components/ui/ProgressBar";
 import Badge from "../../components/ui/Badge";
 import Button from "../../components/ui/Button";
 import { resumeAnalysis } from "../../data/mockData";
+import { useResume } from "../../context/ResumeContext";
 
 export default function ResumeAnalyzer() {
+  const { updateResumeData, clearResumeData } = useResume();
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("idle"); // idle | analyzing | done
 
   const handleFile = (f) => {
     setFile(f);
     setStatus("analyzing");
-    setTimeout(() => setStatus("done"), 2200);
+    // Simulate analysis time
+    setTimeout(() => {
+      // Update resume context with mock analysis results
+      updateResumeData({
+        atsScore: resumeAnalysis.score,
+        status: "Excellent",
+        jobMatch: 94,
+        topJobTitle: "Software Engineer",
+        topJobCompany: "Nimbus Labs",
+        skillsTracked: resumeAnalysis.strengths.length,
+        totalSkills: resumeAnalysis.strengths.length + resumeAnalysis.missing.length,
+        analysis: {
+          formatting: resumeAnalysis.breakdown[0].value,
+          keywords: resumeAnalysis.breakdown[1].value,
+          impact: resumeAnalysis.breakdown[2].value,
+          ats: resumeAnalysis.breakdown[3].value,
+        },
+        strengths: resumeAnalysis.strengths,
+        missing: resumeAnalysis.missing,
+      });
+      setStatus("done");
+    }, 2200);
   };
 
   const handleClear = () => {
     setFile(null);
     setStatus("idle");
+    clearResumeData();
   };
 
   return (

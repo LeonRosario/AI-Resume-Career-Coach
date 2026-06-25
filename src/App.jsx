@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { ResumeProvider } from "./context/ResumeContext";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/auth/Login";
@@ -52,7 +53,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
+        <ResumeProvider>
+          <AppRoutes />
+        </ResumeProvider>
       </AuthProvider>
     </BrowserRouter>
   );
