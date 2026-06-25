@@ -7,7 +7,7 @@ import Aurora from "../ui/Aurora";
 import PageTransition from "../ui/PageTransition";
 
 const titles = {
-  "/app": "Welcome back 👋",
+
   "/app/resume-analyzer": "Resume Analyzer",
   "/app/ats-checker": "ATS Checker",
   "/app/skill-gap": "Skill Gap Analysis",

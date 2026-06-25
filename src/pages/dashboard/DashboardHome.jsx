@@ -7,6 +7,7 @@ import ProgressBar from "../../components/ui/ProgressBar";
 import ScoreRing from "../../components/ui/ScoreRing";
 import Badge from "../../components/ui/Badge";
 import { SkeletonLine, SkeletonCircle } from "../../components/ui/Skeleton";
+import { Typewriter } from "../../components/ui/TypewriterText";
 import { jobs } from "../../data/mockData";
 import { useAuth } from "../../context/AuthContext";
 import { useResume } from "../../context/ResumeContext";
@@ -34,12 +35,33 @@ export default function DashboardHome() {
         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-ink">
-              Welcome back, {user?.name || "there"}
+              Welcome back, {user?.name || "there"} 👋
             </h2>
-            <p className="text-ink/55 mt-2 max-w-md">
-              {hasResume
-                ? "Your resume is scoring well. Let's find what's standing between you and your next interview."
-                : "Upload your resume to get started with AI-powered career analysis."}
+            <p className="text-ink/55 mt-2 max-w-md text-sm">
+              <Typewriter
+                text={
+                  hasResume
+                    ? [
+                        "Your resume is scoring well — let's keep pushing.",
+                        "Ready to close those skill gaps today?",
+                        "A top job match is waiting for you.",
+                        "Practice one interview question right now.",
+                        "Let's make today count for your career.",
+                      ]
+                    : [
+                        "Upload your resume to unlock AI analysis.",
+                        "Get your ATS score in under 60 seconds.",
+                        "Find out which skills are holding you back.",
+                        "Your next role starts with a great resume.",
+                      ]
+                }
+                speed={55}
+                deleteSpeed={30}
+                delay={2200}
+                loop={true}
+                cursor="|"
+                className="text-ink/55"
+              />
             </p>
           </div>
           <Button
