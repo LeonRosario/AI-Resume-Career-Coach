@@ -51,8 +51,7 @@ function initials(name) {
 export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="relative overflow-hidden bg-white px-6 py-24">
-      <div className="pointer-events-none absolute -top-10 -left-10 h-72 w-72 rounded-full bg-[#60B1FF]/25 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-10 -right-10 h-80 w-80 rounded-full bg-[#0084FF]/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(96,177,255,0.18),_transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(0,132,255,0.16),_transparent_28%)]" />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="text-center mx-auto mb-14 max-w-2xl">
@@ -73,15 +72,16 @@ export default function TestimonialsSection() {
               key={testimonial.name}
               initial="offscreen"
               whileInView="onscreen"
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, amount: 0.22 }}
+              transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               variants={cardMotion}
-              whileHover={{ scale: 1.03, y: -4 }}
-              className="glass relative overflow-hidden rounded-glass border border-white/40 bg-white/30 p-7 shadow-glass transition-all duration-300 hover:shadow-glass-lg"
+              whileHover={{ scale: 1.035, y: -6 }}
+              className="relative overflow-hidden rounded-[28px] border border-white/50 bg-white/40 p-7 shadow-[0_28px_100px_rgba(0,132,255,0.12)] transition-all duration-300 hover:shadow-[0_32px_110px_rgba(0,132,255,0.18)]"
             >
-              <div className="flex items-center justify-between gap-4">
+              <div className="absolute inset-x-6 top-0 h-24 rounded-b-[32px] bg-gradient-to-br from-[#60B1FF]/20 to-[#0084FF]/10 blur-3xl" />
+              <div className="relative flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#60B1FF]/20 to-[#0084FF]/15 text-lg font-semibold text-primary-700">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#60B1FF]/20 to-[#0084FF]/15 text-lg font-semibold text-primary-700 ring-1 ring-white/60">
                     {initials(testimonial.name)}
                   </div>
                   <div>
@@ -89,18 +89,17 @@ export default function TestimonialsSection() {
                     <p className="text-sm text-ink/55">{testimonial.role}</p>
                   </div>
                 </div>
-                <div className="flex gap-1">
+                <div className="flex items-center gap-1 rounded-full bg-white/85 px-3 py-1 text-sm font-semibold text-primary-600 shadow-sm shadow-primary-200/50">
+                  <span className="mr-1">5.0</span>
                   {Array.from({ length: 5 }).map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      size={16}
-                      className="fill-primary-400 text-primary-400"
-                    />
+                    <Star key={starIndex} size={14} className="fill-primary-400 text-primary-400" />
                   ))}
                 </div>
               </div>
 
-              <p className="mt-6 text-sm leading-7 text-ink/70">“{testimonial.text}”</p>
+              <div className="relative mt-6 rounded-[26px] border border-white/70 bg-white/75 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
+                <p className="text-sm leading-7 text-ink/70">“{testimonial.text}”</p>
+              </div>
             </motion.article>
           ))}
         </div>
