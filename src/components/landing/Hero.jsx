@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Upload, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
 import Button from "../ui/Button";
 import ScoreRing from "../ui/ScoreRing";
+import { Typewriter } from "../ui/TypewriterText";
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -21,7 +22,15 @@ export default function Hero() {
           </span>
           <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-ink leading-[1.08] tracking-tight">
             Land your next role with a resume that actually{" "}
-            <span className="text-gradient">gets read</span>
+            <Typewriter
+              text={["gets read", "gets noticed", "gets interviews", "gets you hired"]}
+              speed={90}
+              deleteSpeed={45}
+              delay={1800}
+              loop={true}
+              cursor="|"
+              className="text-gradient"
+            />
           </h1>
           <p className="mt-6 text-lg text-ink/60 leading-relaxed max-w-xl">
             CareerAI scans your resume against real job descriptions, closes your
