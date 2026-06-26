@@ -50,8 +50,8 @@ function initials(name) {
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="relative overflow-hidden bg-white px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(96,177,255,0.18),_transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(0,132,255,0.16),_transparent_28%)]" />
+    <section id="testimonials" className="relative overflow-hidden bg-slate-950/90 px-6 py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(96,177,255,0.16),_transparent_22%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.14),_transparent_28%)]" />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="text-center mx-auto mb-14 max-w-2xl">
@@ -76,7 +76,7 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               variants={cardMotion}
               whileHover={{ scale: 1.035, y: -6 }}
-              className="relative overflow-hidden rounded-[28px] border border-white/50 bg-white/40 p-7 shadow-[0_28px_100px_rgba(0,132,255,0.12)] transition-all duration-300 hover:shadow-[0_32px_110px_rgba(0,132,255,0.18)]"
+              className="relative overflow-hidden rounded-[28px] border border-slate-600/20 bg-slate-900/80 p-7 shadow-[0_28px_100px_rgba(49,154,255,0.12)] transition-all duration-300 hover:shadow-[0_32px_110px_rgba(49,154,255,0.18)]"
             >
               <div className="absolute inset-x-6 top-0 h-24 rounded-b-[32px] bg-gradient-to-br from-[#60B1FF]/20 to-[#0084FF]/10 blur-3xl" />
               <div className="relative flex items-start justify-between gap-4">
@@ -89,7 +89,7 @@ export default function TestimonialsSection() {
                     <p className="text-sm text-ink/55">{testimonial.role}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1 rounded-full bg-white/85 px-3 py-1 text-sm font-semibold text-primary-600 shadow-sm shadow-primary-200/50">
+                <div className="flex items-center gap-1 rounded-full bg-slate-900/90 px-3 py-1 text-sm font-semibold text-primary-200 shadow-sm shadow-primary-400/15">
                   <span className="mr-1">5.0</span>
                   {Array.from({ length: 5 }).map((_, starIndex) => (
                     <Star key={starIndex} size={14} className="fill-primary-400 text-primary-400" />
@@ -97,7 +97,7 @@ export default function TestimonialsSection() {
                 </div>
               </div>
 
-              <div className="relative mt-6 rounded-[26px] border border-white/70 bg-white/75 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
+              <div className="relative mt-6 rounded-[26px] border border-slate-600/40 bg-slate-900/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
                 <p className="text-sm leading-7 text-ink/70">“{testimonial.text}”</p>
               </div>
             </motion.article>

@@ -36,7 +36,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-xl glass-soft flex items-center justify-center text-ink/55 hover:text-primary-600 hover:bg-white/60 transition-colors"
+                  className="w-9 h-9 rounded-xl glass-soft flex items-center justify-center text-ink/55 hover:text-primary-400 hover:bg-white/10 transition-colors"
                   aria-label="Social link"
                 >
                   <Icon size={16} />
@@ -64,7 +64,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-white/40 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-slate-500/20 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-ink/45">© 2026 CareerAI. All rights reserved.</p>
           <p className="text-xs text-ink/45">Built with care, for your next role.</p>
         </div>
