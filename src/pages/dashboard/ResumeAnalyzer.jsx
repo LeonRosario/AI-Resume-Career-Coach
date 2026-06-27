@@ -53,7 +53,7 @@ export default function ResumeAnalyzer() {
     <div className="space-y-6">
       <GlassCard className="p-7">
         <h2 className="font-heading font-bold text-lg text-ink mb-1">Upload your resume</h2>
-        <p className="text-sm text-ink/50 mb-5">
+        <p className="text-sm text-body mb-5">
           We'll score it for ATS compatibility and flag what to improve.
         </p>
         <DropzoneUpload file={status === "idle" ? null : file} onFile={handleFile} onClear={handleClear} />
@@ -82,7 +82,7 @@ export default function ResumeAnalyzer() {
                   <h3 className="font-heading font-bold text-xl text-ink mb-1">
                     Strong resume — a few quick wins left
                   </h3>
-                  <p className="text-sm text-ink/55 mb-5">
+                  <p className="text-sm text-body mb-5">
                     {file?.name || "Your resume"} scores above 90% of candidates for this role tier.
                   </p>
                   <div className="space-y-3">
@@ -136,7 +136,7 @@ export default function ResumeAnalyzer() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="glass-soft rounded-2xl p-4 text-sm text-ink/70 leading-relaxed"
+                    className="glass-soft rounded-2xl p-4 text-sm text-label leading-relaxed"
                   >
                     {s}
                   </motion.div>

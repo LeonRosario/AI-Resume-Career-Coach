@@ -79,7 +79,7 @@ export default function Hero() {
               onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,132,255,0.5)")}
               onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,132,255,0.35)")}
             >
-              <Upload size={18} strokeWidth={2.25} />
+              <Upload size={18} strokeWidth={2} />
               Upload your resume — free
             </button>
             <button
@@ -96,7 +96,7 @@ export default function Hero() {
               onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.9)")}
               onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.7)")}
             >
-              See how it works <ArrowRight size={18} strokeWidth={2.25} />
+              See how it works <ArrowRight size={18} strokeWidth={2} />
             </button>
           </div>
 

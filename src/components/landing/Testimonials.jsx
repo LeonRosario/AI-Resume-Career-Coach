@@ -30,7 +30,7 @@ export default function Testimonials() {
           <span className="text-xs font-bold tracking-widest text-primary-600 uppercase">
             Real outcomes
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl mt-3" style={{ color: "#111827" }}>
             People who hired CareerAI, then got hired
           </h2>
         </div>
@@ -43,14 +43,14 @@ export default function Testimonials() {
                   <Star key={s} size={14} className="fill-primary-400 text-primary-400" />
                 ))}
               </div>
-              <p className="text-sm text-ink/70 leading-relaxed flex-1">"{t.quote}"</p>
+              <p className="text-sm leading-relaxed flex-1" style={{ color: "#4B5563" }}>"{t.quote}"</p>
               <div className="flex items-center gap-3 mt-6 pt-5 border-t border-white/40">
                 <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
                   {t.name[0]}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-ink">{t.name}</p>
-                  <p className="text-xs text-ink/45">{t.role}</p>
+                  <p className="text-sm font-semibold" style={{ color: "#111827" }}>{t.name}</p>
+                  <p className="text-xs" style={{ color: "#9CA3AF" }}>{t.role}</p>
                 </div>
               </div>
             </GlassCard>

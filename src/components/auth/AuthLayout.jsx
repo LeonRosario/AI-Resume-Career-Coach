@@ -4,7 +4,7 @@ import Logo from "../ui/Logo";
 
 export default function AuthLayout({ children, eyebrow, title, subtitle, side }) {
   return (
-    <div className="relative min-h-screen bg-base flex items-center justify-center px-4 py-10 overflow-hidden">
+    <div className="relative min-h-screen bg-white flex items-center justify-center px-4 py-10 overflow-hidden">
       <Aurora variant="auth" />
       <div className="relative z-10 w-full max-w-5xl grid lg:grid-cols-[1fr,1.1fr] gap-8 items-center">
         {/* Form side */}
@@ -21,7 +21,7 @@ export default function AuthLayout({ children, eyebrow, title, subtitle, side })
           <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-ink mt-2">
             {title}
           </h1>
-          <p className="text-sm text-ink/55 mt-2 mb-7">{subtitle}</p>
+          <p className="text-sm text-body mt-2 mb-7">{subtitle}</p>
           {children}
         </motion.div>
 

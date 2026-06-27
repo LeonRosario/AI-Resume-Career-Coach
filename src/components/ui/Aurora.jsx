@@ -1,6 +1,3 @@
-// Ambient aurora field — the signature visual motif used behind every glass
-// surface in the app. Three soft blobs drift slowly so glass panels have
-// something real to refract, rather than sitting on flat white.
 export default function Aurora({ variant = "default" }) {
   return (
     <div className="aurora-field" aria-hidden="true">
@@ -12,7 +9,8 @@ export default function Aurora({ variant = "default" }) {
           top: "-10%",
           left: "-8%",
           background:
-            "radial-gradient(circle at 30% 30%, #60B1FF 0%, rgba(96,177,255,0) 70%)",
+            "radial-gradient(circle at 30% 30%, #0084FF 0%, rgba(0,132,255,0) 70%)",
+          opacity: 0.45,
         }}
       />
       <div
@@ -23,7 +21,8 @@ export default function Aurora({ variant = "default" }) {
           top: "20%",
           right: "-10%",
           background:
-            "radial-gradient(circle at 60% 40%, #319AFF 0%, rgba(49,154,255,0) 70%)",
+            "radial-gradient(circle at 60% 40%, #0084FF 0%, rgba(0,132,255,0) 70%)",
+          opacity: 0.35,
         }}
       />
       <div
@@ -34,8 +33,20 @@ export default function Aurora({ variant = "default" }) {
           bottom: "-15%",
           left: "20%",
           background:
-            "radial-gradient(circle at 50% 50%, #ADD7FF 0%, rgba(173,215,255,0) 70%)",
-          opacity: 0.4,
+            "radial-gradient(circle at 50% 50%, #38BDF8 0%, rgba(56,189,248,0) 70%)",
+          opacity: 0.3,
+        }}
+      />
+      <div
+        className="aurora-blob animate-float"
+        style={{
+          width: 300,
+          height: 300,
+          top: "55%",
+          right: "20%",
+          background:
+            "radial-gradient(circle at 50% 50%, #0084FF 0%, rgba(0,132,255,0) 70%)",
+          opacity: 0.2,
         }}
       />
       {variant === "auth" && (

@@ -15,7 +15,7 @@ function FilterSelect({ value, onChange, options }) {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="glass-input rounded-xl py-2.5 px-4 text-sm font-medium text-ink/75 outline-none focus:ring-2 focus:ring-primary-400/60 cursor-pointer"
+      className="glass-input rounded-xl py-2.5 px-4 text-sm font-medium text-body outline-none focus:ring-2 focus:ring-primary-400/60 cursor-pointer"
     >
       {options.map((o) => (
         <option key={o}>{o}</option>
@@ -41,13 +41,13 @@ export default function JobMatch() {
   return (
     <div className="space-y-6">
       <GlassCard className="p-5 flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 text-ink/50 text-sm font-medium mr-1">
+        <div className="flex items-center gap-2 text-body text-sm font-medium mr-1">
           <SlidersHorizontal size={16} /> Filters
         </div>
         <FilterSelect value={role} onChange={setRole} options={roles} />
         <FilterSelect value={experience} onChange={setExperience} options={experiences} />
         <FilterSelect value={location} onChange={setLocation} options={locations} />
-        <span className="text-sm text-ink/40 ml-auto">{filtered.length} matches found</span>
+        <span className="text-sm text-muted ml-auto">{filtered.length} matches found</span>
       </GlassCard>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -63,13 +63,13 @@ export default function JobMatch() {
             </div>
 
             <h3 className="font-heading font-bold text-ink">{job.title}</h3>
-            <p className="text-sm text-ink/50">{job.company}</p>
+            <p className="text-sm text-body">{job.company}</p>
 
-            <div className="flex items-center gap-1.5 text-xs text-ink/45 mt-2">
+            <div className="flex items-center gap-1.5 text-xs text-muted mt-2">
               <MapPin size={13} /> {job.location} · {job.experience}
             </div>
 
-            <p className="text-xs font-semibold text-ink/40 mt-4 mb-2 tracking-wide uppercase">
+            <p className="text-xs font-semibold text-muted mt-4 mb-2 tracking-wide uppercase">
               Required
             </p>
             <div className="flex flex-wrap gap-1.5 mb-4">
@@ -78,8 +78,8 @@ export default function JobMatch() {
               ))}
             </div>
 
-            <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/40">
-              <span className="text-sm font-semibold text-ink/70">{job.salary}</span>
+            <div className="flex items-center justify-between mt-auto pt-3 border-t border-[rgba(0,132,255,0.12)]">
+              <span className="text-sm font-semibold text-label">{job.salary}</span>
               <Button variant="ghost" size="sm" icon={ArrowRight} iconPosition="right" className="!px-2">
                 Apply
               </Button>
@@ -90,7 +90,7 @@ export default function JobMatch() {
 
       {filtered.length === 0 && (
         <GlassCard className="p-12 text-center">
-          <p className="text-ink/50">No roles match these filters yet. Try widening your search.</p>
+          <p className="text-body">No roles match these filters yet. Try widening your search.</p>
         </GlassCard>
       )}
     </div>

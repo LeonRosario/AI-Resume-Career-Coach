@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 
 const variants = {
   primary:
-    "bg-brand-gradient text-white shadow-glow hover:shadow-[0_0_50px_rgba(49,154,255,0.5)] border border-white/40",
+    "bg-[#0084FF] text-white shadow-[0_8px_30px_rgba(0,132,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,132,255,0.5)] border border-white/30",
   glass:
-    "glass-strong text-ink hover:bg-white/10",
+    "glass-strong text-ink hover:bg-white/30",
   outline:
-    "bg-transparent border border-primary-600/30 text-primary-100 hover:bg-primary-500/10",
+    "bg-transparent border border-primary-600/30 text-primary-600 hover:bg-primary-50",
   ghost:
-    "bg-transparent text-ink/70 hover:text-ink hover:bg-white/10",
+    "bg-transparent text-label hover:text-ink hover:bg-slate-100",
   danger:
     "bg-red-50 text-red-600 border border-red-200 hover:bg-red-100",
 };
@@ -31,15 +31,15 @@ export default function Button({
 }) {
   return (
     <motion.button
-      whileHover={{ scale: 1.03 }}
+      whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
-      className={`${variants[variant]} ${sizes[size]} ${full ? "w-full" : ""} rounded-2xl font-semibold inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:pointer-events-none ${className}`}
+      className={`${variants[variant]} ${sizes[size]} ${full ? "w-full" : ""} rounded-[14px] font-semibold inline-flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none ${className}`}
       {...props}
     >
-      {Icon && iconPosition === "left" && <Icon size={18} strokeWidth={2.25} />}
+      {Icon && iconPosition === "left" && <Icon size={18} strokeWidth={2} />}
       {children}
-      {Icon && iconPosition === "right" && <Icon size={18} strokeWidth={2.25} />}
+      {Icon && iconPosition === "right" && <Icon size={18} strokeWidth={2} />}
     </motion.button>
   );
 }

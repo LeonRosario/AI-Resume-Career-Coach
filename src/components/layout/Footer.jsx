@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
           <div className="col-span-2">
             <Logo />
-            <p className="mt-4 text-sm text-ink/55 leading-relaxed max-w-xs">
+            <p className="mt-4 text-sm leading-relaxed max-w-xs" style={{ color: "#475569" }}>
               Your AI career coach — analyze your resume, close skill gaps, and land
               interviews with confidence.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-xl glass-soft flex items-center justify-center text-ink/55 hover:text-primary-400 hover:bg-white/10 transition-colors"
+                  className="w-9 h-9 rounded-xl glass-soft flex items-center justify-center hover:text-primary-400 hover:bg-white/10 transition-colors" style={{ color: "#64748B" }}
                   aria-label="Social link"
                 >
                   <Icon size={16} />
@@ -47,13 +47,13 @@ export default function Footer() {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-heading font-semibold text-sm text-ink mb-4">{col.title}</h4>
+              <h4 className="font-heading font-semibold text-sm mb-4" style={{ color: "#0F172A" }}>{col.title}</h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm text-ink/55 hover:text-primary-600 transition-colors"
+                      className="text-sm hover:text-primary-600 transition-colors" style={{ color: "#475569" }}
                     >
                       {link}
                     </a>
@@ -65,8 +65,8 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-500/20 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-ink/45">© 2026 CareerAI. All rights reserved.</p>
-          <p className="text-xs text-ink/45">Built with care, for your next role.</p>
+          <p className="text-xs" style={{ color: "#64748B" }}>© 2026 CareerAI. All rights reserved.</p>
+          <p className="text-xs" style={{ color: "#64748B" }}>Built with care, for your next role.</p>
         </div>
       </div>
     </footer>
