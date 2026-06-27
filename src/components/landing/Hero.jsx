@@ -42,7 +42,7 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
+            className="font-playfair font-extrabold italic text-4xl sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
             style={{ color: "#111827" }}
           >
             Land your next role with a resume that actually{" "}

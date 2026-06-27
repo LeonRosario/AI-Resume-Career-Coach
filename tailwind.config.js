@@ -46,6 +46,8 @@ export default {
       fontFamily: {
         heading: ["Fustat", "ui-sans-serif", "system-ui", "sans-serif"],
         body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        poppins: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
       },
       backdropBlur: {
         glass: "30px",
