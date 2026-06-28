@@ -1,37 +1,67 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { login as apiLogin, register as apiRegister } from "../lib/api";
 
 const AuthContext = createContext(null);
 
+const STORAGE_KEY = "careerai_auth";
+
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem("careerai_user");
-    return saved ? JSON.parse(saved) : null;
+  const [auth, setAuth] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : { user: null, token: null };
+    } catch {
+      return { user: null, token: null };
+    }
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (user) localStorage.setItem("careerai_user", JSON.stringify(user));
-  }, [user]);
+    if (auth.user && auth.token) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(auth));
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  }, [auth]);
 
-  const login = (email) => {
-    setUser({ name: email.split("@")[0] || "There", email });
+  const login = async (email, password) => {
+    setLoading(true);
+    try {
+      const data = await apiLogin(email, password);
+      setAuth({ user: data.user, token: data.access_token });
+      return data.user;
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const register = (name, email) => {
-    setUser({ name, email });
+  const register = async (name, email, password) => {
+    setLoading(true);
+    try {
+      const data = await apiRegister(name, email, password);
+      setAuth({ user: data.user, token: data.access_token });
+      return data.user;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("careerai_user");
+    setAuth({ user: null, token: null });
+    localStorage.removeItem(STORAGE_KEY);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ ...auth, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within AuthProvider");
+  }
+  return context;
 }
