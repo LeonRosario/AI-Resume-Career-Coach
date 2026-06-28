@@ -29,13 +29,13 @@ const testimonials = [
     name: "Arjun Mehta",
     role: "DevOps Engineer",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    text: "CareerAI's personalized roadmap pointed out cloud certifications I was missing, helping me pivot roles seamlessly.",
+    text: "CareerAI's personalized roadmap highlighted the cloud certifications I was missing, helping me pivot seamlessly.",
   },
   {
     name: "Neha Singh",
     role: "Full Stack Developer",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
-    text: "I loved the mock interview analysis. The tone and body language feedback was incredibly detailed and helpful.",
+    text: "I loved the mock interview analysis. The AI feedback on tone and body language was incredibly detailed and helpful.",
   },
   {
     name: "Kabir Malhotra",
@@ -47,7 +47,7 @@ const testimonials = [
     name: "Riya Sen",
     role: "UX Researcher",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
-    text: "Having an AI scan my resume against specific job descriptions made tailoring my applications so fast and painless.",
+    text: "Having AI scan my resume against specific job descriptions made tailoring applications incredibly fast and efficient.",
   },
   {
     name: "Aditya Roy",
@@ -57,14 +57,14 @@ const testimonials = [
   },
 ];
 
-const col1 = [testimonials[0], testimonials[1], testimonials[2], testimonials[0], testimonials[1], testimonials[2]];
-const col2 = [testimonials[3], testimonials[4], testimonials[5], testimonials[3], testimonials[4], testimonials[5]];
-const col3 = [testimonials[6], testimonials[7], testimonials[8], testimonials[6], testimonials[7], testimonials[8]];
+const col1 = [testimonials[0], testimonials[1], testimonials[2]];
+const col2 = [testimonials[3], testimonials[4], testimonials[5]];
+const col3 = [testimonials[6], testimonials[7], testimonials[8]];
 
 function TestimonialCard({ item }) {
   return (
     <div
-      className="p-6 mb-6 font-poppins transition-transform duration-300 hover:scale-[1.02]"
+      className="p-6 transition-all duration-300 hover:scale-[1.02]"
       style={{
         background: "rgba(255, 255, 255, 0.65)",
         backdropFilter: "blur(25px)",
@@ -81,21 +81,52 @@ function TestimonialCard({ item }) {
           className="w-11 h-11 rounded-full object-cover border border-blue-100"
         />
         <div>
-          <h4 className="font-semibold text-sm text-slate-900 leading-tight">{item.name}</h4>
-          <p className="text-xs text-slate-500 mt-0.5">{item.role}</p>
+          <h4 className="font-semibold text-sm text-slate-900 leading-tight font-poppins">
+            {item.name}
+          </h4>
+          <p className="text-xs text-slate-500 mt-0.5 font-poppins">
+            {item.role}
+          </p>
         </div>
       </div>
-      <p className="text-sm text-slate-600 leading-relaxed font-normal">
-        "{item.text}"
+      <p className="text-sm text-slate-600 leading-relaxed font-poppins">
+        &ldquo;{item.text}&rdquo;
       </p>
     </div>
   );
 }
 
+function Column({ items, direction }) {
+  const isUp = direction === "up";
+  return (
+    <motion.div
+      animate={{ y: isUp ? ["0%", "-50%"] : ["-50%", "0%"] }}
+      transition={{
+        y: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 18,
+          ease: "linear",
+        },
+      }}
+      className="flex flex-col gap-6"
+    >
+      {items.map((item, idx) => (
+        <TestimonialCard key={`a-${idx}`} item={item} />
+      ))}
+      {items.map((item, idx) => (
+        <TestimonialCard key={`b-${idx}`} item={item} />
+      ))}
+    </motion.div>
+  );
+}
+
 export default function TestimonialsColumns() {
   return (
-    <section id="testimonials" className="relative bg-white py-24 px-6 font-poppins overflow-hidden">
-      {/* Soft background blue gradient styling to blend with CareerAI */}
+    <section
+      id="testimonials"
+      className="relative bg-white py-24 px-6 font-poppins overflow-hidden"
+    >
       <div
         className="pointer-events-none absolute -left-40 top-1/4 w-[600px] h-[600px] rounded-full"
         style={{
@@ -112,7 +143,6 @@ export default function TestimonialsColumns() {
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span
             className="inline-flex items-center rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.32em] mb-4"
@@ -135,81 +165,21 @@ export default function TestimonialsColumns() {
           </p>
         </div>
 
-        {/* Scrolling Columns Area */}
-        <div className="relative h-[660px] overflow-hidden rounded-[32px] px-2">
-          {/* Mask layers at top and bottom */}
-          <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
-          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
+        <div className="relative h-[660px] overflow-hidden rounded-[32px]">
+          <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-white via-white/95 to-transparent z-20 pointer-events-none" />
+          <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-white via-white/95 to-transparent z-20 pointer-events-none" />
 
-          {/* Columns Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
-            {/* Column 1: Upward */}
             <div className="h-full overflow-hidden">
-              <motion.div
-                animate={{ y: [0, -1000] }}
-                transition={{
-                  y: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 18,
-                    ease: "linear",
-                  },
-                }}
-                className="flex flex-col"
-              >
-                {col1.map((item, idx) => (
-                  <TestimonialCard key={`c1-${idx}`} item={item} />
-                ))}
-                {col1.map((item, idx) => (
-                  <TestimonialCard key={`c1-dup-${idx}`} item={item} />
-                ))}
-              </motion.div>
+              <Column items={col1} direction="up" />
             </div>
 
-            {/* Column 2: Downward */}
             <div className="h-full overflow-hidden hidden md:block">
-              <motion.div
-                animate={{ y: [-1000, 0] }}
-                transition={{
-                  y: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 18,
-                    ease: "linear",
-                  },
-                }}
-                className="flex flex-col"
-              >
-                {col2.map((item, idx) => (
-                  <TestimonialCard key={`c2-${idx}`} item={item} />
-                ))}
-                {col2.map((item, idx) => (
-                  <TestimonialCard key={`c2-dup-${idx}`} item={item} />
-                ))}
-              </motion.div>
+              <Column items={col2} direction="down" />
             </div>
 
-            {/* Column 3: Upward */}
             <div className="h-full overflow-hidden hidden lg:block">
-              <motion.div
-                animate={{ y: [0, -1000] }}
-                transition={{
-                  y: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 18,
-                    ease: "linear",
-                  },
-                }}
-                className="flex flex-col"
-              >
-                {col3.map((item, idx) => (
-                  <TestimonialCard key={`c3-${idx}`} item={item} />
-                ))}
-                {col3.map((item, idx) => (
-                  <TestimonialCard key={`c3-dup-${idx}`} item={item} />
-                ))}
-              </motion.div>
+              <Column items={col3} direction="up" />
             </div>
           </div>
         </div>
