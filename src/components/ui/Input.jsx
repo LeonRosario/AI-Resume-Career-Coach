@@ -10,13 +10,13 @@ const Input = forwardRef(
     return (
       <label className="block">
         {label && (
-          <span className="block text-sm font-medium text-label mb-1.5">{label}</span>
+          <span className="block text-sm font-medium text-ink/70 mb-1.5">{label}</span>
         )}
         <div className="relative">
           {Icon && (
             <Icon
               size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-muted"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40"
             />
           )}
           <input
@@ -24,14 +24,14 @@ const Input = forwardRef(
             type={actualType}
             className={`glass-input w-full rounded-2xl py-3 ${Icon ? "pl-11" : "pl-4"} ${
               isPassword ? "pr-11" : "pr-4"
-            } text-sm text-ink placeholder:text-placeholder outline-none focus:ring-2 focus:ring-primary-400/60 transition-shadow ${className}`}
+            } text-sm text-ink placeholder:text-ink/35 outline-none focus:ring-2 focus:ring-primary-400/60 transition-shadow ${className}`}
             {...props}
           />
           {isPassword && (
             <button
               type="button"
               onClick={() => setShow((s) => !s)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-label"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-ink/40 hover:text-ink/70"
               tabIndex={-1}
               aria-label={show ? "Hide password" : "Show password"}
             >

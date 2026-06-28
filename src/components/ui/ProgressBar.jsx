@@ -28,16 +28,16 @@ export default function ProgressBar({
   return (
     <div className="w-full min-w-[180px]">
       <div className="mb-2 flex items-end justify-between gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-body">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/50">
           {label}
         </span>
         {showValue && hasCount && (
-          <span className="text-xs font-semibold text-label">
+          <span className="text-xs font-semibold text-ink/70">
             {completed} / {total} skills completed
           </span>
         )}
         {showValue && !hasCount && (
-          <span className="text-xs font-semibold text-label">{percent}%</span>
+          <span className="text-xs font-semibold text-ink/70">{percent}%</span>
         )}
       </div>
       <div className={`w-full overflow-hidden rounded-full bg-ink/10 ${heights[size]}`}>

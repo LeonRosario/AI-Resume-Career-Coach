@@ -36,10 +36,10 @@ export default function Sidebar({ open, onClose }) {
   };
 
   const content = (
-    <div className="flex flex-col h-full rounded-none md:rounded-[24px] p-4" style={{ background: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(30px)', border: '1px solid rgba(0,132,255,0.12)', boxShadow: '0 20px 60px rgba(0,132,255,0.12)' }}>
+    <div className="flex flex-col h-full glass rounded-none md:rounded-glass p-4">
       <div className="flex items-center justify-between mb-8 px-1 pt-1">
-        <Logo to="/app" textColor="#0F172A" />
-        <button className="md:hidden p-1 text-body" onClick={onClose} aria-label="Close menu">
+        <Logo to="/app" />
+        <button className="md:hidden p-1 text-ink/60" onClick={onClose} aria-label="Close menu">
           <X size={20} />
         </button>
       </div>
@@ -53,7 +53,7 @@ export default function Sidebar({ open, onClose }) {
             onClick={onClose}
             className={({ isActive }) =>
               `relative flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-colors group ${
-                isActive ? "text-primary-600" : "text-label hover:text-ink hover:bg-white/20"
+                isActive ? "text-primary-200" : "text-ink/70 hover:text-ink hover:bg-white/10"
               }`
             }
           >
@@ -62,11 +62,11 @@ export default function Sidebar({ open, onClose }) {
                 {isActive && (
                   <motion.span
                     layoutId="sidebar-active"
-                    className="absolute inset-0 bg-white/70 rounded-2xl shadow-glass border border-[rgba(0,132,255,0.12)]"
+                    className="absolute inset-0 bg-white/55 rounded-2xl shadow-glass border border-white/50"
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
-                <link.icon size={18} className="relative z-10" strokeWidth={2} />
+                <link.icon size={18} className="relative z-10" strokeWidth={2.25} />
                 <span className="relative z-10">{link.label}</span>
               </>
             )}
@@ -74,21 +74,21 @@ export default function Sidebar({ open, onClose }) {
         ))}
       </nav>
 
-      <div className="border-t border-[rgba(0,132,255,0.12)] pt-4 mt-4">
+      <div className="border-t border-white/40 pt-4 mt-4">
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
           <div className="w-9 h-9 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
             {user?.name?.[0]?.toUpperCase() || "U"}
           </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-ink truncate">{user?.name || "User"}</p>
-            <p className="text-xs text-muted truncate">{user?.email || ""}</p>
+            <p className="text-xs text-ink/45 truncate">{user?.email || ""}</p>
           </div>
         </div>
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-medium text-muted hover:text-rose-600 hover:bg-rose-50/60 transition-colors"
+          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-medium text-ink/55 hover:text-rose-600 hover:bg-rose-50/60 transition-colors"
         >
-          <LogOut size={18} strokeWidth={2} />
+          <LogOut size={18} strokeWidth={2.25} />
           Log out
         </button>
       </div>
@@ -111,7 +111,7 @@ export default function Sidebar({ open, onClose }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={onClose}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-ink/30 backdrop-blur-sm z-40 md:hidden"
             />
             <motion.aside
               initial={{ x: "-100%" }}

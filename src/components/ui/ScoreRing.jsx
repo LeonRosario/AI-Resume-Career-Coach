@@ -43,7 +43,7 @@ export default function ScoreRing({ value = 0, size = 160, stroke = 12, label = 
         >
           {value}
         </motion.span>
-        <span className="text-xs text-body font-medium">{label}</span>
+        <span className="text-xs text-ink/50 font-medium">{label}</span>
       </div>
     </div>
   );

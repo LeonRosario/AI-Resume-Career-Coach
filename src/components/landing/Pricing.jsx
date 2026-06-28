@@ -54,10 +54,10 @@ export default function Pricing() {
           <span className="text-xs font-bold tracking-widest text-primary-600 uppercase">
             Pricing
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl mt-3" style={{ color: "#111827" }}>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
             Simple plans, real results
           </h2>
-          <p className="mt-4" style={{ color: "#6B7280" }}>Cancel anytime. No surprise charges.</p>
+          <p className="text-ink/55 mt-4">Cancel anytime. No surprise charges.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
@@ -75,16 +75,16 @@ export default function Pricing() {
                   Most popular
                 </span>
               )}
-              <h3 className="font-heading font-bold text-xl" style={{ color: "#111827" }}>{plan.name}</h3>
-              <p className="text-sm mt-1.5" style={{ color: "#6B7280" }}>{plan.desc}</p>
+              <h3 className="font-heading font-bold text-xl text-ink">{plan.name}</h3>
+              <p className="text-sm text-ink/50 mt-1.5">{plan.desc}</p>
               <div className="mt-6 flex items-end gap-1">
-                <span className="font-heading font-extrabold text-4xl" style={{ color: "#111827" }}>{plan.price}</span>
-                <span className="text-sm mb-1" style={{ color: "#9CA3AF" }}>{plan.period}</span>
+                <span className="font-heading font-extrabold text-4xl text-ink">{plan.price}</span>
+                <span className="text-ink/45 text-sm mb-1">{plan.period}</span>
               </div>
 
               <ul className="mt-7 space-y-3 flex-1">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: "#4B5563" }}>
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-ink/65">
                     <Check size={16} className="text-primary-500 mt-0.5 shrink-0" />
                     {f}
                   </li>
@@ -95,7 +95,6 @@ export default function Pricing() {
                 variant={plan.highlight ? "primary" : "glass"}
                 full
                 className="mt-8"
-                style={plan.highlight ? {} : { color: "#111827" }}
                 onClick={() => navigate("/register")}
               >
                 {plan.cta}

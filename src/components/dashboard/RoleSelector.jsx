@@ -22,7 +22,7 @@ export default function RoleSelector({ role, options, onChange }) {
         </select>
         <ChevronDown
           size={16}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-muted pointer-events-none"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none"
         />
       </div>
     </GlassCard>

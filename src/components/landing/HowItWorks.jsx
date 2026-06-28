@@ -27,7 +27,7 @@ export default function HowItWorks() {
           <span className="text-xs font-bold tracking-widest text-primary-600 uppercase">
             How it works
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl mt-3" style={{ color: "#111827" }}>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
             Three steps to your next offer
           </h2>
         </div>
@@ -41,8 +41,8 @@ export default function HowItWorks() {
               <span className="text-xs font-bold text-primary-500 tracking-widest">
                 STEP {i + 1}
               </span>
-              <h3 className="font-heading font-bold text-lg mt-2 mb-2" style={{ color: "#111827" }}>{s.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#6B7280" }}>{s.desc}</p>
+              <h3 className="font-heading font-bold text-lg text-ink mt-2 mb-2">{s.title}</h3>
+              <p className="text-sm text-ink/55 leading-relaxed">{s.desc}</p>
             </GlassCard>
           ))}
         </div>

@@ -35,14 +35,14 @@ export default function Navbar() {
           scrolled ? "shadow-glass-lg" : "shadow-glass"
         }`}
       >
-        <Logo textColor="#0F172A" />
+        <Logo />
 
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium rounded-xl hover:bg-white/10 transition-colors" style={{ color: "#475569" }}
+              className="px-4 py-2 text-sm font-medium text-ink/70 hover:text-ink rounded-xl hover:bg-white/10 transition-colors"
             >
               {link.label}
             </a>
@@ -50,7 +50,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={() => navigate("/login")} style={{ color: "#475569" }}>
+          <Button variant="ghost" size="sm" onClick={() => navigate("/login")}>
             Log in
           </Button>
           <Button variant="primary" size="sm" onClick={() => navigate("/register")}>
@@ -59,7 +59,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden p-2" style={{ color: "#0F172A" }}
+          className="md:hidden p-2 text-ink"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -81,13 +81,13 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-sm font-medium rounded-xl hover:bg-white/10" style={{ color: "#475569" }}
+                  className="px-4 py-3 text-sm font-medium text-ink/70 hover:text-ink rounded-xl hover:bg-white/10"
                 >
                   {link.label}
                 </a>
               ))}
               <div className="flex gap-2 mt-2 px-1">
-                <Button variant="glass" size="sm" full onClick={() => navigate("/login")} style={{ color: "#0F172A" }}>
+                <Button variant="glass" size="sm" full onClick={() => navigate("/login")}>
                   Log in
                 </Button>
                 <Button variant="primary" size="sm" full onClick={() => navigate("/register")}>

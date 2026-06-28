@@ -15,7 +15,7 @@ export default function LearningRoadmap({
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h3 className="font-heading text-lg font-bold text-ink">AI Learning Roadmap</h3>
-          <p className="mt-1 max-w-md text-sm leading-relaxed text-body">
+          <p className="mt-1 max-w-md text-sm leading-relaxed text-ink/50">
             A personalized roadmap to become job-ready for{" "}
             <span className="font-semibold text-primary-600">{role}</span>.
           </p>

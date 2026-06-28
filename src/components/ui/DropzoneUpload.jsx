@@ -35,12 +35,12 @@ export default function DropzoneUpload({ onFile, file, onClear, accept = ".pdf" 
           </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-ink truncate">{file.name}</p>
-            <p className="text-xs text-muted">{(file.size / 1024).toFixed(0)} KB</p>
+            <p className="text-xs text-ink/45">{(file.size / 1024).toFixed(0)} KB</p>
           </div>
         </div>
         <button
           onClick={onClear}
-          className="p-2 rounded-xl hover:bg-white/50 text-muted hover:text-rose-500 transition-colors shrink-0"
+          className="p-2 rounded-xl hover:bg-white/50 text-ink/40 hover:text-rose-500 transition-colors shrink-0"
           aria-label="Remove file"
         >
           <X size={18} />
@@ -69,7 +69,7 @@ export default function DropzoneUpload({ onFile, file, onClear, accept = ".pdf" 
         <p className="font-heading font-bold text-ink text-lg">
           {isDragActive ? "Drop it right here" : "Drag & Drop Resume"}
         </p>
-        <p className="text-sm text-muted mt-1.5 mb-5">PDF up to 10MB</p>
+        <p className="text-sm text-ink/45 mt-1.5 mb-5">PDF up to 10MB</p>
         <Button type="button" variant="primary" size="md">
           Upload PDF
         </Button>

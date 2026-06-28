@@ -30,12 +30,12 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
         className={`w-full rounded-[24px] border text-left transition-shadow duration-300 ${
           expanded
             ? "border-primary-400/30 bg-white/45 shadow-glass-lg"
-            : "border-[rgba(0,132,255,0.12)] bg-white/35 shadow-glass hover:shadow-glass-lg"
+            : "border-white/40 bg-white/35 shadow-glass hover:shadow-glass-lg"
         } backdrop-blur-[30px] p-5`}
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[rgba(0,132,255,0.15)] bg-white/40 text-sm font-bold text-primary-600">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/50 bg-white/40 text-sm font-bold text-primary-600">
               {step.step}
             </span>
             <div>
@@ -53,7 +53,7 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
             <motion.span
               animate={{ rotate: expanded ? 180 : 0 }}
               transition={{ duration: 0.25 }}
-              className="text-muted"
+              className="text-ink/40"
             >
               <ChevronDown size={18} />
             </motion.span>
@@ -69,21 +69,21 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="mt-4 border-t border-[rgba(0,132,255,0.12)] pt-4 pl-14">
+              <div className="mt-4 border-t border-white/40 pt-4 pl-14">
                 {step.description && (
-                  <p className="text-sm leading-relaxed text-body">{step.description}</p>
+                  <p className="text-sm leading-relaxed text-ink/60">{step.description}</p>
                 )}
 
                 {step.topics?.length > 0 && (
                   <div className={step.description ? "mt-4" : ""}>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink/45">
                       Topics
                     </p>
                     <ul className="space-y-1.5">
                       {step.topics.map((topic) => (
                         <li
                           key={topic}
-                          className="flex items-center gap-2 text-sm text-label"
+                          className="flex items-center gap-2 text-sm text-ink/70"
                         >
                           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary-500" />
                           {topic}

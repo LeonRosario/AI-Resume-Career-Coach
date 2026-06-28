@@ -42,7 +42,7 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="font-playfair font-extrabold italic text-4xl sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
+            className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
             style={{ color: "#111827" }}
           >
             Land your next role with a resume that actually{" "}
@@ -79,7 +79,7 @@ export default function Hero() {
               onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,132,255,0.5)")}
               onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,132,255,0.35)")}
             >
-              <Upload size={18} strokeWidth={2} />
+              <Upload size={18} strokeWidth={2.25} />
               Upload your resume — free
             </button>
             <button
@@ -96,7 +96,7 @@ export default function Hero() {
               onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.9)")}
               onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.7)")}
             >
-              See how it works <ArrowRight size={18} strokeWidth={2} />
+              See how it works <ArrowRight size={18} strokeWidth={2.25} />
             </button>
           </div>
 

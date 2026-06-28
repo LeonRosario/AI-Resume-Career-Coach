@@ -108,7 +108,7 @@ export default function ResumeBuilder() {
             onChange={(e) => updateSummary(e.target.value)}
             placeholder="A 2-3 line summary of your experience and what you're looking for..."
             rows={4}
-            className="glass-input w-full rounded-2xl p-4 text-sm text-ink placeholder:text-placeholder outline-none focus:ring-2 focus:ring-primary-400/60 resize-none"
+            className="glass-input w-full rounded-2xl p-4 text-sm text-ink placeholder:text-ink/35 outline-none focus:ring-2 focus:ring-primary-400/60 resize-none"
           />
           <div className="flex flex-wrap gap-2 mt-3">
             <Button variant="outline" size="sm" icon={Wand2} onClick={improveWriting} disabled={improving}>

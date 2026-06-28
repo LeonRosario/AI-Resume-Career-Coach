@@ -5,7 +5,7 @@ export default function Topbar({ onMenuClick, title }) {
     <div className="glass rounded-glass px-4 md:px-6 py-4 flex items-center justify-between mb-6 sticky top-4 z-30">
       <div className="flex items-center gap-3">
         <button
-          className="md:hidden p-2 -ml-2 text-label hover:text-ink rounded-xl hover:bg-white/40"
+          className="md:hidden p-2 -ml-2 text-ink/70 hover:text-ink rounded-xl hover:bg-white/40"
           onClick={onMenuClick}
           aria-label="Open menu"
         >
@@ -15,15 +15,15 @@ export default function Topbar({ onMenuClick, title }) {
       </div>
 
       <div className="flex items-center gap-2 md:gap-3">
-        <div className="hidden sm:flex items-center gap-2 rounded-xl px-3 py-2 w-48 md:w-64" style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #DCEEFF' }}>
-          <Search size={16} className="text-muted" />
+        <div className="hidden sm:flex items-center gap-2 glass-input rounded-xl px-3 py-2 w-48 md:w-64">
+          <Search size={16} className="text-ink/40" />
           <input
             placeholder="Search..."
-            className="bg-transparent outline-none text-sm placeholder:text-placeholder w-full"
+            className="bg-transparent outline-none text-sm placeholder:text-ink/35 w-full"
           />
         </div>
         <button
-          className="relative p-2.5 rounded-xl glass-soft hover:bg-white/50 text-muted hover:text-ink transition-colors"
+          className="relative p-2.5 rounded-xl glass-soft hover:bg-white/50 text-ink/60 hover:text-ink transition-colors"
           aria-label="Notifications"
         >
           <Bell size={18} />

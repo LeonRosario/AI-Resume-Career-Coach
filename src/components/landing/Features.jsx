@@ -42,10 +42,10 @@ export default function Features() {
           <span className="text-xs font-bold tracking-widest text-primary-600 uppercase">
             Everything you need
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl mt-3" style={{ color: "#111827" }}>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
             One coach, every stage of the search
           </h2>
-          <p className="mt-4" style={{ color: "#6B7280" }}>
+          <p className="text-ink/55 mt-4">
             From your first draft to your final interview, CareerAI stays with you.
           </p>
         </div>
@@ -56,8 +56,8 @@ export default function Features() {
               <div className="w-12 h-12 rounded-2xl bg-brand-gradient-soft flex items-center justify-center mb-5">
                 <f.icon size={22} className="text-primary-600" strokeWidth={2} />
               </div>
-              <h3 className="font-heading font-bold text-lg mb-2" style={{ color: "#111827" }}>{f.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#6B7280" }}>{f.desc}</p>
+              <h3 className="font-heading font-bold text-lg text-ink mb-2">{f.title}</h3>
+              <p className="text-sm text-ink/55 leading-relaxed">{f.desc}</p>
             </GlassCard>
           ))}
         </div>

@@ -87,10 +87,13 @@ export default function TestimonialsSection() {
           >
             User Success Stories
           </span>
-          <h2 className="font-heading text-3xl font-extrabold sm:text-4xl mt-3">
+          <h2
+            className="font-heading text-3xl font-extrabold sm:text-4xl mt-3"
+            style={{ color: "#111827" }}
+          >
             Trusted by job seekers building their careers with AI
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 sm:text-base" style={{ color: "#475569" }}>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 sm:text-base" style={{ color: "#6B7280" }}>
             See how CareerAI helps students and professionals improve resumes, prepare
             interviews, and reach their career goals.
           </p>
@@ -149,10 +152,10 @@ export default function TestimonialsSection() {
                       {initials(testimonial.name)}
                     </div>
                     <div>
-                      <p className="font-semibold text-sm">
+                      <p className="font-semibold text-sm" style={{ color: "#111827" }}>
                         {testimonial.name}
                       </p>
-                      <p className="text-xs" style={{ color: "#64748B" }}>
+                      <p className="text-xs" style={{ color: "#9CA3AF" }}>
                         {testimonial.role}
                       </p>
                     </div>
@@ -190,7 +193,7 @@ export default function TestimonialsSection() {
                   />
                   <p
                     className="text-sm leading-7 pt-4"
-                    style={{ color: "#475569" }}
+                    style={{ color: "#4B5563" }}
                   >
                     "{testimonial.text}"
                   </p>

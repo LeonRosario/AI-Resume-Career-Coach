@@ -23,10 +23,7 @@ export default function DashboardLayout() {
   const title = titles[location.pathname] || "CareerAI";
 
   return (
-    <div className="relative min-h-screen bg-white">
-      {/* Blue gradient glows */}
-      <div className="fixed top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(96,177,255,0.25) 0%, rgba(0,132,255,0) 70%)', filter: 'blur(60px)' }} />
-      <div className="fixed bottom-0 left-1/3 w-[500px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,132,255,0.15) 0%, rgba(0,132,255,0) 70%)', filter: 'blur(60px)' }} />
+    <div className="relative min-h-screen bg-base">
       <Aurora />
       <div className="relative z-10 flex max-w-[1600px] mx-auto">
         <Sidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
