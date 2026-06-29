@@ -34,9 +34,20 @@ const testimonials = [
   },
 ];
 
-const cardMotion = {
-  offscreen: { opacity: 0, y: 30 },
-  onscreen: { opacity: 1, y: 0 },
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 function initials(name) {
@@ -53,20 +64,25 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       className="relative overflow-hidden px-6 py-24"
-      style={{ background: "linear-gradient(180deg, #F4FAFF 0%, #EAF5FF 50%, #F4FAFF 100%)" }}
+      style={{
+        background:
+          "linear-gradient(180deg, #F4FAFF 0%, #EAF5FF 50%, #F4FAFF 100%)",
+      }}
     >
-      {/* Soft blue glow blobs */}
+      {/* Floating ambient glow blobs */}
       <div
-        className="pointer-events-none absolute -left-40 top-0 w-[500px] h-[500px] rounded-full"
+        className="pointer-events-none absolute -left-40 top-0 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(0,132,255,0.10) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(96,177,255,0.25) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
       <div
-        className="pointer-events-none absolute -right-40 bottom-0 w-[500px] h-[500px] rounded-full"
+        className="pointer-events-none absolute -right-40 bottom-0 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(56,189,248,0.10) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(0,132,255,0.18) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
@@ -93,57 +109,74 @@ export default function TestimonialsSection() {
           >
             Trusted by job seekers building their careers with AI
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 sm:text-base"             style={{ color: "#64748B" }}>
-            See how CareerAI helps students and professionals improve resumes, prepare
-            interviews, and reach their career goals.
+          <p
+            className="mx-auto mt-4 max-w-2xl text-sm leading-7 sm:text-base"
+            style={{ color: "#64748B" }}
+          >
+            See how CareerAI helps students and professionals improve resumes,
+            prepare interviews, and reach their career goals.
           </p>
         </div>
 
         {/* Cards grid */}
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <motion.div
+          className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {testimonials.map((testimonial, index) => (
             <motion.article
               key={testimonial.name}
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              variants={cardMotion}
-              whileHover={{ scale: 1.025, y: -6 }}
-              className="relative overflow-hidden rounded-[28px] transition-all duration-300"
+              variants={cardVariants}
+              whileHover={{ scale: 1.03, y: -8 }}
+              className="relative overflow-hidden rounded-[24px] transition-shadow duration-300 cursor-default"
               style={{
-                background: "rgba(255,255,255,0.65)",
+                background: "rgba(255,255,255,0.35)",
                 backdropFilter: "blur(30px)",
                 WebkitBackdropFilter: "blur(30px)",
-                border: "1px solid rgba(0,132,255,0.13)",
-                boxShadow: "0 8px 40px rgba(0,132,255,0.09), 0 1px 0 rgba(255,255,255,0.9) inset",
+                border: "1px solid rgba(255,255,255,0.4)",
+                boxShadow:
+                  "0 8px 40px rgba(0,132,255,0.09), 0 1px 0 rgba(255,255,255,0.9) inset",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow =
+                  "0 20px 60px rgba(0,132,255,0.18), 0 1px 0 rgba(255,255,255,0.9) inset";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow =
+                  "0 8px 40px rgba(0,132,255,0.09), 0 1px 0 rgba(255,255,255,0.9) inset";
               }}
             >
               {/* Top blue accent line */}
               <div
                 className="absolute inset-x-0 top-0 h-[2px]"
                 style={{
-                  background: "linear-gradient(90deg, transparent 0%, rgba(0,132,255,0.5) 40%, rgba(56,189,248,0.5) 70%, transparent 100%)",
+                  background:
+                    "linear-gradient(90deg, transparent 0%, rgba(0,132,255,0.5) 40%, rgba(56,189,248,0.5) 70%, transparent 100%)",
                 }}
               />
 
-              {/* Inner glow */}
+              {/* Inner radial glow */}
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
-                  background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,132,255,0.05) 0%, transparent 70%)",
+                  background:
+                    "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,132,255,0.05) 0%, transparent 70%)",
                 }}
               />
 
               <div className="relative p-7">
-                {/* Header row: avatar + name + star rating */}
+                {/* Header: avatar + name + rating */}
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
-                    {/* Avatar */}
+                    {/* Avatar circle */}
                     <div
                       className="flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold"
                       style={{
-                        background: "linear-gradient(135deg, rgba(0,132,255,0.15) 0%, rgba(56,189,248,0.15) 100%)",
+                        background:
+                          "linear-gradient(135deg, rgba(0,132,255,0.15) 0%, rgba(56,189,248,0.15) 100%)",
                         border: "1.5px solid rgba(0,132,255,0.2)",
                         color: "#0084FF",
                         boxShadow: "0 2px 8px rgba(0,132,255,0.12)",
@@ -152,10 +185,16 @@ export default function TestimonialsSection() {
                       {initials(testimonial.name)}
                     </div>
                     <div>
-                      <p className="font-semibold text-sm" style={{ color: "#0F172A" }}>
+                      <p
+                        className="font-semibold text-sm"
+                        style={{ color: "#0F172A" }}
+                      >
                         {testimonial.name}
                       </p>
-                      <p className="text-xs" style={{ color: "#94A3B8" }}>
+                      <p
+                        className="text-xs"
+                        style={{ color: "#64748B" }}
+                      >
                         {testimonial.role}
                       </p>
                     </div>
@@ -173,7 +212,12 @@ export default function TestimonialsSection() {
                   >
                     <span className="mr-0.5">5.0</span>
                     {Array.from({ length: 5 }).map((_, starIndex) => (
-                      <Star key={starIndex} size={11} fill="#0084FF" color="#0084FF" />
+                      <Star
+                        key={starIndex}
+                        size={11}
+                        fill="#0084FF"
+                        color="#0084FF"
+                      />
                     ))}
                   </div>
                 </div>
@@ -188,20 +232,20 @@ export default function TestimonialsSection() {
                 >
                   <Quote
                     size={20}
-                    className="absolute top-3 left-4 opacity-20"
-                    style={{ color: "#0084FF" }}
+                    className="absolute top-3 left-4"
+                    style={{ color: "#0084FF", opacity: 0.2 }}
                   />
                   <p
                     className="text-sm leading-7 pt-4"
                     style={{ color: "#334155" }}
                   >
-                    "{testimonial.text}"
+                    &ldquo;{testimonial.text}&rdquo;
                   </p>
                 </div>
               </div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
