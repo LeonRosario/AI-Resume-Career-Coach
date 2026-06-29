@@ -51,7 +51,7 @@ export default function Settings() {
               key={t.id}
               onClick={() => setTab(t.id)}
               className={`relative flex items-center gap-2.5 px-4 py-3 rounded-2xl text-sm font-medium whitespace-nowrap transition-colors ${
-                tab === t.id ? "text-primary-700" : "text-ink/55 hover:text-ink hover:bg-white/40"
+                tab === t.id ? "text-primary-700" : "text-muted hover:text-ink hover:bg-white/40"
               }`}
             >
               {tab === t.id && (
@@ -74,7 +74,7 @@ export default function Settings() {
         {tab === "profile" && (
           <GlassCard className="p-7">
             <h3 className="font-heading font-bold text-lg text-ink mb-1">User Info</h3>
-            <p className="text-sm text-ink/50 mb-6">Update your name and contact details.</p>
+            <p className="text-sm text-muted mb-6">Update your name and contact details.</p>
 
             <div className="flex items-center gap-4 mb-7">
               <div className="w-16 h-16 rounded-full bg-brand-gradient flex items-center justify-center text-white text-xl font-bold font-heading shadow-glow">
@@ -99,23 +99,23 @@ export default function Settings() {
         {tab === "history" && (
           <GlassCard className="p-7">
             <h3 className="font-heading font-bold text-lg text-ink mb-1">Resume History</h3>
-            <p className="text-sm text-ink/50 mb-6">Every version you've uploaded or built.</p>
+            <p className="text-sm text-muted mb-6">Every version you've uploaded or built.</p>
 
             <div className="space-y-3">
               {resumeHistory.map((r) => (
                 <div key={r.id} className="glass-soft rounded-2xl p-4 flex items-center justify-between gap-4">
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-ink truncate">{r.name}</p>
-                    <p className="text-xs text-ink/45 mt-0.5">{r.date}</p>
+                    <p className="text-xs text-muted mt-0.5">{r.date}</p>
                   </div>
                   <div className="flex items-center gap-3 shrink-0">
                     <Badge tone={r.score >= 85 ? "success" : r.score >= 70 ? "brand" : "warning"}>
                       {r.score}/100
                     </Badge>
-                    <button className="p-2 rounded-xl hover:bg-white/50 text-ink/40 hover:text-primary-600">
+                    <button className="p-2 rounded-xl hover:bg-white/50 text-muted hover:text-primary-600">
                       <Download size={16} />
                     </button>
-                    <button className="p-2 rounded-xl hover:bg-white/50 text-ink/40 hover:text-rose-500">
+                    <button className="p-2 rounded-xl hover:bg-white/50 text-muted hover:text-rose-500">
                       <Trash2 size={16} />
                     </button>
                   </div>
@@ -128,7 +128,7 @@ export default function Settings() {
         {tab === "preferences" && (
           <GlassCard className="p-7">
             <h3 className="font-heading font-bold text-lg text-ink mb-1">Preferences</h3>
-            <p className="text-sm text-ink/50 mb-6">Control how CareerAI looks and notifies you.</p>
+            <p className="text-sm text-muted mb-6">Control how CareerAI looks and notifies you.</p>
 
             <div className="space-y-1">
               <div className="flex items-center justify-between py-4 border-b border-[rgba(0,132,255,0.1)]">
@@ -136,7 +136,7 @@ export default function Settings() {
                   {darkMode ? <Moon size={18} className="text-primary-600" /> : <Sun size={18} className="text-primary-600" />}
                   <div>
                     <p className="text-sm font-medium text-ink">Dark mode</p>
-                    <p className="text-xs text-ink/45">Switch to a darker interface</p>
+                    <p className="text-xs text-muted">Switch to a darker interface</p>
                   </div>
                 </div>
                 <Toggle checked={darkMode} onChange={setDarkMode} />
@@ -147,7 +147,7 @@ export default function Settings() {
                   <Bell size={18} className="text-primary-600" />
                   <div>
                     <p className="text-sm font-medium text-ink">Email updates</p>
-                    <p className="text-xs text-ink/45">Resume tips and product news</p>
+                    <p className="text-xs text-muted">Resume tips and product news</p>
                   </div>
                 </div>
                 <Toggle checked={emailUpdates} onChange={setEmailUpdates} />
@@ -158,7 +158,7 @@ export default function Settings() {
                   <Bell size={18} className="text-primary-600" />
                   <div>
                     <p className="text-sm font-medium text-ink">Job match alerts</p>
-                    <p className="text-xs text-ink/45">Get notified on new high-match roles</p>
+                    <p className="text-xs text-muted">Get notified on new high-match roles</p>
                   </div>
                 </div>
                 <Toggle checked={jobAlerts} onChange={setJobAlerts} />
@@ -166,7 +166,7 @@ export default function Settings() {
             </div>
 
             {darkMode && (
-              <p className="text-xs text-ink/40 mt-5 glass-soft rounded-xl px-4 py-3">
+              <p className="text-xs text-muted mt-5 glass-soft rounded-xl px-4 py-3">
                 Dark mode is a preview preference in this demo — the interface stays in its
                 light glass theme.
               </p>

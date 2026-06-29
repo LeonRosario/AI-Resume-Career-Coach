@@ -57,7 +57,7 @@ export default function Pricing() {
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
             Simple plans, real results
           </h2>
-          <p className="text-ink/55 mt-4">Cancel anytime. No surprise charges.</p>
+          <p className="text-muted mt-4">Cancel anytime. No surprise charges.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
@@ -76,15 +76,15 @@ export default function Pricing() {
                 </span>
               )}
               <h3 className="font-heading font-bold text-xl text-ink">{plan.name}</h3>
-              <p className="text-sm text-ink/50 mt-1.5">{plan.desc}</p>
+              <p className="text-sm text-muted mt-1.5">{plan.desc}</p>
               <div className="mt-6 flex items-end gap-1">
                 <span className="font-heading font-extrabold text-4xl text-ink">{plan.price}</span>
-                <span className="text-ink/45 text-sm mb-1">{plan.period}</span>
+                <span className="text-muted text-sm mb-1">{plan.period}</span>
               </div>
 
               <ul className="mt-7 space-y-3 flex-1">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-ink/65">
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-body">
                     <Check size={16} className="text-primary-500 mt-0.5 shrink-0" />
                     {f}
                   </li>

@@ -42,7 +42,7 @@ export default function HowItWorks() {
                 STEP {i + 1}
               </span>
               <h3 className="font-heading font-bold text-lg text-ink mt-2 mb-2">{s.title}</h3>
-              <p className="text-sm text-ink/55 leading-relaxed">{s.desc}</p>
+              <p className="text-sm text-muted leading-relaxed">{s.desc}</p>
             </GlassCard>
           ))}
         </div>

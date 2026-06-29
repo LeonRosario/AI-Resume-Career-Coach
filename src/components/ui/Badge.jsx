@@ -2,7 +2,7 @@ import { Check, X } from "lucide-react";
 
 export default function Badge({ children, tone = "neutral", icon = false, className = "" }) {
   const tones = {
-    neutral: "bg-[rgba(0,132,255,0.06)] text-ink/70 border-[rgba(0,132,255,0.12)]",
+    neutral: "bg-[rgba(0,132,255,0.06)] text-body border-[rgba(0,132,255,0.12)]",
     success: "bg-emerald-50 text-emerald-700 border-emerald-200",
     danger: "bg-rose-50 text-rose-700 border-rose-200",
     brand: "bg-primary-50 text-primary-700 border-primary-200",

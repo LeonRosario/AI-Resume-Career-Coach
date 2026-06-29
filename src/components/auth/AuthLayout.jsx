@@ -21,7 +21,7 @@ export default function AuthLayout({ children, eyebrow, title, subtitle, side })
           <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-ink mt-2">
             {title}
           </h1>
-          <p className="text-sm text-ink/55 mt-2 mb-7">{subtitle}</p>
+          <p className="text-sm text-muted mt-2 mb-7">{subtitle}</p>
           {children}
         </motion.div>
 

@@ -8,7 +8,7 @@ export default function SkillGapRoadmap({ role, roadmap }) {
   return (
     <GlassCard className="p-7">
       <h3 className="font-heading font-bold text-lg text-ink mb-1">AI Learning Roadmap</h3>
-      <p className="text-sm text-ink/50 mb-6">
+      <p className="text-sm text-muted mb-6">
         A focused plan to become job-ready for {role} in 4 weeks.
       </p>
 
@@ -47,9 +47,9 @@ export default function SkillGapRoadmap({ role, roadmap }) {
                     {item.done && <Badge tone="success">Complete</Badge>}
                   </div>
                   <h4 className="font-heading font-bold text-ink mt-1">{item.title}</h4>
-                  {item.detail && <p className="text-sm text-ink/55 mt-1">{item.detail}</p>}
+                  {item.detail && <p className="text-sm text-muted mt-1">{item.detail}</p>}
                   {Array.isArray(item.details) && (
-                    <ul className="mt-3 space-y-1 text-sm text-ink/55 list-disc list-inside">
+                    <ul className="mt-3 space-y-1 text-sm text-muted list-disc list-inside">
                       {item.details.map((entry) => (
                         <li key={entry}>{entry}</li>
                       ))}

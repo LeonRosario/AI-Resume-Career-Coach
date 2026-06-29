@@ -6,6 +6,9 @@ export default {
       colors: {
         base: "#FFFFFF",
         ink: "#0F172A",
+        body: "#334155",
+        muted: "#64748B",
+        placeholder: "#94A3B8",
         primary: {
           DEFAULT: "#0084FF",
           50: "#EBF5FF",

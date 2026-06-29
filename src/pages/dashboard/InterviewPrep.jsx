@@ -100,7 +100,7 @@ export default function InterviewPrep() {
           {started && (
             <button
               onClick={reset}
-              className="text-xs font-medium text-ink/45 hover:text-ink flex items-center gap-1.5"
+              className="text-xs font-medium text-muted hover:text-ink flex items-center gap-1.5"
             >
               <RotateCcw size={13} /> Reset
             </button>
@@ -116,7 +116,7 @@ export default function InterviewPrep() {
               <h3 className="font-heading font-bold text-ink text-lg mb-2">
                 Ready for a mock interview?
               </h3>
-              <p className="text-sm text-ink/50 max-w-xs mb-6">
+              <p className="text-sm text-muted max-w-xs mb-6">
                 The AI will ask role-specific questions and score your answers when you're done.
               </p>
               <Button variant="primary" icon={Play} onClick={startInterview}>
@@ -137,7 +137,7 @@ export default function InterviewPrep() {
                   className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                     m.role === "user"
                       ? "bg-brand-gradient text-white rounded-br-md"
-                      : "glass-soft text-ink/80 rounded-bl-md"
+                      : "glass-soft text-body rounded-bl-md"
                   }`}
                 >
                   {m.text}
@@ -182,12 +182,12 @@ export default function InterviewPrep() {
                       ? "bg-brand-gradient text-white"
                       : i === qIndex && started
                       ? "bg-primary-100 text-primary-600 ring-2 ring-primary-400"
-                      : "bg-[rgba(0,132,255,0.06)] text-ink/30"
+                      : "bg-[rgba(0,132,255,0.06)] text-placeholder"
                   }`}
                 >
                   {i + 1}
                 </span>
-                <span className="text-xs text-ink/55 line-clamp-1">{q}</span>
+                <span className="text-xs text-muted line-clamp-1">{q}</span>
               </div>
             ))}
           </div>
@@ -205,13 +205,13 @@ export default function InterviewPrep() {
                   <div>
                     <p className="text-xs font-semibold text-emerald-600 mb-1">Strengths</p>
                     {feedback.strengths.map((s) => (
-                      <p key={s} className="text-xs text-ink/60">• {s}</p>
+                      <p key={s} className="text-xs text-body">• {s}</p>
                     ))}
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-amber-600 mb-1">Improve</p>
                     {feedback.improve.map((s) => (
-                      <p key={s} className="text-xs text-ink/60">• {s}</p>
+                      <p key={s} className="text-xs text-body">• {s}</p>
                     ))}
                   </div>
                 </div>
@@ -226,7 +226,7 @@ export default function InterviewPrep() {
         {!feedback && (
           <GlassCard className="p-6 flex items-start gap-3">
             <User size={18} className="text-primary-500 mt-0.5 shrink-0" />
-            <p className="text-xs text-ink/50 leading-relaxed">
+            <p className="text-xs text-muted leading-relaxed">
               Answer as you would out loud — the AI evaluates structure, clarity, and
               relevant detail, not just keywords.
             </p>

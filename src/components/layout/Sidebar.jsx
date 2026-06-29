@@ -41,7 +41,7 @@ export default function Sidebar({ open, onClose }) {
     >
       <div className="flex items-center justify-between mb-8 px-1 pt-1">
         <Logo to="/app" />
-        <button className="md:hidden p-1 text-ink/60 hover:text-ink" onClick={onClose} aria-label="Close menu">
+        <button className="md:hidden p-1 text-body hover:text-ink" onClick={onClose} aria-label="Close menu">
           <X size={20} />
         </button>
       </div>
@@ -55,7 +55,7 @@ export default function Sidebar({ open, onClose }) {
             onClick={onClose}
             className={({ isActive }) =>
               `relative flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-colors group ${
-                isActive ? "text-[#0084FF]" : "text-ink/70 hover:text-ink hover:bg-white/10"
+                isActive ? "text-[#0084FF]" : "text-body hover:text-ink hover:bg-white/10"
               }`
             }
           >
@@ -84,12 +84,12 @@ export default function Sidebar({ open, onClose }) {
           </div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-ink truncate">{user?.name || "User"}</p>
-            <p className="text-xs text-ink/45 truncate">{user?.email || ""}</p>
+            <p className="text-xs text-muted truncate">{user?.email || ""}</p>
           </div>
         </div>
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-medium text-ink/55 hover:text-rose-600 hover:bg-rose-50/80 transition-colors"
+          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-medium text-muted hover:text-rose-600 hover:bg-rose-50/80 transition-colors"
         >
           <LogOut size={18} strokeWidth={2.25} />
           Log out

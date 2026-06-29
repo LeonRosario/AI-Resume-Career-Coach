@@ -53,7 +53,7 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
             <motion.span
               animate={{ rotate: expanded ? 180 : 0 }}
               transition={{ duration: 0.25 }}
-              className="text-ink/40"
+              className="text-muted"
             >
               <ChevronDown size={18} />
             </motion.span>
@@ -71,19 +71,19 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
             >
               <div className="mt-4 border-t border-[rgba(0,132,255,0.1)] pt-4 pl-14">
                 {step.description && (
-                  <p className="text-sm leading-relaxed text-ink/60">{step.description}</p>
+                  <p className="text-sm leading-relaxed text-body">{step.description}</p>
                 )}
 
                 {step.topics?.length > 0 && (
                   <div className={step.description ? "mt-4" : ""}>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-ink/45">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
                       Topics
                     </p>
                     <ul className="space-y-1.5">
                       {step.topics.map((topic) => (
                         <li
                           key={topic}
-                          className="flex items-center gap-2 text-sm text-ink/70"
+                          className="flex items-center gap-2 text-sm text-body"
                         >
                           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary-500" />
                           {topic}

@@ -43,7 +43,7 @@ export default function Hero() {
           {/* Headline */}
           <h1
             className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
-            style={{ color: "#111827" }}
+            style={{ color: "#0F172A" }}
           >
             Land your next role with a resume that actually{" "}
             <Typewriter
@@ -60,7 +60,7 @@ export default function Hero() {
           {/* Subtitle */}
           <p
             className="mt-6 text-lg leading-relaxed max-w-xl"
-            style={{ color: "#4B5563" }}
+            style={{ color: "#334155" }}
           >
             CareerAI scans your resume against real job descriptions, closes your
             skill gaps with a guided roadmap, and rehearses your interview answers
@@ -90,7 +90,7 @@ export default function Hero() {
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
                 border: "1px solid #DCEEFF",
-                color: "#111827",
+                color: "#0F172A",
                 boxShadow: "0 4px 16px rgba(0,132,255,0.08)",
               }}
               onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.9)")}
@@ -101,7 +101,7 @@ export default function Hero() {
           </div>
 
           {/* Trust badges */}
-          <div className="flex flex-col sm:flex-row gap-6 mt-10 text-sm" style={{ color: "#6B7280" }}>
+          <div className="flex flex-col sm:flex-row gap-6 mt-10 text-sm" style={{ color: "#64748B" }}>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 size={16} style={{ color: "#0084FF" }} /> No credit card
             </span>
@@ -160,7 +160,7 @@ export default function Hero() {
                   </div>
                   <span
                     className="text-[11px] uppercase tracking-[0.3em]"
-                    style={{ color: "#9CA3AF" }}
+                    style={{ color: "#94A3B8" }}
                   >
                     PDF PREVIEW
                   </span>
@@ -176,11 +176,11 @@ export default function Hero() {
                   </p>
                   <h2
                     className="text-3xl font-semibold"
-                    style={{ color: "#111827" }}
+                    style={{ color: "#0F172A" }}
                   >
                     Jordan Ellis
                   </h2>
-                  <p className="text-sm" style={{ color: "#6B7280" }}>
+                  <p className="text-sm" style={{ color: "#64748B" }}>
                     Senior Product Designer · AI Resume Coach
                   </p>
                 </div>
@@ -216,7 +216,7 @@ export default function Hero() {
                   <div className="space-y-2">
                     <p
                       className="text-xs uppercase tracking-[0.22em] font-medium"
-                      style={{ color: "#9CA3AF" }}
+                      style={{ color: "#94A3B8" }}
                     >
                       Experience
                     </p>
@@ -233,17 +233,17 @@ export default function Hero() {
                           <div>
                             <p
                               className="text-sm font-semibold"
-                              style={{ color: "#111827" }}
+                              style={{ color: "#0F172A" }}
                             >
                               {item.title}
                             </p>
-                            <p className="text-xs" style={{ color: "#6B7280" }}>
+                            <p className="text-xs" style={{ color: "#64748B" }}>
                               {item.company}
                             </p>
                           </div>
                           <span
                             className="text-[11px] uppercase tracking-[0.18em]"
-                            style={{ color: "#9CA3AF" }}
+                            style={{ color: "#94A3B8" }}
                           >
                             {item.date}
                           </span>
@@ -276,17 +276,17 @@ export default function Hero() {
                       >
                         <p
                           className="text-xs uppercase tracking-[0.24em] font-medium"
-                          style={{ color: "#9CA3AF" }}
+                          style={{ color: "#94A3B8" }}
                         >
                           {card.label}
                         </p>
                         <p
                           className="mt-3 text-sm font-semibold"
-                          style={{ color: "#111827" }}
+                          style={{ color: "#0F172A" }}
                         >
                           {card.title}
                         </p>
-                        <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
+                        <p className="text-xs mt-1" style={{ color: "#64748B" }}>
                           {card.sub}
                         </p>
                       </div>
@@ -313,7 +313,7 @@ export default function Hero() {
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
-                style={{ color: "#6B7280" }}
+                style={{ color: "#64748B" }}
               >
                 <ShieldCheck size={14} style={{ color: "#0084FF" }} />
                 <span>ATS Score</span>
@@ -338,12 +338,12 @@ export default function Hero() {
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
-                style={{ color: "#6B7280" }}
+                style={{ color: "#64748B" }}
               >
                 <Award size={14} style={{ color: "#0084FF" }} />
                 <span>AI Analysis</span>
               </div>
-              <p className="text-sm font-semibold" style={{ color: "#111827" }}>
+              <p className="text-sm font-semibold" style={{ color: "#0F172A" }}>
                 Skills match
               </p>
             </motion.div>
@@ -363,12 +363,12 @@ export default function Hero() {
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
-                style={{ color: "#6B7280" }}
+                style={{ color: "#64748B" }}
               >
                 <Zap size={14} style={{ color: "#0084FF" }} />
                 <span>Skills Matched</span>
               </div>
-              <p className="text-sm font-semibold" style={{ color: "#111827" }}>
+              <p className="text-sm font-semibold" style={{ color: "#0F172A" }}>
                 8 key tags
               </p>
             </motion.div>
@@ -388,12 +388,12 @@ export default function Hero() {
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
-                style={{ color: "#6B7280" }}
+                style={{ color: "#64748B" }}
               >
                 <Sparkles size={14} style={{ color: "#0084FF" }} />
                 <span>Interview Ready</span>
               </div>
-              <p className="text-sm font-semibold" style={{ color: "#111827" }}>
+              <p className="text-sm font-semibold" style={{ color: "#0F172A" }}>
                 Confidence boost
               </p>
             </motion.div>

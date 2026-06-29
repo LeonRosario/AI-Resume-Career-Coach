@@ -43,14 +43,14 @@ export default function Testimonials() {
                   <Star key={s} size={14} className="fill-primary-400 text-primary-400" />
                 ))}
               </div>
-              <p className="text-sm text-ink/70 leading-relaxed flex-1">"{t.quote}"</p>
+              <p className="text-sm text-body leading-relaxed flex-1">"{t.quote}"</p>
               <div className="flex items-center gap-3 mt-6 pt-5 border-t border-[rgba(0,132,255,0.1)]">
                 <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
                   {t.name[0]}
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-ink">{t.name}</p>
-                  <p className="text-xs text-ink/45">{t.role}</p>
+                  <p className="text-xs text-muted">{t.role}</p>
                 </div>
               </div>
             </GlassCard>

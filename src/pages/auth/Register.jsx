@@ -79,7 +79,7 @@ export default function Register() {
 
         <div className="flex items-center gap-3 my-2">
           <span className="h-px bg-ink/10 flex-1" />
-          <span className="text-xs text-ink/40">or</span>
+          <span className="text-xs text-muted">or</span>
           <span className="h-px bg-ink/10 flex-1" />
         </div>
 
@@ -114,7 +114,7 @@ export default function Register() {
           Continue with Google
         </Button>
 
-        <p className="text-center text-sm text-ink/55 pt-2">
+        <p className="text-center text-sm text-muted pt-2">
           Already have an account?{" "}
           <Link to="/login" className="text-primary-600 font-semibold hover:underline">
             Log in

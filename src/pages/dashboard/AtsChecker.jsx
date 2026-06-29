@@ -27,7 +27,7 @@ export default function AtsChecker() {
           <Target size={20} className="text-primary-600" />
           <h2 className="font-heading font-bold text-lg text-ink">Paste Job Description</h2>
         </div>
-        <p className="text-sm text-ink/50 mb-5">
+        <p className="text-sm text-muted mb-5">
           We'll compare it against your most recent resume and score the match.
         </p>
 
@@ -36,7 +36,7 @@ export default function AtsChecker() {
           onChange={(e) => setJd(e.target.value)}
           placeholder={placeholder}
           rows={7}
-          className="glass-input w-full rounded-2xl p-4 text-sm text-ink placeholder:text-ink/35 outline-none focus:ring-2 focus:ring-primary-400/60 resize-none transition-shadow"
+          className="glass-input w-full rounded-2xl p-4 text-sm text-ink placeholder:text-placeholder outline-none focus:ring-2 focus:ring-primary-400/60 resize-none transition-shadow"
         />
 
         <Button
@@ -70,7 +70,7 @@ export default function AtsChecker() {
                 <h3 className="font-heading font-bold text-xl text-ink mb-2">
                   Strong match for this role
                 </h3>
-                <p className="text-sm text-ink/55 leading-relaxed">
+                <p className="text-sm text-muted leading-relaxed">
                   Your resume covers most of the core requirements. Add the missing
                   skills below to push past 90%.
                 </p>

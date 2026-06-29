@@ -50,7 +50,7 @@ export default function Login() {
         />
 
         <div className="flex items-center justify-between text-sm">
-          <label className="flex items-center gap-2 text-ink/55">
+          <label className="flex items-center gap-2 text-muted">
             <input type="checkbox" className="rounded accent-primary-600" />
             Remember me
           </label>
@@ -65,7 +65,7 @@ export default function Login() {
 
         <div className="flex items-center gap-3 my-2">
           <span className="h-px bg-ink/10 flex-1" />
-          <span className="text-xs text-ink/40">or</span>
+          <span className="text-xs text-muted">or</span>
           <span className="h-px bg-ink/10 flex-1" />
         </div>
 
@@ -100,7 +100,7 @@ export default function Login() {
           Continue with Google
         </Button>
 
-        <p className="text-center text-sm text-ink/55 pt-2">
+        <p className="text-center text-sm text-muted pt-2">
           Don't have an account?{" "}
           <Link to="/register" className="text-primary-600 font-semibold hover:underline">
             Sign up free

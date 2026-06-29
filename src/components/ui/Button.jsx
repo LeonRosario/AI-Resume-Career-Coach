@@ -8,7 +8,7 @@ const variants = {
   outline:
     "bg-transparent border border-primary-500/30 text-primary-600 hover:bg-primary-50",
   ghost:
-    "bg-transparent text-ink/70 hover:text-ink hover:bg-white/10",
+    "bg-transparent text-body hover:text-ink hover:bg-white/10",
   danger:
     "bg-red-50 text-red-600 border border-red-200 hover:bg-red-100",
 };

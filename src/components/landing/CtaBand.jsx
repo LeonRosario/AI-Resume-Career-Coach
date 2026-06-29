@@ -12,7 +12,7 @@ export default function CtaBand() {
         <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink relative">
           Ready to see your resume's real score?
         </h2>
-        <p className="text-ink/55 mt-4 relative max-w-lg mx-auto">
+        <p className="text-muted mt-4 relative max-w-lg mx-auto">
           Upload it free — no credit card, no commitment. Just a clear next step.
         </p>
         <Button

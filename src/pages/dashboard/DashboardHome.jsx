@@ -37,7 +37,7 @@ export default function DashboardHome() {
             <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-ink">
               Welcome back, {user?.name || "there"} 👋
             </h2>
-            <p className="text-ink/55 mt-2 max-w-md text-sm">
+            <p className="text-muted mt-2 max-w-md text-sm">
               <Typewriter
                 text={
                   hasResume
@@ -60,7 +60,7 @@ export default function DashboardHome() {
                 delay={2200}
                 loop={true}
                 cursor="|"
-                className="text-ink/55"
+                className="text-muted"
               />
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function DashboardHome() {
             <>
               <ScoreRing value={resumeData.atsScore} size={72} label="" />
               <div>
-                <p className="text-xs text-ink/45 font-medium">ATS Score</p>
+                <p className="text-xs text-muted font-medium">ATS Score</p>
                 <p className="font-heading font-bold text-lg text-ink">
                   {getStatusColor(resumeData.atsScore)}
                 </p>
@@ -106,12 +106,12 @@ export default function DashboardHome() {
             <div className="w-10 h-10 rounded-xl bg-brand-gradient-soft flex items-center justify-center">
               <Briefcase size={18} className="text-primary-600" />
             </div>
-            <p className="text-xs text-ink/45 font-medium">Top job match</p>
+            <p className="text-xs text-muted font-medium">Top job match</p>
           </div>
           {hasResume ? (
             <>
               <p className="font-heading font-bold text-2xl text-ink">{resumeData.jobMatch}%</p>
-              <p className="text-xs text-ink/45 mt-1">
+              <p className="text-xs text-muted mt-1">
                 {resumeData.topJobTitle || "—"} · {resumeData.topJobCompany || "—"}
               </p>
             </>
@@ -129,14 +129,14 @@ export default function DashboardHome() {
             <div className="w-10 h-10 rounded-xl bg-brand-gradient-soft flex items-center justify-center">
               <TrendingUp size={18} className="text-primary-600" />
             </div>
-            <p className="text-xs text-ink/45 font-medium">Skills tracked</p>
+            <p className="text-xs text-muted font-medium">Skills tracked</p>
           </div>
           {hasResume ? (
             <>
               <p className="font-heading font-bold text-2xl text-ink">
                 {resumeData.skillsTracked} / {resumeData.totalSkills}
               </p>
-              <p className="text-xs text-ink/45 mt-1">
+              <p className="text-xs text-muted mt-1">
                 {resumeData.totalSkills - resumeData.skillsTracked} gaps identified
               </p>
             </>
@@ -187,8 +187,8 @@ export default function DashboardHome() {
           ) : (
             <div className="space-y-4">
               <div className="text-center py-8">
-                <p className="text-sm text-ink/50">No resume uploaded yet</p>
-                <p className="text-xs text-ink/35 mt-1">Upload your resume to see skill analysis</p>
+                <p className="text-sm text-muted">No resume uploaded yet</p>
+                <p className="text-xs text-placeholder mt-1">Upload your resume to see skill analysis</p>
               </div>
             </div>
           )}
@@ -208,15 +208,15 @@ export default function DashboardHome() {
               >
                 <span className="w-2 h-2 rounded-full bg-primary-500 mt-1.5 shrink-0" />
                 <div>
-                  <p className="text-sm text-ink/75 leading-snug">Resume analyzed successfully</p>
-                  <p className="text-xs text-ink/40 mt-0.5">Just now</p>
+                  <p className="text-sm text-body leading-snug">Resume analyzed successfully</p>
+                  <p className="text-xs text-muted mt-0.5">Just now</p>
                 </div>
               </motion.div>
             </div>
           ) : (
             <div className="py-8 text-center">
-              <p className="text-sm text-ink/50">No resume uploaded yet</p>
-              <p className="text-xs text-ink/35 mt-1">Upload your resume to start analysis</p>
+              <p className="text-sm text-muted">No resume uploaded yet</p>
+              <p className="text-xs text-placeholder mt-1">Upload your resume to start analysis</p>
             </div>
           )}
         </GlassCard>
@@ -248,7 +248,7 @@ export default function DashboardHome() {
                   <Badge tone="brand">{job.match}% match</Badge>
                 </div>
                 <h4 className="font-heading font-bold text-ink">{job.title}</h4>
-                <p className="text-xs text-ink/45 mt-0.5">{job.company}</p>
+                <p className="text-xs text-muted mt-0.5">{job.company}</p>
               </GlassCard>
             ))}
           </div>

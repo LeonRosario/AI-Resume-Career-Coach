@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
           <div className="col-span-2">
             <Logo />
-            <p className="mt-4 text-sm text-ink/55 leading-relaxed max-w-xs">
+            <p className="mt-4 text-sm text-muted leading-relaxed max-w-xs">
               Your AI career coach — analyze your resume, close skill gaps, and land
               interviews with confidence.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-xl glass-soft flex items-center justify-center text-ink/55 hover:text-primary-400 hover:bg-white/10 transition-colors"
+                  className="w-9 h-9 rounded-xl glass-soft flex items-center justify-center text-muted hover:text-primary-400 hover:bg-white/10 transition-colors"
                   aria-label="Social link"
                 >
                   <Icon size={16} />
@@ -53,7 +53,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm text-ink/55 hover:text-primary-600 transition-colors"
+                      className="text-sm text-muted hover:text-primary-600 transition-colors"
                     >
                       {link}
                     </a>
@@ -65,8 +65,8 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-[rgba(0,132,255,0.12)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-ink/45">© 2026 CareerAI. All rights reserved.</p>
-          <p className="text-xs text-ink/45">Built with care, for your next role.</p>
+          <p className="text-xs text-muted">© 2026 CareerAI. All rights reserved.</p>
+          <p className="text-xs text-muted">Built with care, for your next role.</p>
         </div>
       </div>
     </footer>

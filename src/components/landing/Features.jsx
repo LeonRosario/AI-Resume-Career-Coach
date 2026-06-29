@@ -45,7 +45,7 @@ export default function Features() {
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-ink mt-3">
             One coach, every stage of the search
           </h2>
-          <p className="text-ink/55 mt-4">
+          <p className="text-muted mt-4">
             From your first draft to your final interview, CareerAI stays with you.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function Features() {
                 <f.icon size={22} className="text-primary-600" strokeWidth={2} />
               </div>
               <h3 className="font-heading font-bold text-lg text-ink mb-2">{f.title}</h3>
-              <p className="text-sm text-ink/55 leading-relaxed">{f.desc}</p>
+              <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
             </GlassCard>
           ))}
         </div>
