@@ -3,7 +3,7 @@ import Footer from "../components/layout/Footer";
 import Hero from "../components/landing/Hero";
 import Features from "../components/landing/Features";
 import HowItWorks from "../components/landing/HowItWorks";
-import TestimonialsSection from "../components/Testimonials";
+import TestimonialsSection from "../components/ui/testimonials-columns-1";
 import Pricing from "../components/landing/Pricing";
 import CtaBand from "../components/landing/CtaBand";
 

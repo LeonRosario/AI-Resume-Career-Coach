@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,16 +10,19 @@
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    color: #0F172A;
+    color: #0F172A !important;
+    opacity: 1 !important;
+    font-weight: 600;
   }
   p, span, label {
-    color: #334155;
+    color: #475569;
+    opacity: 1 !important;
   }
   input, textarea, select {
     color: #0F172A;
   }
   input::placeholder, textarea::placeholder {
-    color: #94A3B8;
+    color: #000000;
   }
 }
 
@@ -29,7 +32,7 @@ html {
 
 body {
   margin: 0;
-  color: #334155;
+  color: #475569;
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   background:
