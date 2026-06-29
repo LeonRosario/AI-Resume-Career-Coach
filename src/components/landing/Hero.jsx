@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Upload, Sparkles, ArrowRight, CheckCircle2, ShieldCheck, Award, Zap } from "lucide-react";
-import Button from "../ui/Button";
-import { Typewriter } from "../ui/TypewriterText";
-import HeroBackground from "../HeroBackground";
+import { Upload, ArrowRight, CheckCircle2, ShieldCheck, Award, Zap, Sparkles } from "lucide-react";
 
 const resumeSkills = ["AI Strategy", "UX Design", "Product Ops", "Leadership"];
 const resumeExperience = [
@@ -15,8 +12,52 @@ export default function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative pt-40 pb-24 px-6 overflow-hidden">
-      <HeroBackground />
+    <section className="relative pt-40 pb-24 px-6 overflow-hidden bg-[#F8FBFF]">
+      {/* Grid background pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(33,150,243,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(33,150,243,0.06) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      {/* Soft radial gradient wash */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 0%, #E3F2FD 0%, #F8FBFF 55%, #F8FBFF 100%)",
+        }}
+      />
+
+      {/* Glowing blue blur effects */}
+      <motion.div
+        animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.7, 0.5] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute -left-28 -top-20 w-[520px] h-[520px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(33,150,243,0.18) 0%, rgba(33,150,243,0.06) 55%, transparent 80%)",
+          filter: "blur(60px)",
+        }}
+      />
+      <motion.div
+        animate={{ scale: [1, 1.06, 1], opacity: [0.45, 0.65, 0.45] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="pointer-events-none absolute -right-32 -bottom-24 w-[580px] h-[580px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(33,150,243,0.16) 0%, rgba(33,150,243,0.07) 55%, transparent 80%)",
+          filter: "blur(70px)",
+        }}
+      />
+
+      {/* Top sheen highlight */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[2px]"
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, rgba(33,150,243,0.25) 30%, rgba(100,181,246,0.35) 55%, rgba(33,150,243,0.25) 75%, transparent 100%)",
+        }}
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
         {/* ── Left: Hero text ── */}
@@ -32,35 +73,32 @@ export default function Hero() {
               background: "rgba(255,255,255,0.7)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(0,132,255,0.2)",
-              color: "#0084FF",
-              boxShadow: "0 2px 12px rgba(0,132,255,0.1)",
+              border: "1px solid rgba(33,150,243,0.2)",
+              color: "#2196F3",
+              boxShadow: "0 2px 12px rgba(33,150,243,0.1)",
             }}
           >
             <Sparkles size={14} /> Your AI career coach, on demand
           </span>
 
-          {/* Headline */}
+          {/* Headline with DM Serif Display italic */}
           <h1
-            className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
+            className="font-heading italic text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight"
             style={{ color: "#0F172A" }}
           >
             Land your next role with a resume that actually{" "}
-            <Typewriter
-              text={["gets read", "gets noticed", "gets interviews", "gets you hired"]}
-              speed={90}
-              deleteSpeed={45}
-              delay={1800}
-              loop={true}
-              cursor="|"
+            <span
               className="text-gradient-blue"
-            />
+              style={{ fontFamily: "inherit", fontStyle: "italic" }}
+            >
+              gets you hired
+            </span>
           </h1>
 
           {/* Subtitle */}
           <p
             className="mt-6 text-lg leading-relaxed max-w-xl"
-            style={{ color: "#334155" }}
+            style={{ color: "#475569" }}
           >
             CareerAI scans your resume against real job descriptions, closes your
             skill gaps with a guided roadmap, and rehearses your interview answers
@@ -71,42 +109,60 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 mt-9">
             <button
               onClick={() => navigate("/register")}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white transition-all"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white transition-all duration-300"
               style={{
-                background: "#0084FF",
-                boxShadow: "0 8px 30px rgba(0,132,255,0.35)",
+                background: "#2196F3",
+                boxShadow: "0 8px 30px rgba(33,150,243,0.35)",
               }}
-              onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,132,255,0.5)")}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,132,255,0.35)")}
+              onMouseEnter={e => {
+                e.currentTarget.style.boxShadow = "0 12px 40px rgba(33,150,243,0.5)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(33,150,243,0.35)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
             >
               <Upload size={18} strokeWidth={2.25} />
               Upload your resume — free
             </button>
             <button
-              onClick={() => navigate("/login")}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold transition-all"
+              onClick={() => {
+                const el = document.getElementById("how-it-works");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold transition-all duration-300"
               style={{
                 background: "rgba(255,255,255,0.7)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid #DCEEFF",
+                border: "1px solid rgba(33,150,243,0.2)",
                 color: "#0F172A",
-                boxShadow: "0 4px 16px rgba(0,132,255,0.08)",
+                boxShadow: "0 4px 16px rgba(33,150,243,0.08)",
               }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.9)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.7)")}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.9)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.7)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
             >
               See how it works <ArrowRight size={18} strokeWidth={2.25} />
             </button>
           </div>
 
-          {/* Trust badges */}
+          {/* Trust indicators */}
           <div className="flex flex-col sm:flex-row gap-6 mt-10 text-sm" style={{ color: "#64748B" }}>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 size={16} style={{ color: "#0084FF" }} /> No credit card
+              <CheckCircle2 size={16} style={{ color: "#2196F3" }} /> No credit card
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 size={16} style={{ color: "#0084FF" }} /> 60-second scan
+              <CheckCircle2 size={16} style={{ color: "#2196F3" }} /> 60-second scan
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 size={16} style={{ color: "#2196F3" }} /> AI-powered analysis
             </span>
           </div>
         </motion.div>
@@ -123,30 +179,29 @@ export default function Hero() {
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             className="relative w-full max-w-[520px]"
           >
-            {/* Main resume card — white glass */}
+            {/* Main resume card — glass */}
             <div
               className="relative overflow-hidden rounded-[36px]"
               style={{
                 background: "rgba(255,255,255,0.65)",
                 backdropFilter: "blur(30px)",
                 WebkitBackdropFilter: "blur(30px)",
-                border: "1px solid rgba(0,132,255,0.15)",
-                boxShadow: "0 30px 80px rgba(0,132,255,0.15), 0 2px 0 rgba(255,255,255,0.9) inset",
+                border: "1px solid rgba(33,150,243,0.15)",
+                boxShadow: "0 30px 80px rgba(33,150,243,0.15), 0 2px 0 rgba(255,255,255,0.9) inset",
               }}
             >
               {/* Top accent line */}
               <div
                 className="absolute inset-x-0 top-0 h-[2px]"
                 style={{
-                  background: "linear-gradient(90deg, #60B1FF 0%, #0084FF 50%, #38BDF8 100%)",
+                  background: "linear-gradient(90deg, #64B5F6 0%, #2196F3 50%, #42A5F5 100%)",
                 }}
               />
               {/* Subtle inner glow */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background:
-                    "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,132,255,0.07) 0%, transparent 70%)",
+                  background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(33,150,243,0.07) 0%, transparent 70%)",
                 }}
               />
 
@@ -162,7 +217,7 @@ export default function Hero() {
                     className="text-[11px] uppercase tracking-[0.3em]"
                     style={{ color: "#94A3B8" }}
                   >
-                    PDF PREVIEW
+                    RESUME PREVIEW
                   </span>
                 </div>
 
@@ -170,7 +225,7 @@ export default function Hero() {
                 <div className="space-y-2 mb-6">
                   <p
                     className="text-xs uppercase tracking-[0.26em] font-semibold"
-                    style={{ color: "#0084FF" }}
+                    style={{ color: "#2196F3" }}
                   >
                     Career Resume
                   </p>
@@ -180,17 +235,17 @@ export default function Hero() {
                   >
                     Jordan Ellis
                   </h2>
-                  <p className="text-sm" style={{ color: "#64748B" }}>
+                  <p className="text-sm" style={{ color: "#475569" }}>
                     Senior Product Designer · AI Resume Coach
                   </p>
                 </div>
 
-                {/* Skills */}
+                {/* Skills tags */}
                 <div
                   className="rounded-3xl p-4 mb-6"
                   style={{
                     background: "rgba(240,248,255,0.8)",
-                    border: "1px solid rgba(0,132,255,0.12)",
+                    border: "1px solid rgba(33,150,243,0.12)",
                   }}
                 >
                   <div className="flex flex-wrap gap-2">
@@ -200,9 +255,9 @@ export default function Hero() {
                         className="rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.18em] font-medium"
                         style={{
                           background: "rgba(255,255,255,0.85)",
-                          border: "1px solid rgba(0,132,255,0.2)",
-                          color: "#0084FF",
-                          boxShadow: "0 1px 4px rgba(0,132,255,0.08)",
+                          border: "1px solid rgba(33,150,243,0.2)",
+                          color: "#2196F3",
+                          boxShadow: "0 1px 4px rgba(33,150,243,0.08)",
                         }}
                       >
                         {skill}
@@ -211,7 +266,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Experience */}
+                {/* Experience + Education */}
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <p
@@ -226,7 +281,7 @@ export default function Hero() {
                         className="rounded-3xl p-4"
                         style={{
                           background: "rgba(248,252,255,0.9)",
-                          border: "1px solid rgba(0,132,255,0.1)",
+                          border: "1px solid rgba(33,150,243,0.1)",
                         }}
                       >
                         <div className="flex items-start justify-between gap-4">
@@ -237,7 +292,7 @@ export default function Hero() {
                             >
                               {item.title}
                             </p>
-                            <p className="text-xs" style={{ color: "#64748B" }}>
+                            <p className="text-xs" style={{ color: "#475569" }}>
                               {item.company}
                             </p>
                           </div>
@@ -252,53 +307,37 @@ export default function Hero() {
                     ))}
                   </div>
 
-                  {/* Projects / Education */}
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {[
-                      {
-                        label: "Projects",
-                        title: "AI hiring dashboard",
-                        sub: "Resume analytics for hiring teams.",
-                      },
-                      {
-                        label: "Education",
-                        title: "M.S. Design Systems",
-                        sub: "Stanford University · 2020",
-                      },
-                    ].map((card) => (
-                      <div
-                        key={card.label}
-                        className="rounded-3xl p-4"
-                        style={{
-                          background: "rgba(248,252,255,0.9)",
-                          border: "1px solid rgba(0,132,255,0.1)",
-                        }}
-                      >
-                        <p
-                          className="text-xs uppercase tracking-[0.24em] font-medium"
-                          style={{ color: "#94A3B8" }}
-                        >
-                          {card.label}
-                        </p>
-                        <p
-                          className="mt-3 text-sm font-semibold"
-                          style={{ color: "#0F172A" }}
-                        >
-                          {card.title}
-                        </p>
-                        <p className="text-xs mt-1" style={{ color: "#64748B" }}>
-                          {card.sub}
-                        </p>
-                      </div>
-                    ))}
+                  {/* Education card */}
+                  <div
+                    className="rounded-3xl p-4"
+                    style={{
+                      background: "rgba(248,252,255,0.9)",
+                      border: "1px solid rgba(33,150,243,0.1)",
+                    }}
+                  >
+                    <p
+                      className="text-xs uppercase tracking-[0.24em] font-medium"
+                      style={{ color: "#94A3B8" }}
+                    >
+                      Education
+                    </p>
+                    <p
+                      className="mt-3 text-sm font-semibold"
+                      style={{ color: "#0F172A" }}
+                    >
+                      M.S. Design Systems
+                    </p>
+                    <p className="text-xs mt-1" style={{ color: "#475569" }}>
+                      Stanford University · 2020
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* ── Floating badges (glass white) ── */}
+            {/* ── Floating badges ── */}
 
-            {/* ATS Score — top left */}
+            {/* ATS Score 92% — top left */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -307,18 +346,18 @@ export default function Hero() {
                 background: "rgba(255,255,255,0.6)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(0,132,255,0.2)",
-                boxShadow: "0 8px 24px rgba(0,132,255,0.12)",
+                border: "1px solid rgba(33,150,243,0.2)",
+                boxShadow: "0 8px 24px rgba(33,150,243,0.12)",
               }}
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
                 style={{ color: "#64748B" }}
               >
-                <ShieldCheck size={14} style={{ color: "#0084FF" }} />
+                <ShieldCheck size={14} style={{ color: "#2196F3" }} />
                 <span>ATS Score</span>
               </div>
-              <p className="text-xl font-semibold" style={{ color: "#0084FF" }}>
+              <p className="text-xl font-semibold" style={{ color: "#2196F3" }}>
                 92%
               </p>
             </motion.div>
@@ -332,15 +371,15 @@ export default function Hero() {
                 background: "rgba(255,255,255,0.6)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(0,132,255,0.2)",
-                boxShadow: "0 8px 24px rgba(0,132,255,0.12)",
+                border: "1px solid rgba(33,150,243,0.2)",
+                boxShadow: "0 8px 24px rgba(33,150,243,0.12)",
               }}
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
                 style={{ color: "#64748B" }}
               >
-                <Award size={14} style={{ color: "#0084FF" }} />
+                <Award size={14} style={{ color: "#2196F3" }} />
                 <span>AI Analysis</span>
               </div>
               <p className="text-sm font-semibold" style={{ color: "#0F172A" }}>
@@ -357,15 +396,15 @@ export default function Hero() {
                 background: "rgba(255,255,255,0.6)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(0,132,255,0.2)",
-                boxShadow: "0 8px 24px rgba(0,132,255,0.12)",
+                border: "1px solid rgba(33,150,243,0.2)",
+                boxShadow: "0 8px 24px rgba(33,150,243,0.12)",
               }}
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
                 style={{ color: "#64748B" }}
               >
-                <Zap size={14} style={{ color: "#0084FF" }} />
+                <Zap size={14} style={{ color: "#2196F3" }} />
                 <span>Skills Matched</span>
               </div>
               <p className="text-sm font-semibold" style={{ color: "#0F172A" }}>
@@ -382,15 +421,15 @@ export default function Hero() {
                 background: "rgba(255,255,255,0.6)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(0,132,255,0.2)",
-                boxShadow: "0 8px 24px rgba(0,132,255,0.12)",
+                border: "1px solid rgba(33,150,243,0.2)",
+                boxShadow: "0 8px 24px rgba(33,150,243,0.12)",
               }}
             >
               <div
                 className="flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] mb-1"
                 style={{ color: "#64748B" }}
               >
-                <Sparkles size={14} style={{ color: "#0084FF" }} />
+                <Sparkles size={14} style={{ color: "#2196F3" }} />
                 <span>Interview Ready</span>
               </div>
               <p className="text-sm font-semibold" style={{ color: "#0F172A" }}>

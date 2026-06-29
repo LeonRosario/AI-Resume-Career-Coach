@@ -78,9 +78,9 @@ function TestimonialCard({ item }) {
         <div
           className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold shrink-0"
           style={{
-            background: "linear-gradient(135deg, rgba(0,132,255,0.15) 0%, rgba(56,189,248,0.15) 100%)",
-            border: "1.5px solid rgba(0,132,255,0.2)",
-            color: "#0084FF",
+            background: "linear-gradient(135deg, rgba(33,150,243,0.15) 0%, rgba(100,181,246,0.15) 100%)",
+            border: "1.5px solid rgba(33,150,243,0.2)",
+            color: "#2196F3",
           }}
         >
           {initials(item.name)}
@@ -145,14 +145,14 @@ export default function TestimonialsColumns() {
       <div
         className="pointer-events-none absolute -left-40 top-1/4 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(0,132,255,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(33,150,243,0.08) 0%, transparent 70%)",
           filter: "blur(90px)",
         }}
       />
       <div
         className="pointer-events-none absolute -right-40 bottom-1/4 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(100,181,246,0.08) 0%, transparent 70%)",
           filter: "blur(90px)",
         }}
       />
@@ -166,9 +166,9 @@ export default function TestimonialsColumns() {
               background: "rgba(255,255,255,0.7)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(0,132,255,0.2)",
-              color: "#0084FF",
-              boxShadow: "0 2px 12px rgba(0,132,255,0.08)",
+              border: "1px solid rgba(33,150,243,0.2)",
+              color: "#2196F3",
+              boxShadow: "0 2px 12px rgba(33,150,243,0.08)",
               fontFamily: "Poppins, sans-serif",
             }}
           >

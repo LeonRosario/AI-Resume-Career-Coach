@@ -31,7 +31,7 @@ export default function Navbar() {
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl"
     >
       <nav
-        className={`glass-nav rounded-2xl px-5 py-3 flex items-center justify-between transition-shadow ${
+        className={`glass-nav rounded-2xl px-5 py-3 flex items-center justify-between transition-all duration-300 ${
           scrolled ? "shadow-glass-lg" : "shadow-glass"
         }`}
       >
@@ -42,7 +42,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-body hover:text-ink rounded-xl hover:bg-white/10 transition-colors"
+              className="px-4 py-2 text-sm font-medium text-body hover:text-ink rounded-xl hover:bg-primary-50/60 transition-all duration-200"
             >
               {link.label}
             </a>
@@ -81,7 +81,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-body hover:text-ink rounded-xl hover:bg-white/10"
+                  className="px-4 py-3 text-sm font-medium text-body hover:text-ink rounded-xl hover:bg-primary-50/60 transition-all duration-200"
                 >
                   {link.label}
                 </a>

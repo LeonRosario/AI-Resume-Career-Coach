@@ -64,7 +64,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-[rgba(0,132,255,0.12)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-[rgba(33,150,243,0.12)] mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted">© 2026 CareerAI. All rights reserved.</p>
           <p className="text-xs text-muted">Built with care, for your next role.</p>
         </div>

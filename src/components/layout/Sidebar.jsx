@@ -37,7 +37,7 @@ export default function Sidebar({ open, onClose }) {
 
   const content = (
     <div className="flex flex-col h-full rounded-none md:rounded-glass p-4"
-      style={{ background: "rgba(255,255,255,0.7)", backdropFilter: "blur(30px)", WebkitBackdropFilter: "blur(30px)", border: "1px solid rgba(0,132,255,0.12)", boxShadow: "0 20px 50px rgba(0,132,255,0.12)" }}
+      style={{ background: "rgba(255,255,255,0.7)", backdropFilter: "blur(30px)", WebkitBackdropFilter: "blur(30px)", border: "1px solid rgba(33,150,243,0.12)", boxShadow: "0 20px 50px rgba(33,150,243,0.12)" }}
     >
       <div className="flex items-center justify-between mb-8 px-1 pt-1">
         <Logo to="/app" />
@@ -55,7 +55,7 @@ export default function Sidebar({ open, onClose }) {
             onClick={onClose}
             className={({ isActive }) =>
               `relative flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-colors group ${
-                isActive ? "text-[#0084FF]" : "text-body hover:text-ink hover:bg-white/10"
+                isActive ? "text-[#2196F3]" : "text-body hover:text-ink hover:bg-white/10"
               }`
             }
           >
@@ -65,7 +65,7 @@ export default function Sidebar({ open, onClose }) {
                   <motion.span
                     layoutId="sidebar-active"
                     className="absolute inset-0 rounded-2xl shadow-glass"
-                    style={{ background: "rgba(0,132,255,0.12)", border: "1px solid rgba(0,132,255,0.15)" }}
+                    style={{ background: "rgba(33,150,243,0.12)", border: "1px solid rgba(33,150,243,0.15)" }}
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
@@ -77,7 +77,7 @@ export default function Sidebar({ open, onClose }) {
         ))}
       </nav>
 
-      <div className="border-t border-[rgba(0,132,255,0.12)] pt-4 mt-4">
+      <div className="border-t border-[rgba(33,150,243,0.12)] pt-4 mt-4">
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
           <div className="w-9 h-9 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
             {user?.name?.[0]?.toUpperCase() || "U"}

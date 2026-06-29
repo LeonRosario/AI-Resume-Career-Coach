@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const variants = {
   primary:
-    "bg-[#0084FF] text-white shadow-glow hover:shadow-[0_0_50px_rgba(0,132,255,0.5)] border border-white/40",
+    "bg-[#2196F3] text-white shadow-glow hover:shadow-[0_0_50px_rgba(33,150,243,0.5)] border border-white/40",
   glass:
     "glass-strong text-ink hover:bg-white/10",
   outline:
