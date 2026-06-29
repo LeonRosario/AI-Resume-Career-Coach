@@ -85,7 +85,7 @@ export default function InterviewPrep() {
     <div className="grid lg:grid-cols-[1.6fr,1fr] gap-5">
       {/* Chat */}
       <GlassCard className="p-0 flex flex-col h-[600px] overflow-hidden">
-        <div className="px-6 py-4 border-b border-white/40 flex items-center justify-between shrink-0">
+        <div className="px-6 py-4 border-b border-[rgba(0,132,255,0.1)] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-brand-gradient flex items-center justify-center">
               <Sparkles size={16} className="text-white" />
@@ -156,7 +156,7 @@ export default function InterviewPrep() {
         </div>
 
         {started && !feedback && (
-          <div className="p-4 border-t border-white/40 flex items-center gap-2 shrink-0">
+          <div className="p-4 border-t border-[rgba(0,132,255,0.1)] flex items-center gap-2 shrink-0">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -182,7 +182,7 @@ export default function InterviewPrep() {
                       ? "bg-brand-gradient text-white"
                       : i === qIndex && started
                       ? "bg-primary-100 text-primary-600 ring-2 ring-primary-400"
-                      : "bg-primary-900/8 text-ink/30"
+                      : "bg-[rgba(0,132,255,0.06)] text-ink/30"
                   }`}
                 >
                   {i + 1}

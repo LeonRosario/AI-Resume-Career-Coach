@@ -19,7 +19,7 @@ function Toggle({ checked, onChange }) {
     <button
       onClick={() => onChange(!checked)}
       className={`relative w-11 h-6 rounded-full transition-colors shrink-0 ${
-        checked ? "bg-brand-gradient" : "bg-primary-900/15"
+        checked ? "bg-brand-gradient" : "bg-[rgba(0,132,255,0.08)]"
       }`}
       aria-pressed={checked}
     >
@@ -57,7 +57,8 @@ export default function Settings() {
               {tab === t.id && (
                 <motion.span
                   layoutId="settings-tab"
-                  className="absolute inset-0 bg-white/55 rounded-2xl shadow-glass border border-white/50"
+                  className="absolute inset-0 rounded-2xl shadow-glass"
+                  style={{ background: "rgba(0,132,255,0.12)", border: "1px solid rgba(0,132,255,0.15)" }}
                   transition={{ type: "spring", stiffness: 380, damping: 32 }}
                 />
               )}
@@ -130,7 +131,7 @@ export default function Settings() {
             <p className="text-sm text-ink/50 mb-6">Control how CareerAI looks and notifies you.</p>
 
             <div className="space-y-1">
-              <div className="flex items-center justify-between py-4 border-b border-white/40">
+              <div className="flex items-center justify-between py-4 border-b border-[rgba(0,132,255,0.1)]">
                 <div className="flex items-center gap-3">
                   {darkMode ? <Moon size={18} className="text-primary-600" /> : <Sun size={18} className="text-primary-600" />}
                   <div>
@@ -141,7 +142,7 @@ export default function Settings() {
                 <Toggle checked={darkMode} onChange={setDarkMode} />
               </div>
 
-              <div className="flex items-center justify-between py-4 border-b border-white/40">
+              <div className="flex items-center justify-between py-4 border-b border-[rgba(0,132,255,0.1)]">
                 <div className="flex items-center gap-3">
                   <Bell size={18} className="text-primary-600" />
                   <div>

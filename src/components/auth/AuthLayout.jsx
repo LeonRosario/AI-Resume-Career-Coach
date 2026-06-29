@@ -4,7 +4,7 @@ import Logo from "../ui/Logo";
 
 export default function AuthLayout({ children, eyebrow, title, subtitle, side }) {
   return (
-    <div className="relative min-h-screen bg-base flex items-center justify-center px-4 py-10 overflow-hidden">
+    <div className="relative min-h-screen bg-white flex items-center justify-center px-4 py-10 overflow-hidden">
       <Aurora variant="auth" />
       <div className="relative z-10 w-full max-w-5xl grid lg:grid-cols-[1fr,1.1fr] gap-8 items-center">
         {/* Form side */}

@@ -44,7 +44,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-sm text-ink/70 leading-relaxed flex-1">"{t.quote}"</p>
-              <div className="flex items-center gap-3 mt-6 pt-5 border-t border-white/40">
+              <div className="flex items-center gap-3 mt-6 pt-5 border-t border-[rgba(0,132,255,0.1)]">
                 <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
                   {t.name[0]}
                 </div>

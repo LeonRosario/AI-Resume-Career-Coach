@@ -12,7 +12,7 @@ export default function Aurora({ variant = "default" }) {
           top: "-10%",
           left: "-8%",
           background:
-            "radial-gradient(circle at 30% 30%, #60B1FF 0%, rgba(96,177,255,0) 70%)",
+            "radial-gradient(circle at 30% 30%, rgba(96,177,255,0.3) 0%, rgba(96,177,255,0) 70%)",
         }}
       />
       <div
@@ -23,7 +23,7 @@ export default function Aurora({ variant = "default" }) {
           top: "20%",
           right: "-10%",
           background:
-            "radial-gradient(circle at 60% 40%, #319AFF 0%, rgba(49,154,255,0) 70%)",
+            "radial-gradient(circle at 60% 40%, rgba(49,154,255,0.3) 0%, rgba(49,154,255,0) 70%)",
         }}
       />
       <div
@@ -34,8 +34,8 @@ export default function Aurora({ variant = "default" }) {
           bottom: "-15%",
           left: "20%",
           background:
-            "radial-gradient(circle at 50% 50%, #ADD7FF 0%, rgba(173,215,255,0) 70%)",
-          opacity: 0.4,
+            "radial-gradient(circle at 50% 50%, rgba(0,132,255,0.2) 0%, rgba(0,132,255,0) 70%)",
+          opacity: 0.35,
         }}
       />
       {variant === "auth" && (
@@ -46,9 +46,9 @@ export default function Aurora({ variant = "default" }) {
             height: 380,
             bottom: "5%",
             right: "10%",
-            background:
-              "radial-gradient(circle at 50% 50%, #0084FF 0%, rgba(0,132,255,0) 70%)",
-            opacity: 0.3,
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(0,132,255,0.25) 0%, rgba(0,132,255,0) 70%)",
+            opacity: 0.35,
           }}
         />
       )}

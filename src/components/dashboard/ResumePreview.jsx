@@ -4,7 +4,7 @@ export default function ResumePreview({ data }) {
   return (
     <div
       id="resume-preview"
-      className="bg-slate-950 rounded-2xl p-8 text-ink shadow-inner mx-auto"
+      className="bg-white rounded-2xl p-8 text-ink shadow-inner mx-auto"
       style={{ width: "100%", maxWidth: 640, minHeight: 800, fontFamily: "Inter, sans-serif" }}
     >
       <div className="border-b border-ink/10 pb-4 mb-4">

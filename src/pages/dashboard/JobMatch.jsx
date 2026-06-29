@@ -78,7 +78,7 @@ export default function JobMatch() {
               ))}
             </div>
 
-            <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/40">
+            <div className="flex items-center justify-between mt-auto pt-3 border-t border-[rgba(0,132,255,0.1)]">
               <span className="text-sm font-semibold text-ink/70">{job.salary}</span>
               <Button variant="ghost" size="sm" icon={ArrowRight} iconPosition="right" className="!px-2">
                 Apply

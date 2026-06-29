@@ -21,7 +21,7 @@ export default function SkillGapRoadmap({ role, roadmap }) {
           transition={{ duration: 0.35 }}
           className="relative"
         >
-          <div className="absolute left-[19px] top-2 bottom-2 w-0.5 bg-primary-900/8" />
+          <div className="absolute left-[19px] top-2 bottom-2 w-0.5 bg-[rgba(0,132,255,0.1)]" />
 
           <div className="space-y-5">
             {roadmap.map((item, i) => (
@@ -34,7 +34,7 @@ export default function SkillGapRoadmap({ role, roadmap }) {
               >
                 <div className="relative z-10 w-10 h-10 rounded-full flex items-center justify-center shrink-0 glass-soft shadow-sm">
                   {item.done ? (
-                    <CheckCircle2 size={18} className="text-white" />
+                    <CheckCircle2 size={18} className="text-emerald-500" />
                   ) : (
                     <Circle size={18} className="text-primary-400" />
                   )}

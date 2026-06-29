@@ -23,7 +23,7 @@ export default function Topbar({ onMenuClick, title }) {
           />
         </div>
         <button
-          className="relative p-2.5 rounded-xl glass-soft hover:bg-white/50 text-ink/60 hover:text-ink transition-colors"
+          className="relative p-2.5 rounded-xl glass-soft hover:bg-white/60 text-ink/60 hover:text-ink transition-colors"
           aria-label="Notifications"
         >
           <Bell size={18} />

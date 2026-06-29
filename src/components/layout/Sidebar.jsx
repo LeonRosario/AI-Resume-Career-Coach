@@ -36,10 +36,12 @@ export default function Sidebar({ open, onClose }) {
   };
 
   const content = (
-    <div className="flex flex-col h-full glass rounded-none md:rounded-glass p-4">
+    <div className="flex flex-col h-full rounded-none md:rounded-glass p-4"
+      style={{ background: "rgba(255,255,255,0.7)", backdropFilter: "blur(30px)", WebkitBackdropFilter: "blur(30px)", border: "1px solid rgba(0,132,255,0.12)", boxShadow: "0 20px 50px rgba(0,132,255,0.12)" }}
+    >
       <div className="flex items-center justify-between mb-8 px-1 pt-1">
         <Logo to="/app" />
-        <button className="md:hidden p-1 text-ink/60" onClick={onClose} aria-label="Close menu">
+        <button className="md:hidden p-1 text-ink/60 hover:text-ink" onClick={onClose} aria-label="Close menu">
           <X size={20} />
         </button>
       </div>
@@ -53,7 +55,7 @@ export default function Sidebar({ open, onClose }) {
             onClick={onClose}
             className={({ isActive }) =>
               `relative flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-colors group ${
-                isActive ? "text-primary-200" : "text-ink/70 hover:text-ink hover:bg-white/10"
+                isActive ? "text-[#0084FF]" : "text-ink/70 hover:text-ink hover:bg-white/10"
               }`
             }
           >
@@ -62,7 +64,8 @@ export default function Sidebar({ open, onClose }) {
                 {isActive && (
                   <motion.span
                     layoutId="sidebar-active"
-                    className="absolute inset-0 bg-white/55 rounded-2xl shadow-glass border border-white/50"
+                    className="absolute inset-0 rounded-2xl shadow-glass"
+                    style={{ background: "rgba(0,132,255,0.12)", border: "1px solid rgba(0,132,255,0.15)" }}
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
@@ -74,7 +77,7 @@ export default function Sidebar({ open, onClose }) {
         ))}
       </nav>
 
-      <div className="border-t border-white/40 pt-4 mt-4">
+      <div className="border-t border-[rgba(0,132,255,0.12)] pt-4 mt-4">
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
           <div className="w-9 h-9 rounded-full bg-brand-gradient flex items-center justify-center text-white text-sm font-bold font-heading">
             {user?.name?.[0]?.toUpperCase() || "U"}
@@ -86,7 +89,7 @@ export default function Sidebar({ open, onClose }) {
         </div>
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-medium text-ink/55 hover:text-rose-600 hover:bg-rose-50/60 transition-colors"
+          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-2xl text-sm font-medium text-ink/55 hover:text-rose-600 hover:bg-rose-50/80 transition-colors"
         >
           <LogOut size={18} strokeWidth={2.25} />
           Log out
@@ -111,7 +114,7 @@ export default function Sidebar({ open, onClose }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={onClose}
-              className="fixed inset-0 bg-ink/30 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
             />
             <motion.aside
               initial={{ x: "-100%" }}

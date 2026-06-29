@@ -23,7 +23,7 @@ export default function DashboardLayout() {
   const title = titles[location.pathname] || "CareerAI";
 
   return (
-    <div className="relative min-h-screen bg-base">
+    <div className="relative min-h-screen bg-white">
       <Aurora />
       <div className="relative z-10 flex max-w-[1600px] mx-auto">
         <Sidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />

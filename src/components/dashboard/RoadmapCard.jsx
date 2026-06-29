@@ -19,7 +19,7 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
       className="relative"
     >
       {index > 0 && (
-        <div className="absolute -top-5 left-6 h-5 w-px bg-primary-900/10" aria-hidden="true" />
+        <div className="absolute -top-5 left-6 h-5 w-px bg-[rgba(0,132,255,0.12)]" aria-hidden="true" />
       )}
 
       <motion.button
@@ -29,13 +29,13 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
         whileTap={{ scale: 0.995 }}
         className={`w-full rounded-[24px] border text-left transition-shadow duration-300 ${
           expanded
-            ? "border-primary-400/30 bg-white/45 shadow-glass-lg"
-            : "border-white/40 bg-white/35 shadow-glass hover:shadow-glass-lg"
+            ? "border-[rgba(0,132,255,0.3)] bg-white/60 shadow-glass-lg"
+            : "border-[rgba(0,132,255,0.12)] bg-white/50 shadow-glass hover:shadow-glass-lg"
         } backdrop-blur-[30px] p-5`}
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/50 bg-white/40 text-sm font-bold text-primary-600">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[rgba(0,132,255,0.15)] bg-white/60 text-sm font-bold text-primary-600">
               {step.step}
             </span>
             <div>
@@ -69,7 +69,7 @@ export default function RoadmapCard({ step, expanded, onToggle, index = 0 }) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <div className="mt-4 border-t border-white/40 pt-4 pl-14">
+              <div className="mt-4 border-t border-[rgba(0,132,255,0.1)] pt-4 pl-14">
                 {step.description && (
                   <p className="text-sm leading-relaxed text-ink/60">{step.description}</p>
                 )}
