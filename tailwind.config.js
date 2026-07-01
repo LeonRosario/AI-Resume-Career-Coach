@@ -24,9 +24,10 @@ export default {
         },
       },
       fontFamily: {
-        heading: ["DM Serif Display", "ui-serif", "Georgia", "serif"],
-        headingAlt: ["Fustat", "ui-sans-serif", "system-ui", "sans-serif"],
-        body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["'DM Serif Display'", "serif"],
+        headingAlt: ["'DM Serif Display'", "serif"],
+        sans: ["'Poppins'", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["'Poppins'", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       backdropBlur: {
         glass: "30px",

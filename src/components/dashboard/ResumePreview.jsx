@@ -5,7 +5,7 @@ export default function ResumePreview({ data }) {
     <div
       id="resume-preview"
       className="bg-white rounded-2xl p-8 text-ink shadow-inner mx-auto"
-      style={{ width: "100%", maxWidth: 640, minHeight: 800, fontFamily: "Inter, sans-serif" }}
+      style={{ width: "100%", maxWidth: 640, minHeight: 800, fontFamily: "Poppins, sans-serif" }}
     >
       <div className="border-b border-ink/10 pb-4 mb-4">
         <h1 className="font-heading font-extrabold text-2xl">{personal.name || "Your Name"}</h1>

@@ -39,16 +39,11 @@ export default function Hero() {
 
           {/* Headline with DM Serif Display italic */}
           <h1
-            className="font-heading italic text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight"
+            className="font-heading text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight"
             style={{ color: "#0F172A" }}
           >
             Land your next role with a resume that actually{" "}
-            <span
-              className="text-gradient-blue"
-              style={{ fontFamily: "inherit", fontStyle: "italic" }}
-            >
-              gets you hired
-            </span>
+            <span className="text-gradient-blue">gets you hired</span>
           </h1>
 
           {/* Subtitle */}
