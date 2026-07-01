@@ -1,96 +1,133 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import Logo from "../ui/Logo";
 import Button from "../ui/Button";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Features",     href: "#features" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Pricing",      href: "#pricing" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNav = (href) => {
+    setOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <motion.header
-      initial={{ y: -40, opacity: 0 }}
+      initial={{ y: -48, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl"
     >
+      {/* ── Main nav bar ── */}
       <nav
-        className={`glass-nav rounded-2xl px-5 py-3 flex items-center justify-between transition-all duration-300 ${
-          scrolled ? "shadow-glass-lg" : "shadow-glass"
-        }`}
+        className={[
+          "glass-nav rounded-2xl px-5 py-3",
+          "flex items-center justify-between",
+          "transition-all duration-300",
+          scrolled ? "shadow-glass-lg" : "shadow-glass",
+        ].join(" ")}
       >
         <Logo />
 
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.label}
-              href={link.href}
-              className="px-4 py-2 text-sm font-medium text-body hover:text-ink rounded-xl hover:bg-primary-50/60 transition-all duration-200"
+              onClick={() => handleNav(link.href)}
+              className="px-4 py-2 text-sm font-medium text-muted hover:text-ink rounded-xl hover:bg-primary-50/70 transition-all duration-200"
             >
               {link.label}
-            </a>
+            </button>
           ))}
         </div>
 
+        {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={() => navigate("/login")}>
             Log in
           </Button>
-          <Button variant="primary" size="sm" onClick={() => navigate("/register")}>
-            Get started
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => navigate("/register")}
+          >
+            Get started free
           </Button>
         </div>
 
-        <button
-          className="md:hidden p-2 text-ink"
+        {/* Mobile hamburger */}
+        <motion.button
+          whileTap={{ scale: 0.92 }}
+          className="md:hidden p-2 -mr-1 text-ink rounded-xl hover:bg-primary-50 transition-colors"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        </motion.button>
       </nav>
 
+      {/* ── Mobile menu ── */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: 0, y: -8 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="md:hidden glass-nav rounded-2xl mt-2 overflow-hidden shadow-glass-lg"
           >
-            <div className="flex flex-col p-3 gap-1">
-              {navLinks.map((link) => (
-                <a
+            <div className="flex flex-col p-4 gap-1">
+              {navLinks.map((link, i) => (
+                <motion.button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-body hover:text-ink rounded-xl hover:bg-primary-50/60 transition-all duration-200"
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  onClick={() => handleNav(link.href)}
+                  className="flex items-center px-4 py-3 text-sm font-medium text-muted hover:text-ink rounded-xl hover:bg-primary-50/70 transition-all text-left"
                 >
                   {link.label}
-                </a>
+                </motion.button>
               ))}
-              <div className="flex gap-2 mt-2 px-1">
-                <Button variant="glass" size="sm" full onClick={() => navigate("/login")}>
+
+              {/* Divider */}
+              <div className="section-divider my-2" />
+
+              <div className="grid grid-cols-2 gap-2 px-1">
+                <Button
+                  variant="glass"
+                  size="sm"
+                  full
+                  onClick={() => { setOpen(false); navigate("/login"); }}
+                >
                   Log in
                 </Button>
-                <Button variant="primary" size="sm" full onClick={() => navigate("/register")}>
+                <Button
+                  variant="primary"
+                  size="sm"
+                  full
+                  onClick={() => { setOpen(false); navigate("/register"); }}
+                >
                   Get started
                 </Button>
               </div>

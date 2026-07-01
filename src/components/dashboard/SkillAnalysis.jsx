@@ -17,23 +17,25 @@ export default function SkillAnalysis({ role, roleData }) {
   };
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[1fr_1.15fr]">
+    <div className="grid gap-5 lg:grid-cols-[1fr,1.2fr]">
+      {/* Left: skill cards */}
       <div className="grid auto-rows-min gap-5">
         <AnimatePresence mode="wait">
           <motion.div
             key={`${role}-skills`}
-            initial={{ opacity: 0, x: -16 }}
+            initial={{ opacity: 0, x: -14 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 16 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, x: 14 }}
+            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
             className="grid gap-5"
           >
-            <SkillCard title="Current Skills" skills={roleData.current} tone="success" />
-            <SkillCard title="Missing Skills" skills={roleData.missing} tone="danger" />
+            <SkillCard title="Current Skills"  skills={roleData.current} tone="success" />
+            <SkillCard title="Missing Skills"  skills={roleData.missing} tone="danger" />
           </motion.div>
         </AnimatePresence>
       </div>
 
+      {/* Right: roadmap */}
       <LearningRoadmap
         role={role}
         roadmap={roleData.roadmap}

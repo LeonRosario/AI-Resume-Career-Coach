@@ -1,53 +1,51 @@
-// Ambient aurora field — the signature visual motif used behind every glass
-// surface in the app. Three soft blobs drift slowly so glass panels have
-// something real to refract, rather than sitting on flat white.
+// Static CSS aurora — used in auth pages and simple backgrounds
 export default function Aurora({ variant = "default" }) {
   return (
     <div className="aurora-field" aria-hidden="true">
       <div
         className="aurora-blob animate-float"
         style={{
-          width: 520,
-          height: 520,
-          top: "-10%",
+          width: 560,
+          height: 560,
+          top: "-12%",
           left: "-8%",
           background:
-            "radial-gradient(circle at 30% 30%, rgba(96,177,255,0.3) 0%, rgba(96,177,255,0) 70%)",
+            "radial-gradient(circle at 35% 35%, rgba(37,99,235,0.22) 0%, transparent 70%)",
         }}
       />
       <div
         className="aurora-blob animate-float-delay"
         style={{
-          width: 460,
-          height: 460,
+          width: 480,
+          height: 480,
           top: "20%",
           right: "-10%",
           background:
-            "radial-gradient(circle at 60% 40%, rgba(49,154,255,0.3) 0%, rgba(49,154,255,0) 70%)",
+            "radial-gradient(circle at 60% 40%, rgba(79,70,229,0.20) 0%, transparent 70%)",
         }}
       />
       <div
         className="aurora-blob animate-float-slow"
         style={{
-          width: 600,
-          height: 600,
-          bottom: "-15%",
-          left: "20%",
+          width: 640,
+          height: 640,
+          bottom: "-18%",
+          left: "18%",
           background:
-            "radial-gradient(circle at 50% 50%, rgba(0,132,255,0.2) 0%, rgba(0,132,255,0) 70%)",
-          opacity: 0.35,
+            "radial-gradient(circle at 50% 50%, rgba(124,58,237,0.14) 0%, transparent 70%)",
+          opacity: 0.4,
         }}
       />
       {variant === "auth" && (
         <div
           className="aurora-blob animate-float"
           style={{
-            width: 380,
-            height: 380,
-            bottom: "5%",
-            right: "10%",
-          background:
-            "radial-gradient(circle at 50% 50%, rgba(0,132,255,0.25) 0%, rgba(0,132,255,0) 70%)",
+            width: 400,
+            height: 400,
+            bottom: "8%",
+            right: "8%",
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(37,99,235,0.18) 0%, transparent 70%)",
             opacity: 0.35,
           }}
         />

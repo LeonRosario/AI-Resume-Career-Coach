@@ -9,16 +9,21 @@ import CtaBand from "../components/landing/CtaBand";
 
 export default function Landing() {
   return (
-    <div className="relative min-h-screen overflow-hidden" style={{ backgroundColor: "#F8FBFF" }}>
-      {/* Page-level grid background pattern */}
+    <div
+      className="relative min-h-screen overflow-hidden"
+      style={{ backgroundColor: "#F4F7FF" }}
+    >
+      {/* Global grid pattern */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(33,150,243,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(33,150,243,0.04) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
+            "linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
         }}
+        aria-hidden="true"
       />
+
       <div className="relative z-10">
         <Navbar />
         <Hero />

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Wand2, RefreshCw, CheckCircle2, XCircle } from "lucide-react";
+import {
+  Sparkles, Wand2, RefreshCw,
+  CheckCircle2, XCircle, TrendingUp,
+} from "lucide-react";
 import GlassCard from "../../components/ui/GlassCard";
-import AuroraBackground from "../../components/ui/aurora-background";
 import DropzoneUpload from "../../components/ui/DropzoneUpload";
 import AnalyzingState from "../../components/ui/AnalyzingState";
 import ScoreRing from "../../components/ui/ScoreRing";
@@ -14,34 +16,32 @@ import { useResume } from "../../context/ResumeContext";
 
 export default function ResumeAnalyzer() {
   const { updateResumeData, clearResumeData } = useResume();
-  const [file, setFile] = useState(null);
+  const [file, setFile]     = useState(null);
   const [status, setStatus] = useState("idle"); // idle | analyzing | done
 
   const handleFile = (f) => {
     setFile(f);
     setStatus("analyzing");
-    // Simulate analysis time
     setTimeout(() => {
-      // Update resume context with mock analysis results
       updateResumeData({
-        atsScore: resumeAnalysis.score,
-        status: "Excellent",
-        jobMatch: 94,
-        topJobTitle: "Software Engineer",
-        topJobCompany: "Nimbus Labs",
-        skillsTracked: resumeAnalysis.strengths.length,
-        totalSkills: resumeAnalysis.strengths.length + resumeAnalysis.missing.length,
+        atsScore:       resumeAnalysis.score,
+        status:         "Excellent",
+        jobMatch:       94,
+        topJobTitle:    "Software Engineer",
+        topJobCompany:  "Nimbus Labs",
+        skillsTracked:  resumeAnalysis.strengths.length,
+        totalSkills:    resumeAnalysis.strengths.length + resumeAnalysis.missing.length,
         analysis: {
           formatting: resumeAnalysis.breakdown[0].value,
-          keywords: resumeAnalysis.breakdown[1].value,
-          impact: resumeAnalysis.breakdown[2].value,
-          ats: resumeAnalysis.breakdown[3].value,
+          keywords:   resumeAnalysis.breakdown[1].value,
+          impact:     resumeAnalysis.breakdown[2].value,
+          ats:        resumeAnalysis.breakdown[3].value,
         },
         strengths: resumeAnalysis.strengths,
-        missing: resumeAnalysis.missing,
+        missing:   resumeAnalysis.missing,
       });
       setStatus("done");
-    }, 2200);
+    }, 2400);
   };
 
   const handleClear = () => {
@@ -51,20 +51,32 @@ export default function ResumeAnalyzer() {
   };
 
   return (
-    <div className="relative">
-      <AuroraBackground variant="subtle" />
-      <div className="relative z-10 space-y-6">
-      <GlassCard className="p-7">
-        <h2 className="font-heading font-bold text-lg text-ink mb-1">Upload your resume</h2>
-        <p className="text-sm text-muted mb-5">
-          We'll score it for ATS compatibility and flag what to improve.
-        </p>
-        <DropzoneUpload file={status === "idle" ? null : file} onFile={handleFile} onClear={handleClear} />
+    <div className="space-y-5">
+
+      {/* Upload card */}
+      <GlassCard className="p-7" accent>
+        <div className="mb-5">
+          <h2 className="font-heading text-xl text-ink">Upload your resume</h2>
+          <p className="text-sm text-muted mt-1">
+            We'll score it for ATS compatibility and flag exactly what to improve.
+          </p>
+        </div>
+        <DropzoneUpload
+          file={status === "idle" ? null : file}
+          onFile={handleFile}
+          onClear={handleClear}
+        />
       </GlassCard>
 
+      {/* Analyzing / Results */}
       <AnimatePresence mode="wait">
         {status === "analyzing" && (
-          <motion.div key="analyzing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div
+            key="analyzing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <AnalyzingState />
           </motion.div>
         )}
@@ -74,54 +86,66 @@ export default function ResumeAnalyzer() {
             key="results"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-5"
           >
-            {/* Score */}
-            <GlassCard variant="strong" className="p-7 md:p-9">
+            {/* Score overview */}
+            <GlassCard variant="strong" className="p-7 md:p-9" accent>
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <ScoreRing value={resumeAnalysis.score} size={170} label="Resume Score" />
+                <ScoreRing
+                  value={resumeAnalysis.score}
+                  size={160}
+                  stroke={11}
+                  label="Resume Score"
+                  showToneLabel
+                />
                 <div className="flex-1 w-full">
-                  <h3 className="font-heading font-bold text-xl text-ink mb-1">
-                    Strong resume — a few quick wins left
-                  </h3>
-                  <p className="text-sm text-muted mb-5">
-                    {file?.name || "Your resume"} scores above 90% of candidates for this role tier.
+                  <div className="flex items-center gap-2 mb-1">
+                    <TrendingUp size={18} className="text-emerald-500" />
+                    <h3 className="font-heading text-xl text-ink">
+                      Strong resume — a few quick wins left
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted mb-6">
+                    {file?.name ?? "Your resume"} scores above 90% of candidates for this role tier.
                   </p>
-                  <div className="space-y-3">
+                  <div className="space-y-3.5">
                     {resumeAnalysis.breakdown.map((item, i) => (
-                      <ProgressBar key={item.label} label={item.label} value={item.value} delay={i * 0.1} />
+                      <ProgressBar
+                        key={item.label}
+                        label={item.label}
+                        value={item.value}
+                        delay={i * 0.1}
+                        size="md"
+                      />
                     ))}
                   </div>
                 </div>
               </div>
             </GlassCard>
 
+            {/* Strengths & Missing */}
             <div className="grid md:grid-cols-2 gap-5">
-              {/* Strengths */}
               <GlassCard className="p-6">
-                <h4 className="font-heading font-bold text-ink mb-4 flex items-center gap-2">
-                  <CheckCircle2 size={18} className="text-emerald-500" /> Strengths
+                <h4 className="font-heading text-base text-ink mb-4 flex items-center gap-2">
+                  <CheckCircle2 size={17} className="text-emerald-500" />
+                  Strengths
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {resumeAnalysis.strengths.map((s) => (
-                    <Badge key={s} tone="success" icon>
-                      {s}
-                    </Badge>
+                    <Badge key={s} tone="success" icon size="md">{s}</Badge>
                   ))}
                 </div>
               </GlassCard>
 
-              {/* Missing skills */}
               <GlassCard className="p-6">
-                <h4 className="font-heading font-bold text-ink mb-4 flex items-center gap-2">
-                  <XCircle size={18} className="text-rose-500" /> Missing Skills
+                <h4 className="font-heading text-base text-ink mb-4 flex items-center gap-2">
+                  <XCircle size={17} className="text-red-500" />
+                  Missing Skills
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {resumeAnalysis.missing.map((s) => (
-                    <Badge key={s} tone="danger" icon>
-                      {s}
-                    </Badge>
+                    <Badge key={s} tone="danger" icon size="md">{s}</Badge>
                   ))}
                 </div>
               </GlassCard>
@@ -129,8 +153,9 @@ export default function ResumeAnalyzer() {
 
             {/* AI Suggestions */}
             <GlassCard className="p-7">
-              <h4 className="font-heading font-bold text-ink mb-4 flex items-center gap-2">
-                <Sparkles size={18} className="text-primary-500" /> AI Suggestions
+              <h4 className="font-heading text-base text-ink mb-5 flex items-center gap-2">
+                <Sparkles size={17} className="text-primary-500" />
+                AI Suggestions
               </h4>
               <div className="space-y-3">
                 {resumeAnalysis.suggestions.map((s, i) => (
@@ -138,19 +163,22 @@ export default function ResumeAnalyzer() {
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="glass-soft rounded-2xl p-4 text-sm text-body leading-relaxed"
+                    transition={{ delay: i * 0.12 }}
+                    className="flex items-start gap-3.5 glass-soft rounded-xl p-4"
                   >
-                    {s}
+                    <span className="w-5 h-5 rounded-full bg-brand-gradient-soft border border-primary-100 flex items-center justify-center text-primary-600 text-[10px] font-bold shrink-0 mt-0.5">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm text-body leading-relaxed">{s}</p>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-5 border-t border-slate-100">
                 <Button variant="primary" icon={Wand2}>
                   Apply AI improvements
                 </Button>
-                <Button variant="glass" icon={RefreshCw} onClick={handleClear}>
+                <Button variant="secondary" icon={RefreshCw} onClick={handleClear}>
                   Analyze another resume
                 </Button>
               </div>
@@ -158,7 +186,6 @@ export default function ResumeAnalyzer() {
           </motion.div>
         )}
       </AnimatePresence>
-      </div>
     </div>
   );
 }
