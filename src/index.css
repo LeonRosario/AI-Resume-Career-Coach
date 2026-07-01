@@ -8,6 +8,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  --aurora-1: rgba(33,150,243,0.35);
+  --aurora-2: rgba(66,165,245,0.25);
+  --aurora-3: rgba(100,181,246,0.2);
+  --aurora-4: rgba(33,150,243,0.15);
+  --aurora-5: rgba(130,177,255,0.2);
+  --aurora-glow: rgba(33,150,243,0.08);
+}
+
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     color: #0F172A !important;

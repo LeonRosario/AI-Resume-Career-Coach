@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Wand2, RefreshCw, CheckCircle2, XCircle } from "lucide-react";
 import GlassCard from "../../components/ui/GlassCard";
+import AuroraBackground from "../../components/ui/aurora-background";
 import DropzoneUpload from "../../components/ui/DropzoneUpload";
 import AnalyzingState from "../../components/ui/AnalyzingState";
 import ScoreRing from "../../components/ui/ScoreRing";
@@ -50,7 +51,9 @@ export default function ResumeAnalyzer() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="relative">
+      <AuroraBackground variant="subtle" />
+      <div className="relative z-10 space-y-6">
       <GlassCard className="p-7">
         <h2 className="font-heading font-bold text-lg text-ink mb-1">Upload your resume</h2>
         <p className="text-sm text-muted mb-5">
@@ -155,6 +158,7 @@ export default function ResumeAnalyzer() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </div>
   );
 }

@@ -61,6 +61,13 @@ export default {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(100%)" },
         },
+        aurora: {
+          "0%": { transform: "rotate(0deg) scale(1)", opacity: "0.4" },
+          "25%": { transform: "rotate(90deg) scale(1.1)", opacity: "0.5" },
+          "50%": { transform: "rotate(180deg) scale(0.95)", opacity: "0.35" },
+          "75%": { transform: "rotate(270deg) scale(1.05)", opacity: "0.45" },
+          "100%": { transform: "rotate(360deg) scale(1)", opacity: "0.4" },
+        },
       },
       animation: {
         float: "float 18s ease-in-out infinite",
@@ -68,6 +75,7 @@ export default {
         "float-delay": "float 20s ease-in-out infinite 4s",
         shimmer: "shimmer 1.8s infinite linear",
         scanline: "scanline 2.4s ease-in-out infinite",
+        "aurora-slow": "aurora 20s ease-in-out infinite",
       },
     },
   },

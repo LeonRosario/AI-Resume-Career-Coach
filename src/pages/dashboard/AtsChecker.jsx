@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Target, CheckCircle2, XCircle, Wand2 } from "lucide-react";
 import GlassCard from "../../components/ui/GlassCard";
+import AuroraBackground from "../../components/ui/aurora-background";
 import Button from "../../components/ui/Button";
 import Badge from "../../components/ui/Badge";
 import ScoreRing from "../../components/ui/ScoreRing";
@@ -21,7 +22,9 @@ export default function AtsChecker() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="relative">
+      <AuroraBackground variant="subtle" />
+      <div className="relative z-10 space-y-6">
       <GlassCard className="p-7">
         <div className="flex items-center gap-2 mb-1">
           <Target size={20} className="text-primary-600" />
@@ -110,6 +113,7 @@ export default function AtsChecker() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </div>
   );
 }

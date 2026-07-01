@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-import Aurora from "../ui/Aurora";
+import AuroraBackground from "../ui/aurora-background";
 import PageTransition from "../ui/PageTransition";
 
 const titles = {
@@ -24,7 +24,7 @@ export default function DashboardLayout() {
 
   return (
     <div className="relative min-h-screen bg-white">
-      <Aurora />
+      <div className="fixed inset-0 pointer-events-none z-0"><AuroraBackground variant="subtle" /></div>
       <div className="relative z-10 flex max-w-[1600px] mx-auto">
         <Sidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
         <main className="flex-1 min-w-0 p-4 md:p-6">

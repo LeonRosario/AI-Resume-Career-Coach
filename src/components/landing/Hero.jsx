@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Upload, ArrowRight, CheckCircle2, ShieldCheck, Award, Zap, Sparkles } from "lucide-react";
+import AuroraBackground from "../ui/aurora-background";
 
 const resumeSkills = ["AI Strategy", "UX Design", "Product Ops", "Leadership"];
 const resumeExperience = [
@@ -13,52 +14,7 @@ export default function Hero() {
 
   return (
     <section className="relative pt-40 pb-24 px-6 overflow-hidden bg-[#F8FBFF]">
-      {/* Grid background pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(33,150,243,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(33,150,243,0.06) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
-      {/* Soft radial gradient wash */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 0%, #E3F2FD 0%, #F8FBFF 55%, #F8FBFF 100%)",
-        }}
-      />
-
-      {/* Glowing blue blur effects */}
-      <motion.div
-        animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.7, 0.5] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute -left-28 -top-20 w-[520px] h-[520px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(33,150,243,0.18) 0%, rgba(33,150,243,0.06) 55%, transparent 80%)",
-          filter: "blur(60px)",
-        }}
-      />
-      <motion.div
-        animate={{ scale: [1, 1.06, 1], opacity: [0.45, 0.65, 0.45] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="pointer-events-none absolute -right-32 -bottom-24 w-[580px] h-[580px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(33,150,243,0.16) 0%, rgba(33,150,243,0.07) 55%, transparent 80%)",
-          filter: "blur(70px)",
-        }}
-      />
-
-      {/* Top sheen highlight */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[2px]"
-        style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(33,150,243,0.25) 30%, rgba(100,181,246,0.35) 55%, rgba(33,150,243,0.25) 75%, transparent 100%)",
-        }}
-      />
-
+      <AuroraBackground />
       <div className="relative z-10 max-w-6xl mx-auto grid gap-12 lg:grid-cols-[1.05fr,0.95fr] items-center">
         {/* ── Left: Hero text ── */}
         <motion.div
