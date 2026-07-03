@@ -1,7 +1,12 @@
 export default function ResumePreview({ data, template = "modern" }) {
-  const { personal, summary, education, experience, projects, skills, certifications, achievements, languages, interests, references } = data;
+  const {
+    personal = {}, summary = "",
+    education = [], experience = [], projects = [],
+    skills = {}, certifications = [], achievements = [],
+    languages = [], interests = [], references = [],
+  } = data || {};
 
-  const skillEntries = Object.entries(skills).filter(([, v]) => v.length > 0);
+  const skillEntries = Object.entries(skills).filter(([, v]) => Array.isArray(v) && v.length > 0);
 
   const templateStyles = {
     modern: {

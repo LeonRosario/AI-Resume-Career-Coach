@@ -164,12 +164,73 @@ function computeATSScore(data) {
   };
 }
 
+function migrateData(old) {
+  const base = JSON.parse(JSON.stringify(initialState));
+  if (!old || typeof old !== "object") return base;
+
+  if (old.resumeName) base.resumeName = old.resumeName;
+
+  if (old.personal) {
+    base.personal = { ...base.personal, ...old.personal };
+    if (old.personal.title && !old.personal.role) base.personal.role = old.personal.title;
+  }
+
+  if (old.summary) base.summary = old.summary;
+
+  if (Array.isArray(old.education)) {
+    base.education = old.education.map((e) => ({
+      ...base.education[0], id: createId(),
+      ...e,
+      endDate: e.endDate || e.year || "",
+      achievements: e.achievements || "",
+      field: e.field || "",
+      cgpa: e.cgpa || "",
+      startDate: e.startDate || "",
+    }));
+  }
+
+  if (Array.isArray(old.experience)) {
+    base.experience = old.experience.map((e) => ({
+      ...base.experience[0], id: createId(),
+      ...e,
+      description: e.description || e.desc || "",
+      location: e.location || "",
+      startDate: e.startDate || "",
+      endDate: e.endDate || e.duration || "",
+      bulletPoints: e.bulletPoints || [],
+    }));
+  }
+
+  if (Array.isArray(old.projects)) {
+    base.projects = old.projects.map((p) => ({
+      ...base.projects[0], id: createId(),
+      ...p,
+      description: p.description || p.desc || "",
+      techStack: p.techStack || "",
+      github: p.github || "",
+      liveDemo: p.liveDemo || "",
+    }));
+  }
+
+  if (old.skills) {
+    if (typeof old.skills === "string" && old.skills.trim()) {
+      base.skills.programmingLanguages = old.skills.split(",").map((s) => s.trim()).filter(Boolean);
+    } else if (typeof old.skills === "object") {
+      base.skills = { ...base.skills, ...old.skills };
+    }
+  }
+
+  return base;
+}
+
 export function useResumeBuilder() {
   const [data, setData] = useState(() => {
     try {
       const saved = localStorage.getItem("resume-builder-data");
-      if (saved) return JSON.parse(saved);
-    } catch {}
+      if (saved) return migrateData(JSON.parse(saved));
+    } catch {
+      localStorage.removeItem("resume-builder-data");
+    }
     return JSON.parse(JSON.stringify(initialState));
   });
 
