@@ -4,7 +4,7 @@ import {
   User, AlignLeft, GraduationCap, Briefcase, FolderGit2,
   Wrench, Award, Trophy, Languages, Heart, Users,
   Plus, Trash2, Image, Link, Globe, GitFork,
-  Maximize2, Minimize2, Download,
+  Eye, Maximize2, Minimize2, Download,
 } from "lucide-react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";

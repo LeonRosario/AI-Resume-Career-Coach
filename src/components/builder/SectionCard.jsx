@@ -67,7 +67,7 @@ export default function SectionCard({
           >
             <div className="px-5 pb-5 space-y-4">{children}</div>
 
-            {actions && actions.length > 0 && (
+            {actions && (
               <div className="px-5 pb-5 flex flex-wrap gap-2">
                 {actions}
               </div>
