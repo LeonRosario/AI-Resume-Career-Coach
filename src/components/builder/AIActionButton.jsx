@@ -16,15 +16,15 @@ export default function AIActionButton({ children, onClick, variant = "default",
   };
 
   const base =
-    "inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50";
+    "inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/30";
 
   const variants = {
     default:
-      "bg-gradient-to-r from-primary-500/10 to-violet-500/10 text-primary-700 border border-primary-200 hover:border-primary-300 hover:from-primary-500/15 hover:to-violet-500/15",
+      "bg-gradient-to-r from-primary-500/10 via-primary-400/8 to-violet-500/10 text-primary-700 border border-primary-200/60 hover:border-primary-300/80 hover:from-primary-500/15 hover:to-violet-500/15 hover:shadow-sm active:scale-[0.97]",
     ghost:
-      "bg-transparent text-muted hover:text-primary-600 hover:bg-primary-50 border border-transparent",
+      "bg-transparent text-muted/80 hover:text-primary-600 hover:bg-primary-50/60 border border-transparent hover:border-primary-200/40 active:scale-[0.97]",
     outline:
-      "bg-white text-primary-600 border border-primary-200 hover:bg-primary-50",
+      "bg-white text-primary-600 border border-primary-200/60 hover:bg-primary-50/60 hover:border-primary-300/80 active:scale-[0.97]",
   };
 
   return (
@@ -41,7 +41,7 @@ export default function AIActionButton({ children, onClick, variant = "default",
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
         </svg>
       ) : (
-        <Sparkles size={13} className="shrink-0" />
+        <Sparkles size={12} className="shrink-0" />
       )}
       {loading ? "Thinking..." : children}
     </motion.button>
