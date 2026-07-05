@@ -26,7 +26,7 @@ export function DiaText({
   }, [text, repeat, repeatDelay]);
 
   return (
-    <span className={className}>
+    <span>
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -34,6 +34,7 @@ export function DiaText({
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
           transition={{ duration: 0.35, ease: "easeOut" }}
+          className={`${className} inline-block`}
         >
           {text[index]}
         </motion.span>
