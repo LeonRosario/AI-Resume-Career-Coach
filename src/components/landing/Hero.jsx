@@ -5,6 +5,7 @@ import {
   ShieldCheck, Award, Zap, Sparkles, TrendingUp,
 } from "lucide-react";
 import AuroraBackground from "../ui/aurora-background";
+import { DiaText } from "../ui/dia-text";
 
 const resumeSkills = ["AI Strategy", "UX Design", "Product Ops", "Leadership"];
 const resumeExp = [
@@ -60,10 +61,20 @@ export default function Hero() {
             <h1
               className="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.06] text-ink"
             >
-              Land your next role with a resume that{" "}
-              <span className="gradient-text-animated font-heading-italic">
-                actually works
-              </span>
+              Land your next role with a{" "}
+              <DiaText
+                repeat
+                repeatDelay={1.2}
+                className="gradient-text-animated font-heading-italic"
+                text={[
+                  "resume that actually works",
+                  "better resume.",
+                  "stronger career.",
+                  "ATS-friendly resume.",
+                  "job-winning profile.",
+                  "professional portfolio.",
+                ]}
+              />
             </h1>
 
             {/* Subheadline */}
