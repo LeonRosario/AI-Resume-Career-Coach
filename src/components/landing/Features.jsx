@@ -3,7 +3,6 @@ import {
   FileSearch, Target, Map,
   Briefcase, MessagesSquare, FileEdit,
 } from "lucide-react";
-import GlassCard from "../ui/GlassCard";
 
 const features = [
   {

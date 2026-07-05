@@ -1,5 +1,4 @@
 import GlassCard from "./GlassCard";
-import { motion } from "framer-motion";
 
 export default function StatCard({
   icon: Icon,

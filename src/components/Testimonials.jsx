@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <motion.article
               key={testimonial.name}
               variants={cardVariants}

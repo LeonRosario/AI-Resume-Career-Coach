@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillCard from "./SkillCard";
 import LearningRoadmap from "./LearningRoadmap";
@@ -10,11 +10,12 @@ export default function SkillAnalysis({ role, roleData }) {
 
   useEffect(() => {
     setExpandedStep(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [role]);
 
-  const handleToggleStep = (stepNumber) => {
+  const handleToggleStep = useCallback((stepNumber) => {
     setExpandedStep((current) => (current === stepNumber ? null : stepNumber));
-  };
+  }, []);
 
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr,1.2fr]">

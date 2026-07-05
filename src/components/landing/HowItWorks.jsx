@@ -31,6 +31,8 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="relative px-6 py-24" style={{ background: "#F4F7FF" }}>
+      {/* Top divider */}
+      <div className="section-divider max-w-6xl mx-auto mb-20" />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">

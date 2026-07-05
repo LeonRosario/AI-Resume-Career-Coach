@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { UploadCloud, FileText, X, CheckCircle2 } from "lucide-react";
 import Button from "./Button";
 
-export default function DropzoneUpload({ onFile, file, onClear, accept = ".pdf" }) {
+export default function DropzoneUpload({ onFile, file, onClear }) {
   const [error, setError] = useState("");
 
   const onDrop = useCallback(

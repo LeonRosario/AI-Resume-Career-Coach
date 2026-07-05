@@ -1,3 +1,4 @@
+// eslint-disable-next-line react-refresh/only-export-components
 import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);

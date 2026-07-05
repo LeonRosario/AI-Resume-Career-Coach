@@ -1,100 +1,107 @@
 import { motion } from "framer-motion";
 
+/**
+ * HeroBackground — decorative full-bleed background used behind hero sections.
+ * Matches the CareerAI electric-blue + indigo/violet design system.
+ */
 export default function HeroBackground() {
   return (
     <div
-      id="home-hero-background"
       className="absolute inset-0 pointer-events-none overflow-hidden"
+      aria-hidden="true"
     >
-      {/* Pure white base */}
-      <div className="absolute inset-0 bg-white" />
+      {/* Base page tint */}
+      <div className="absolute inset-0" style={{ background: "#F4F7FF" }} />
 
-      {/* Soft radial gradient wash */}
-      <div className="absolute inset-0"
+      {/* Radial wash — top */}
+      <div
+        className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, #EAF5FF 0%, #F4FAFF 55%, #ffffff 100%)",
+            "radial-gradient(ellipse 90% 55% at 50% -5%, rgba(37,99,235,0.1) 0%, rgba(79,70,229,0.06) 50%, transparent 80%)",
         }}
       />
 
-      {/* Top-left light blue glow blob */}
+      {/* Primary glow — top left */}
       <motion.div
-        animate={{ scale: [1, 1.08, 1], opacity: [0.55, 0.72, 0.55] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-28 -top-20 w-[520px] h-[520px] rounded-full"
+        animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.68, 0.5] }}
+        transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -left-28 -top-20 w-[560px] h-[560px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,132,255,0.18) 0%, rgba(0,132,255,0.06) 55%, transparent 80%)",
-          filter: "blur(60px)",
-        }}
-      />
-
-      {/* Bottom-right soft sky blue glow blob */}
-      <motion.div
-        animate={{ scale: [1, 1.06, 1], opacity: [0.5, 0.68, 0.5] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute -right-32 -bottom-24 w-[580px] h-[580px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(56,189,248,0.16) 0%, rgba(0,132,255,0.07) 55%, transparent 80%)",
+            "radial-gradient(circle, rgba(37,99,235,0.16) 0%, rgba(37,99,235,0.05) 55%, transparent 80%)",
           filter: "blur(70px)",
         }}
       />
 
-      {/* Subtle mid-page accent blob */}
+      {/* Violet accent — bottom right */}
       <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0], opacity: [0.28, 0.42, 0.28] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute left-[38%] top-[30%] w-[340px] h-[340px] rounded-full"
+        animate={{ scale: [1, 1.06, 1], opacity: [0.4, 0.58, 0.4] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute -right-32 -bottom-24 w-[620px] h-[620px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(0,132,255,0.10) 0%, transparent 70%)",
-          filter: "blur(50px)",
+            "radial-gradient(circle, rgba(124,58,237,0.12) 0%, rgba(79,70,229,0.07) 55%, transparent 80%)",
+          filter: "blur(80px)",
         }}
       />
 
-      {/* Very subtle grid lines */}
+      {/* Indigo mid-page accent */}
+      <motion.div
+        animate={{ x: [0, 28, 0], y: [0, -18, 0], opacity: [0.22, 0.38, 0.22] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute left-[38%] top-[28%] w-[360px] h-[360px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)",
+          filter: "blur(60px)",
+        }}
+      />
+
+      {/* Grid lines */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,132,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,132,255,0.04) 1px, transparent 1px)",
-          backgroundSize: "120px 120px",
-          opacity: 0.7,
+            "linear-gradient(rgba(37,99,235,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.035) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
         }}
       />
 
-      {/* Top sheen highlight */}
+      {/* Top edge sheen */}
       <div
         className="absolute inset-x-0 top-0 h-[2px]"
         style={{
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(0,132,255,0.25) 30%, rgba(56,189,248,0.35) 55%, rgba(0,132,255,0.25) 75%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, rgba(37,99,235,0.3) 30%, rgba(99,102,241,0.4) 55%, rgba(124,58,237,0.25) 75%, transparent 100%)",
         }}
       />
 
-      {/* Floating light orbs */}
+      {/* Floating micro-orbs */}
       {[
-        { left: "12%", top: "18%", size: 6, delay: 0, opacity: 0.35 },
-        { left: "55%", top: "12%", size: 5, delay: 1.5, opacity: 0.3 },
-        { left: "78%", top: "22%", size: 7, delay: 0.7, opacity: 0.32 },
-        { left: "30%", top: "65%", size: 5, delay: 2.1, opacity: 0.25 },
-        { left: "88%", top: "48%", size: 6, delay: 1.2, opacity: 0.28 },
-        { left: "22%", top: "45%", size: 4, delay: 0.4, opacity: 0.22 },
+        { left: "11%", top: "17%", size: 6, delay: 0,   opacity: 0.3  },
+        { left: "54%", top: "11%", size: 5, delay: 1.5, opacity: 0.25 },
+        { left: "79%", top: "24%", size: 7, delay: 0.7, opacity: 0.28 },
+        { left: "31%", top: "63%", size: 5, delay: 2.1, opacity: 0.2  },
+        { left: "89%", top: "47%", size: 6, delay: 1.2, opacity: 0.24 },
+        { left: "21%", top: "44%", size: 4, delay: 0.4, opacity: 0.18 },
       ].map((orb, i) => (
         <motion.span
-          key={`orb-${i}`}
+          key={i}
           className="absolute rounded-full"
           style={{
             left: orb.left,
             top: orb.top,
-            width: `${orb.size}px`,
-            height: `${orb.size}px`,
-            background: "rgba(0,132,255,0.5)",
+            width: orb.size,
+            height: orb.size,
+            background: i % 2 === 0 ? "rgba(37,99,235,0.55)" : "rgba(124,58,237,0.45)",
             opacity: orb.opacity,
-            boxShadow: "0 0 8px rgba(0,132,255,0.4)",
+            boxShadow: `0 0 8px ${i % 2 === 0 ? "rgba(37,99,235,0.4)" : "rgba(124,58,237,0.35)"}`,
           }}
-          animate={{ y: [0, -12, 0], opacity: [orb.opacity, orb.opacity * 0.4, orb.opacity] }}
+          animate={{
+            y: [0, -14, 0],
+            opacity: [orb.opacity, orb.opacity * 0.35, orb.opacity],
+          }}
           transition={{ duration: 7 + i, repeat: Infinity, ease: "easeInOut", delay: orb.delay }}
         />
       ))}
