@@ -1,6 +1,7 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/landing/Hero";
+import DashboardShowcase from "../components/landing/DashboardShowcase";
 import Features from "../components/landing/Features";
 import ShowcaseSection from "../components/landing/ShowcaseSection";
 import HowItWorks from "../components/landing/HowItWorks";
@@ -29,6 +30,9 @@ export default function Landing() {
 
         {/* ── Hero ── */}
         <Hero />
+
+        {/* ── Product Showcase (Container Scroll) ── */}
+        <DashboardShowcase />
 
         {/* ── Feature cards ── */}
         {/* bg: white */}
