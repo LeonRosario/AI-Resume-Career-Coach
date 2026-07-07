@@ -30,27 +30,27 @@ export default function ContainerScrollAnimation({
 
   const rotateX = useTransform(
     smoothProgress,
-    [0, 0.4],
+    [0, 0.75],
     [isMobile ? 5 : 32, 0]
   );
   const scale = useTransform(
     smoothProgress,
-    [0, 0.4],
+    [0, 0.75],
     [isMobile ? 0.92 : 0.85, 1]
   );
   const translateY = useTransform(
     smoothProgress,
-    [0, 0.4],
+    [0, 0.75],
     [isMobile ? 30 : 100, 0]
   );
   const titleOpacity = useTransform(
     smoothProgress,
-    [0, 0.1, 0.3, 0.5],
+    [0, 0.15, 0.5, 0.85],
     [0, 1, 1, 0]
   );
   const titleY = useTransform(
     smoothProgress,
-    [0, 0.5],
+    [0, 0.85],
     [isMobile ? 20 : 40, isMobile ? -20 : -60]
   );
 
@@ -58,7 +58,7 @@ export default function ContainerScrollAnimation({
     <section
       ref={containerRef}
       className="relative overflow-hidden"
-      style={{ height: isMobile ? "200vh" : "250vh" }}
+      style={{ height: isMobile ? "140vh" : "150vh" }}
     >
       <div
         className="sticky top-0 flex flex-col items-center justify-start md:justify-center overflow-hidden"
