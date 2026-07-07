@@ -48,6 +48,7 @@ export default function ResumeBuilder() {
   const [exporting, setExporting] = useState(false);
   const [previewFull, setPreviewFull] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [template, setTemplate] = useState("modern");
   const [skillInputs, setSkillInputs] = useState({});
   const [interestInput, setInterestInput] = useState("");
   const previewRef = useRef(null);
@@ -815,7 +816,18 @@ export default function ResumeBuilder() {
                   <h3 className="font-heading text-sm text-ink">Live Preview</h3>
                   <p className="text-[10px] text-muted">ATS-friendly layout</p>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
+                  <select
+                    value={template}
+                    onChange={(e) => setTemplate(e.target.value)}
+                    className="text-[11px] font-medium bg-white/80 border border-slate-200 rounded-lg px-2 py-1 text-muted outline-none focus:border-primary-400 cursor-pointer"
+                  >
+                    <option value="modern">Modern</option>
+                    <option value="classic">Classic</option>
+                    <option value="minimal">Minimal</option>
+                    <option value="ats">ATS</option>
+                  </select>
+                  <div className="flex items-center gap-1">
                   <button
                     onClick={() => setZoom((z) => Math.max(0.5, z - 0.1))}
                     className="w-7 h-7 rounded-lg flex items-center justify-center text-muted hover:text-ink hover:bg-white/50 transition-all"
@@ -839,6 +851,7 @@ export default function ResumeBuilder() {
                   )}
                 </div>
               </div>
+              </div>
 
               {/* Preview Content */}
               <div className="px-5 pb-5" ref={previewRef}>
@@ -846,7 +859,7 @@ export default function ResumeBuilder() {
                   className="rounded-xl overflow-hidden shadow-glass-lg border border-slate-100"
                   style={{ transform: `scale(${zoom})`, transformOrigin: "top center", transition: "transform 0.3s ease" }}
                 >
-                  <ResumePreview data={data} />
+                  <ResumePreview data={data} template={template} />
                 </div>
               </div>
 
