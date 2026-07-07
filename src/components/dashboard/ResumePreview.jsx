@@ -38,6 +38,10 @@ export default function ResumePreview({ data, template = "modern" }) {
     },
   };
 
+  if (template === "ats") {
+    return <AtsResume data={data} />;
+  }
+
   const s = t[template] || t.modern;
 
   return (
@@ -291,6 +295,229 @@ export default function ResumePreview({ data, template = "modern" }) {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+function AtsResume({ data }) {
+  const {
+    personal = {}, summary = "",
+    education = [], experience = [], projects = [],
+    skills = {}, certifications = [], achievements = [],
+    languages = [], interests = [], references = [],
+  } = data || {};
+
+  const skillEntries = Object.entries(skills).filter(([, v]) => Array.isArray(v) && v.length > 0);
+
+  const bodyStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "11pt", lineHeight: 1.3, color: "#000" };
+  const nameStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "24pt", fontWeight: 700, textAlign: "center", color: "#000", margin: 0, lineHeight: 1.15 };
+  const roleStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "12pt", textAlign: "center", color: "#000", margin: "3px 0 0 0", lineHeight: 1.2 };
+  const contactStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "10pt", textAlign: "center", color: "#000", margin: "4px 0 0 0", lineHeight: 1.3 };
+  const sectionTitleStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "13pt", fontWeight: 700, letterSpacing: "0.03em", color: "#000", margin: 0, padding: 0 };
+  const hrStyle = { border: "none", borderTop: "1px solid #000", margin: "10px 0 5px 0" };
+  const entryTitleStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "11pt", fontWeight: 700, color: "#000", margin: 0, lineHeight: 1.3 };
+  const entrySubStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "10.5pt", color: "#000", margin: "1px 0 0 0", lineHeight: 1.3 };
+  const dateStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "10.5pt", color: "#000", whiteSpace: "nowrap" };
+  const bulletStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "10.5pt", color: "#000", margin: 0, lineHeight: 1.3, paddingLeft: "18px", textIndent: "-18px" };
+  const techStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "10pt", color: "#000", fontStyle: "italic", margin: "2px 0 0 0", lineHeight: 1.3 };
+  const skillCatStyle = { fontFamily: "'Times New Roman', Times, Georgia, serif", fontSize: "10.5pt", color: "#000", margin: "1px 0", lineHeight: 1.3 };
+
+  const contactItems = [personal.email, personal.phone, personal.location].filter(Boolean);
+  const linkItems = [];
+  if (personal.linkedin) linkItems.push(personal.linkedin.replace(/https?:\/\/(www\.)?/, ""));
+  if (personal.github) linkItems.push(personal.github.replace(/https?:\/\/(www\.)?/, ""));
+
+  return (
+    <div
+      id="resume-preview"
+      style={{
+        width: "100%",
+        maxWidth: 640,
+        minHeight: 800,
+        background: "#fff",
+        margin: "0 auto",
+        padding: "30px 40px",
+        ...bodyStyle,
+      }}
+    >
+      {/* ── Header ── */}
+      <div style={{ textAlign: "center", marginBottom: "2px" }}>
+        <h1 style={nameStyle}>{personal.name || "Your Name"}</h1>
+        {personal.role && <p style={roleStyle}>{personal.role}</p>}
+        {contactItems.length > 0 && (
+          <p style={contactStyle}>{contactItems.join("  |  ")}</p>
+        )}
+        {linkItems.length > 0 && (
+          <p style={contactStyle}>{linkItems.join("  |  ")}</p>
+        )}
+      </div>
+
+      {/* ── Professional Summary ── */}
+      {summary && (
+        <>
+          <hr style={hrStyle} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>PROFESSIONAL SUMMARY</h2>
+          <hr style={hrStyle} />
+          <p style={{ ...bodyStyle, fontSize: "10.5pt", margin: "3px 0 0 0", lineHeight: 1.4 }}>{summary}</p>
+        </>
+      )}
+
+      {/* ── Work Experience ── */}
+      {experience.some((e) => e.company || e.role) && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>WORK EXPERIENCE</h2>
+          <hr style={hrStyle} />
+          {experience.filter((e) => e.company || e.role).map((e) => (
+            <div key={e.id} style={{ marginTop: "5px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <p style={entryTitleStyle}>
+                  {[e.role, e.company].filter(Boolean).join(", ")}
+                </p>
+                {(e.startDate || e.endDate) && (
+                  <span style={dateStyle}>
+                    {e.startDate}{e.startDate && e.endDate ? " – " : ""}{e.endDate || (e.current ? "Present" : "")}
+                  </span>
+                )}
+              </div>
+              {e.location && <p style={entrySubStyle}>{e.location}</p>}
+              {e.bulletPoints && e.bulletPoints.length > 0 && (
+                <div style={{ marginTop: "1px" }}>
+                  {e.bulletPoints.map((bp, i) => (
+                    <p key={i} style={bulletStyle}>{"\u2022" + " " + bp}</p>
+                  ))}
+                </div>
+              )}
+              {(!e.bulletPoints || e.bulletPoints.length === 0) && e.description && (
+                <p style={{ ...bodyStyle, fontSize: "10.5pt", margin: "2px 0 0 0", lineHeight: 1.4 }}>{e.description}</p>
+              )}
+              {/* Extract technologies from bullet points or description */}
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* ── Projects ── */}
+      {projects.some((p) => p.name) && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>PROJECTS</h2>
+          <hr style={hrStyle} />
+          {projects.filter((p) => p.name).map((p) => (
+            <div key={p.id} style={{ marginTop: "5px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <p style={entryTitleStyle}>{p.name}</p>
+                {p.github && (
+                  <span style={dateStyle}>
+                    {p.github.replace(/https?:\/\/(www\.)?/, "")}
+                  </span>
+                )}
+              </div>
+              {p.techStack && <p style={techStyle}>Technologies: {p.techStack}</p>}
+              {p.description && <p style={{ ...bodyStyle, fontSize: "10.5pt", margin: "2px 0 0 0", lineHeight: 1.4 }}>{p.description}</p>}
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* ── Skills ── */}
+      {skillEntries.length > 0 && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>SKILLS</h2>
+          <hr style={hrStyle} />
+          <div style={{ marginTop: "2px" }}>
+            {skillEntries.map(([category, items]) => (
+              <p key={category} style={skillCatStyle}>
+                <strong>{category.replace(/([A-Z])/g, " $1").trim()}:</strong>{" "}
+                {items.join(", ")}
+              </p>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* ── Education ── */}
+      {education.some((e) => e.school) && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>EDUCATION</h2>
+          <hr style={hrStyle} />
+          {education.filter((e) => e.school).map((e) => (
+            <div key={e.id} style={{ marginTop: "5px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <p style={entryTitleStyle}>{e.school}</p>
+                {(e.startDate || e.endDate) && (
+                  <span style={dateStyle}>
+                    {e.startDate}{e.startDate && e.endDate ? " – " : ""}{e.endDate}
+                  </span>
+                )}
+              </div>
+              {e.degree && (
+                <p style={entrySubStyle}>
+                  {e.degree}{e.field ? `, ${e.field}` : ""}{e.cgpa ? ` — GPA: ${e.cgpa}` : ""}
+                </p>
+              )}
+              {e.achievements && <p style={{ ...bodyStyle, fontSize: "10.5pt", margin: "2px 0 0 0", lineHeight: 1.4 }}>{e.achievements}</p>}
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* ── Certifications ── */}
+      {certifications.some((c) => c.name) && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>CERTIFICATIONS</h2>
+          <hr style={hrStyle} />
+          {certifications.filter((c) => c.name).map((c) => (
+            <div key={c.id} style={{ marginTop: "4px", display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <div>
+                <p style={entryTitleStyle}>{c.name}</p>
+                {c.issuer && <p style={entrySubStyle}>{c.issuer}</p>}
+              </div>
+              {c.date && <span style={dateStyle}>{c.date}</span>}
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* ── Achievements ── */}
+      {achievements.some((a) => a.title) && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>ACHIEVEMENTS</h2>
+          <hr style={hrStyle} />
+          {achievements.filter((a) => a.title).map((a) => (
+            <div key={a.id} style={{ marginTop: "4px" }}>
+              <p style={entryTitleStyle}>{a.title}</p>
+              {a.description && <p style={{ ...bodyStyle, fontSize: "10.5pt", margin: "1px 0 0 0", lineHeight: 1.4 }}>{a.description}</p>}
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* ── Languages ── */}
+      {languages.some((l) => l.language) && (
+        <>
+          <hr style={{ ...hrStyle, marginTop: "8px" }} />
+          <h2 style={{ ...sectionTitleStyle, marginTop: "5px", marginBottom: "3px" }}>LANGUAGES</h2>
+          <hr style={hrStyle} />
+          <p style={skillCatStyle}>
+            {languages.filter((l) => l.language).map((l) =>
+              `${l.language}${l.proficiency ? ` (${l.proficiency})` : ""}`
+            ).join("  |  ")}
+          </p>
+        </>
+      )}
+
+      {/* ── Empty state ── */}
+      {!personal.name && !summary && !experience.some((e) => e.company) && !education.some((e) => e.school) && skillEntries.length === 0 && (
+        <div style={{ textAlign: "center", padding: "60px 20px", color: "#999" }}>
+          <p style={{ fontSize: "14pt", margin: "0 0 8px 0" }}>Your resume preview</p>
+          <p style={{ fontSize: "11pt", margin: 0 }}>Start filling in your details to see a live ATS-friendly preview here.</p>
+        </div>
+      )}
     </div>
   );
 }
