@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Upload, ScanLine, TrendingUp } from "lucide-react";
+import Reveal from "../ui/Reveal";
 
 const steps = [
   {
@@ -35,6 +36,7 @@ export default function HowItWorks() {
       <div className="section-divider max-w-6xl mx-auto mb-20" />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
+        <Reveal variant="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
@@ -54,6 +56,7 @@ export default function HowItWorks() {
             Three steps to your next offer
           </motion.h2>
         </div>
+        </Reveal>
 
         {/* Steps */}
         <div className="grid md:grid-cols-3 gap-8 relative">
@@ -71,7 +74,8 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.13, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="glass rounded-[20px] p-8 text-center relative"
+              whileHover={{ y: -6, scale: 1.015 }}
+              className="glass rounded-[20px] p-8 text-center relative transition-shadow duration-300 hover:shadow-glass-lg"
             >
               {/* Step icon */}
               <div

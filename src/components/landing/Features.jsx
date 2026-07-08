@@ -101,7 +101,7 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, scale: 1.015 }}
+              whileHover={{ y: -8, scale: 1.018 }}
               className={[
                 "glass feature-card rounded-[20px] p-7",
                 "bg-gradient-to-br from-white",
@@ -109,18 +109,29 @@ export default function Features() {
               ].join(" ")}
             >
               {/* Icon */}
-              <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center mb-5 ${f.iconBg}`}>
+              <motion.div
+                className={`w-12 h-12 rounded-2xl border flex items-center justify-center mb-5 ${f.iconBg}`}
+                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
                 <f.icon size={22} className={f.iconColor} strokeWidth={1.8} />
-              </div>
+              </motion.div>
 
               <h3 className="font-heading text-lg text-ink mb-2">{f.title}</h3>
               <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
 
               {/* Arrow indicator */}
-              <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-muted group-hover:text-primary-600 transition-colors">
+              <motion.div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-muted">
                 <span>Learn more</span>
-                <span className="opacity-0 translate-x-[-4px] group-hover:opacity-100 group-hover:translate-x-0 transition-all">→</span>
-              </div>
+                <motion.span
+                  className="inline-block"
+                  initial={{ x: -4, opacity: 0 }}
+                  whileHover={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  →
+                </motion.span>
+              </motion.div>
             </motion.div>
           ))}
         </div>

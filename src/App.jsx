@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { ResumeProvider } from "./context/ResumeContext";
 
@@ -52,11 +52,13 @@ function AppRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <ResumeProvider>
-          <AppRoutes />
-        </ResumeProvider>
-      </AuthProvider>
+      <LazyMotion features={domAnimation} strict>
+        <AuthProvider>
+          <ResumeProvider>
+            <AppRoutes />
+          </ResumeProvider>
+        </AuthProvider>
+      </LazyMotion>
     </BrowserRouter>
   );
 }

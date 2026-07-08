@@ -37,7 +37,13 @@ export default function GlassCard({
     : {};
 
   const hoverMotionProps = hover
-    ? { whileHover: { y: -5, scale: 1.01 } }
+    ? {
+        whileHover: {
+          y: -6,
+          scale: 1.015,
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        },
+      }
     : {};
 
   return (

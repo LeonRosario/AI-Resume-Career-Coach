@@ -1,4 +1,5 @@
 import { forwardRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 
 const Input = forwardRef(
@@ -12,7 +13,11 @@ const Input = forwardRef(
         {label && (
           <span className="text-sm font-medium text-body">{label}</span>
         )}
-        <div className="relative group">
+        <motion.div
+          className="relative group"
+          whileFocus={{ scale: 1.005 }}
+          transition={{ duration: 0.2 }}
+        >
           {Icon && (
             <Icon
               size={16}
@@ -29,7 +34,7 @@ const Input = forwardRef(
               "text-sm text-ink",
               "placeholder:text-placeholder",
               "outline-none",
-              "focus:border-primary-400 focus:shadow-none",
+              "focus:border-primary-400 focus:shadow-[0_0_0_3px_rgba(37,99,235,0.1)]",
               "transition-all duration-200",
               error ? "border-red-400 focus:border-red-400" : "",
               className,
@@ -47,7 +52,7 @@ const Input = forwardRef(
               {show ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
           )}
-        </div>
+        </motion.div>
         {error && (
           <span className="text-xs text-red-500 flex items-center gap-1">
             <span className="w-1 h-1 rounded-full bg-red-500 shrink-0" />

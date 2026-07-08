@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 
 const testimonials = [
@@ -75,10 +76,16 @@ function TestimonialCard({ item, gradientIndex = 0 }) {
 }
 
 function Column({ items, direction, startIndex = 0 }) {
+  const [paused, setPaused] = useState(false);
   const isUp = direction === "up";
   return (
     <motion.div
-      animate={{ y: isUp ? ["0%", "-50%"] : ["-50%", "0%"] }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      animate={paused
+        ? {}
+        : { y: isUp ? ["0%", "-50%"] : ["-50%", "0%"] }
+      }
       transition={{
         y: { repeat: Infinity, repeatType: "loop", duration: 20, ease: "linear" },
       }}

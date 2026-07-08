@@ -94,11 +94,11 @@ export default function Hero() {
             <motion.div variants={itemFadeUp} className="flex flex-col sm:flex-row gap-3 mt-9">
               <motion.button
                 whileHover={{
-                  scale: 1.03,
-                  y: -2,
-                  boxShadow: "0 16px 48px rgba(37,99,235,0.45), 0 4px 12px rgba(37,99,235,0.3)",
+                  scale: 1.04,
+                  y: -3,
+                  boxShadow: "0 24px 56px rgba(37,99,235,0.5), 0 4px 16px rgba(37,99,235,0.35), 0 0 40px rgba(37,99,235,0.15)",
                 }}
-                whileTap={{ scale: 0.97 }}
+                whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 onClick={() => navigate("/register")}
                 className="inline-flex items-center justify-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-semibold text-white"
@@ -107,17 +107,22 @@ export default function Hero() {
                   boxShadow: "0 8px 32px rgba(37,99,235,0.35), 0 2px 8px rgba(37,99,235,0.2)",
                 }}
               >
-                <Upload size={17} strokeWidth={2.2} />
+                <motion.span
+                  animate={{ x: [0, 3, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Upload size={17} strokeWidth={2.2} />
+                </motion.span>
                 Upload your resume — free
               </motion.button>
 
               <motion.button
                 whileHover={{
-                  scale: 1.02,
-                  y: -1,
-                  boxShadow: "0 12px 32px rgba(37,99,235,0.15), 0 2px 8px rgba(37,99,235,0.08)",
+                  scale: 1.03,
+                  y: -2,
+                  boxShadow: "0 16px 40px rgba(37,99,235,0.18), 0 4px 12px rgba(37,99,235,0.1)",
                 }}
-                whileTap={{ scale: 0.97 }}
+                whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold text-ink"
@@ -130,7 +135,12 @@ export default function Hero() {
                 }}
               >
                 See how it works
-                <ArrowRight size={17} strokeWidth={2.2} />
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ArrowRight size={17} strokeWidth={2.2} />
+                </motion.span>
               </motion.button>
             </motion.div>
 

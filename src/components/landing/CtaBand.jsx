@@ -50,8 +50,13 @@ export default function CtaBand() {
             </p>
 
             <motion.button
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{
+                scale: 1.05,
+                y: -3,
+                boxShadow: "0 16px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,1)",
+              }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               onClick={() => navigate("/register")}
               className="mt-8 inline-flex items-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-semibold"
               style={{
@@ -61,7 +66,12 @@ export default function CtaBand() {
               }}
             >
               Get my free score
-              <ArrowRight size={17} strokeWidth={2.5} />
+              <motion.span
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowRight size={17} strokeWidth={2.5} />
+              </motion.span>
             </motion.button>
           </div>
         </motion.div>

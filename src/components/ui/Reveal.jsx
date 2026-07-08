@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useReducedMotion from "../../hooks/useReducedMotion";
 
 const ease = [0.16, 1, 0.3, 1];
 const duration = 0.6;
@@ -32,7 +33,13 @@ export default function Reveal({
   margin = "-48px",
   ...props
 }) {
+  const reduced = useReducedMotion();
   const v = variantMap[variant] || variantMap["fade-up"];
+
+  if (reduced) {
+    return <Component className={className} {...props}>{children}</Component>;
+  }
+
   return (
     <Component
       initial="hidden"

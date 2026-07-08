@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import Badge from "../ui/Badge";
 import { useNavigate } from "react-router-dom";
+import CountUp from "../ui/CountUp";
 
 /* ─── Shared easing ─── */
 const ease = [0.16, 1, 0.3, 1];
@@ -190,7 +191,7 @@ function ATSMatchCard() {
           transition={{ duration: 0.5, ease }}
           className="font-heading text-4xl text-ink leading-none"
         >
-          94%
+          <CountUp from={0} to={94} suffix="%" duration={1.5} />
         </motion.span>
         <span className="text-xs text-emerald-600 font-semibold mb-1 flex items-center gap-1">
           <TrendingUp size={12} /> Job Match

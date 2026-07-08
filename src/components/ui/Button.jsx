@@ -68,7 +68,12 @@ export default function Button({
 }) {
   return (
     <motion.button
-      whileHover={{ scale: 1.025 }}
+      whileHover={{
+        scale: 1.03,
+        boxShadow: variant === "primary"
+          ? "0 12px 40px rgba(37,99,235,0.35), 0 4px 12px rgba(37,99,235,0.2)"
+          : undefined,
+      }}
       whileTap={{ scale: 0.96 }}
       transition={{ type: "spring", stiffness: 420, damping: 22 }}
       className={[
@@ -93,9 +98,25 @@ export default function Button({
         </>
       ) : (
         <>
-          {Icon && iconPosition === "left" && <Icon size={size === "lg" || size === "xl" ? 20 : 17} strokeWidth={2.2} className="shrink-0" />}
+          {Icon && iconPosition === "left" && (
+            <motion.span
+              className="shrink-0"
+              whileHover={{ x: -2 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Icon size={size === "lg" || size === "xl" ? 20 : 17} strokeWidth={2.2} />
+            </motion.span>
+          )}
           {children}
-          {Icon && iconPosition === "right" && <Icon size={size === "lg" || size === "xl" ? 20 : 17} strokeWidth={2.2} className="shrink-0" />}
+          {Icon && iconPosition === "right" && (
+            <motion.span
+              className="shrink-0"
+              whileHover={{ x: 2 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Icon size={size === "lg" || size === "xl" ? 20 : 17} strokeWidth={2.2} />
+            </motion.span>
+          )}
         </>
       )}
     </motion.button>

@@ -50,28 +50,42 @@ export default function Navbar() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-0.5">
           {navLinks.map((link) => (
-            <button
+            <motion.button
               key={link.label}
               onClick={() => handleNav(link.href)}
-              className="px-4 py-2 text-sm font-medium text-muted hover:text-ink rounded-xl hover:bg-primary-50/70 transition-all duration-200"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              className="relative px-4 py-2 text-sm font-medium text-muted hover:text-ink rounded-xl transition-colors duration-200"
             >
               {link.label}
-            </button>
+              <motion.span
+                className="absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-primary-500"
+                initial={{ scaleX: 0, opacity: 0 }}
+                whileHover={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                layoutId="nav-indicator"
+              />
+            </motion.button>
           ))}
         </div>
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={() => navigate("/login")}>
-            Log in
-          </Button>
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => navigate("/register")}
-          >
-            Get started free
-          </Button>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+            <Button variant="ghost" size="sm" onClick={() => navigate("/login")}>
+              Log in
+            </Button>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => navigate("/register")}
+            >
+              Get started free
+            </Button>
+          </motion.div>
         </div>
 
         {/* Mobile hamburger */}

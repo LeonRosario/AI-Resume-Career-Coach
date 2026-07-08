@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Zap, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
+import Reveal from "../ui/Reveal";
 
 const plans = [
   {
@@ -65,6 +66,7 @@ export default function Pricing() {
       <div className="section-divider max-w-6xl mx-auto mb-24" />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
+        <Reveal variant="fade-up">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
@@ -93,6 +95,7 @@ export default function Pricing() {
             Cancel anytime. No surprise charges.
           </motion.p>
         </div>
+        </Reveal>
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-6 items-start">
@@ -103,11 +106,12 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4, scale: 1.008 }}
               className={[
-                "relative flex flex-col p-8 rounded-[24px]",
+                "relative flex flex-col p-8 rounded-[24px] transition-shadow duration-300",
                 plan.highlight
                   ? "pricing-highlight shadow-glass-xl md:-mt-4 md:-mb-4"
-                  : "glass shadow-glass",
+                  : "glass shadow-glass hover:shadow-glass-lg",
               ].join(" ")}
             >
               {/* Popular badge */}
