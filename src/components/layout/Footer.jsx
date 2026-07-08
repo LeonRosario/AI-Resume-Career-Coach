@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { AtSign, Globe, Code, Sparkles } from "lucide-react";
 import Logo from "../ui/Logo";
+import Reveal from "../ui/Reveal";
 
 const columns = [
   {
@@ -30,8 +32,10 @@ export default function Footer() {
   return (
     <footer className="relative bg-white px-6 pt-16 pb-10 border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
+        <Reveal variant="fade-up" delay={0}>
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-12">
           {/* Brand */}
+          <Reveal variant="fade-left" delay={0.05}>
           <div className="col-span-2">
             <Logo />
             <p className="mt-4 text-sm text-muted leading-relaxed max-w-xs">
@@ -41,21 +45,26 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex gap-2 mt-5">
               {socials.map(({ icon: Icon, label }) => (
-                <a
+                <motion.a
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-muted hover:text-primary-600 hover:border-primary-200 hover:bg-primary-50 transition-all duration-200"
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  className="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-muted hover:text-primary-600 hover:border-primary-200 hover:bg-primary-50 transition-colors duration-200"
                 >
                   <Icon size={14} />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
+          </Reveal>
 
           {/* Link columns */}
-          {columns.map((col) => (
-            <div key={col.title}>
+          {columns.map((col, colIdx) => (
+            <Reveal key={col.title} variant="fade-up" delay={0.1 + colIdx * 0.08}>
+            <div>
               <h4 className="font-body font-semibold text-xs text-ink uppercase tracking-[0.1em] mb-4">{col.title}</h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
@@ -70,10 +79,13 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
+            </Reveal>
           ))}
         </div>
+        </Reveal>
 
         {/* Bottom bar */}
+        <Reveal variant="fade-up" delay={0.2}>
         <div className="border-t border-slate-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted">© 2026 CareerAI. All rights reserved.</p>
           <p className="text-xs text-muted flex items-center gap-1.5">
@@ -81,6 +93,7 @@ export default function Footer() {
             Built with care, for your next role.
           </p>
         </div>
+        </Reveal>
       </div>
     </footer>
   );
