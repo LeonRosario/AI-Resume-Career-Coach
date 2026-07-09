@@ -146,6 +146,14 @@ export default {
           "0%, 100%": { boxShadow: "0 0 20px rgba(37,99,235,0.3)" },
           "50%": { boxShadow: "0 0 40px rgba(37,99,235,0.55)" },
         },
+        "pulse-slow": {
+          "0%, 100%": {
+            transform: "translateX(-100%)",
+          },
+          "50%": {
+            transform: "translateX(100%)",
+          },
+        },
         gradientShift: {
           "0%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
@@ -163,6 +171,7 @@ export default {
         "fade-up": "fadeUp 0.6s ease-out forwards",
         "fade-in": "fadeIn 0.4s ease-out forwards",
         "pulse-glow": "pulseGlow 2.5s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "gradient-shift": "gradientShift 6s ease infinite",
       },
     },
