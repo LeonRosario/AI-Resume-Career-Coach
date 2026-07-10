@@ -1,6 +1,7 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/landing/Hero";
+import LogoCloud from "../components/ui/logo-cloud";
 import DashboardShowcase from "../components/landing/DashboardShowcase";
 import Features from "../components/landing/Features";
 import ShowcaseSection from "../components/landing/ShowcaseSection";
@@ -38,6 +39,9 @@ export default function Landing() {
 
         {/* ── Hero ── */}
         <Hero />
+
+        {/* ── Trusted Technologies ── */}
+        <LogoCloud />
 
         {/* ── Product Showcase (Container Scroll) ── */}
         <DashboardShowcase />
