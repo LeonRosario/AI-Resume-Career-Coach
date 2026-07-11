@@ -50,6 +50,17 @@ export default function Hero() {
         aria-hidden="true"
       />
 
+      {/* Scanning line */}
+      <motion.div
+        className="absolute inset-x-0 h-px pointer-events-none z-[1]"
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, rgba(37,99,235,0.15) 50%, transparent 100%)",
+        }}
+        animate={{ top: ["0%", "100%", "0%"] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        aria-hidden="true"
+      />
+
       <div className="relative z-10 w-full max-w-6xl mx-auto">
         <div className="grid gap-16 lg:grid-cols-[1.1fr,0.9fr] items-center">
 
