@@ -58,9 +58,6 @@ const features = [
 export default function Features() {
   return (
     <section id="features" className="relative px-6 py-24 bg-white">
-      {/* Top divider */}
-      <div className="section-divider max-w-6xl mx-auto mb-24" />
-
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
