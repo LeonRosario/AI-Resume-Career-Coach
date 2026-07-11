@@ -15,10 +15,52 @@ export default function CtaBand() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="relative rounded-[28px] overflow-hidden p-10 md:p-16 text-center"
           style={{
-            background: "linear-gradient(135deg, #1D4ED8 0%, #4338CA 50%, #6D28D9 100%)",
             boxShadow: "0 24px 80px rgba(37,99,235,0.35), 0 8px 16px rgba(79,70,229,0.2)",
           }}
         >
+          {/* Animated gradient background */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              background: [
+                "linear-gradient(135deg, #1D4ED8 0%, #4338CA 50%, #6D28D9 100%)",
+                "linear-gradient(135deg, #1E40AF 0%, #4F46E5 50%, #7C3AED 100%)",
+                "linear-gradient(135deg, #1D4ED8 0%, #4338CA 50%, #6D28D9 100%)",
+              ],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Animated glow orb */}
+          <motion.div
+            className="absolute -top-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(167,139,250,0.2) 0%, transparent 70%)",
+              filter: "blur(60px)",
+            }}
+            animate={{
+              x: [0, -30, 20, 0],
+              y: [0, 20, -30, 0],
+              scale: [1, 1.1, 0.95, 1],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
+          />
+          <motion.div
+            className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)",
+              filter: "blur(60px)",
+            }}
+            animate={{
+              x: [0, 20, -20, 0],
+              y: [0, -20, 30, 0],
+              scale: [1, 0.95, 1.1, 1],
+            }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
+          />
+
           {/* Noise/mesh overlay */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -38,16 +80,34 @@ export default function CtaBand() {
 
           {/* Content */}
           <div className="relative z-10">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] text-white/80 border border-white/20 bg-white/10 mb-5">
+            <motion.span
+              initial={{ opacity: 0, y: -8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] text-white/80 border border-white/20 bg-white/10 mb-5"
+            >
               <Sparkles size={12} /> Free forever — no card required
-            </span>
+            </motion.span>
 
-            <h2 className="font-heading text-3xl sm:text-4xl text-white">
+            <motion.h2
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="font-heading text-3xl sm:text-4xl text-white"
+            >
               Ready to see your resume's real score?
-            </h2>
-            <p className="text-white/75 mt-4 max-w-lg mx-auto text-base">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25 }}
+              className="text-white/75 mt-4 max-w-lg mx-auto text-base"
+            >
               Upload it free — no credit card, no commitment. Just a clear next step toward your next role.
-            </p>
+            </motion.p>
 
             <motion.button
               whileHover={{
