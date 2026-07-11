@@ -63,7 +63,6 @@ export default function Pricing() {
 
   return (
     <section id="pricing" className="relative px-6 py-24 bg-white">
-      <div className="section-divider max-w-6xl mx-auto mb-24" />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <Reveal variant="fade-up">
