@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Logo from "../ui/Logo";
 import Button from "../ui/Button";
@@ -22,6 +22,13 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const handleNav = (href) => {
     setOpen(false);
@@ -99,6 +106,15 @@ export default function Navbar() {
           {open ? <X size={22} /> : <Menu size={22} />}
         </motion.button>
       </nav>
+
+      {/* ── Scroll progress bar ── */}
+      <motion.div
+        className="absolute -bottom-px left-0 right-0 h-[2px] origin-left z-10 rounded-full"
+        style={{
+          scaleX,
+          background: "linear-gradient(90deg, #2563EB 0%, #6366F1 40%, #A78BFA 70%, #7C3AED 100%)",
+        }}
+      />
 
       {/* ── Mobile menu ── */}
       <AnimatePresence>

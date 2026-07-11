@@ -11,6 +11,9 @@ import Pricing from "../components/landing/Pricing";
 import CtaBand from "../components/landing/CtaBand";
 import FloatingBackground from "../components/ui/FloatingBackground";
 import Particles from "../components/ui/Particles";
+import BackToTop from "../components/ui/BackToTop";
+import CursorGlow from "../components/ui/CursorGlow";
+import SectionDivider from "../components/ui/SectionDivider";
 
 export default function Landing() {
   return (
@@ -46,9 +49,15 @@ export default function Landing() {
         {/* ── Product Showcase (Container Scroll) ── */}
         <DashboardShowcase />
 
+        {/* ── Wave divider ── */}
+        <SectionDivider />
+
         {/* ── Feature cards ── */}
         {/* bg: white */}
         <Features />
+
+        {/* ── Wave divider ── */}
+        <SectionDivider flip />
 
         {/* ── AI Dashboard Showcase ── */}
         {/* bg: #F4F7FF */}
@@ -57,6 +66,9 @@ export default function Landing() {
         {/* ── How it works ── */}
         {/* bg: #F4F7FF */}
         <HowItWorks />
+
+        {/* ── Wave divider ── */}
+        <SectionDivider />
 
         {/* ── Scrolling testimonials ── */}
         {/* bg: white */}
@@ -72,6 +84,12 @@ export default function Landing() {
         {/* ── Footer ── */}
         <Footer />
       </div>
+
+      {/* ── Back to top button ── */}
+      <BackToTop />
+
+      {/* ── Cursor glow ── */}
+      <CursorGlow />
     </div>
   );
 }
