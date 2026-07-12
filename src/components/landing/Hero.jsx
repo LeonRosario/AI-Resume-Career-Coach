@@ -7,6 +7,7 @@ import {
 import AuroraBackground from "../ui/aurora-background";
 import { TextRotate } from "../ui/text-rotate";
 import { ParallaxContainer, FloatingCard } from "../ui/parallax-floating";
+import TextInertia from "../ui/text-inertia";
 
 const resumeSkills = ["AI Strategy", "UX Design", "Product Ops", "Leadership"];
 const resumeExp = [
@@ -93,14 +94,16 @@ export default function Hero() {
               />
             </motion.h1>
 
-            <motion.p
+            <motion.div
               variants={itemFadeUp}
-              className="mt-6 text-base sm:text-lg text-muted leading-relaxed max-w-xl"
+              className="mt-6 max-w-xl"
             >
-              CareerAI scans your resume against real job descriptions, closes your
-              skill gaps with a guided roadmap, and rehearses your interview answers
-              — so you walk in ready.
-            </motion.p>
+              <TextInertia
+                className="text-base sm:text-lg text-muted leading-relaxed text-left justify-start"
+                intensity={0.3}
+                text="Crafting refined, pixel-perfect web experiences that balance design clarity with technical excellence. Every interaction should feel responsive, intentional, and calm enough to disappear into the work. Motion adds a quiet layer of feedback, helping people sense where they are and what just changed."
+              />
+            </motion.div>
 
             <motion.div variants={itemFadeUp} className="flex flex-col sm:flex-row gap-3 mt-9">
               <motion.button
