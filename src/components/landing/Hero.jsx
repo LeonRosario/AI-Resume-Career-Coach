@@ -5,7 +5,7 @@ import {
   ShieldCheck, Award, Zap, Sparkles, TrendingUp,
 } from "lucide-react";
 import AuroraBackground from "../ui/aurora-background";
-import { TextRotate } from "../ui/text-rotate";
+import { AnimatedText } from "../ui/animated-underline-text-one";
 import { ParallaxContainer, FloatingCard } from "../ui/parallax-floating";
 import TextInertia from "../ui/text-inertia";
 
@@ -75,24 +75,16 @@ export default function Hero() {
               Your AI career coach, on demand
             </motion.div>
 
-            <motion.h1
-              variants={itemFadeUp}
-              className="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.06] text-ink"
-            >
-              Land your next role with a{" "}
-              <TextRotate
-                interval={2800}
-                className="gradient-text-animated font-heading-italic"
-                texts={[
-                  "resume that actually works",
-                  "better resume.",
-                  "stronger career.",
-                  "ATS-friendly resume.",
-                  "job-winning profile.",
-                  "professional portfolio.",
-                ]}
+            <motion.div variants={itemFadeUp} className="text-center lg:text-left">
+              <AnimatedText
+                text="Land your next role with a resume that actually works"
+                textClassName="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.06] text-ink"
+                underlineClassName="mx-auto lg:mx-0 w-full max-w-[420px]"
+                underlinePath="M 0,10 Q 75,0 150,10 Q 225,20 300,10"
+                underlineHoverPath="M 0,10 Q 75,20 150,10 Q 225,0 300,10"
+                underlineDuration={1.4}
               />
-            </motion.h1>
+            </motion.div>
 
             <motion.div
               variants={itemFadeUp}
