@@ -12,10 +12,13 @@ interface PricingPlan {
   isPopular?: boolean;
   accent: string;
   rotation?: number;
+  badge?: string;
+  cta?: string;
 }
 
 interface PricingProps {
   title?: string;
+  subtitle?: string;
   plans: PricingPlan[];
   className?: string;
 }
@@ -143,6 +146,7 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
         rotateX,
         rotateY,
         perspective: 1000,
+        ...(plan.isPopular ? { scale: 1.05 } : {}),
       }}
       onMouseMove={(e) => {
         if (!cardRef.current) return;
@@ -176,7 +180,7 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
       >
         <div className="text-center text-white">
           <div className="text-lg font-black">
-            $<Counter from={previousPrice} to={currentPrice} />
+            ₹<Counter from={previousPrice} to={currentPrice} />
           </div>
           <div className="text-[10px] font-bold">/{isYearly ? 'yr' : 'mo'}</div>
         </div>
@@ -184,7 +188,7 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
 
       <div className="mb-4">
         <h3 className="text-xl font-black text-black mb-2">{plan.name}</h3>
-        {plan.isPopular && (
+        {plan.badge && (
           <motion.span
             className={cn(
               'inline-block px-3 py-1 text-white font-bold rounded-md text-xs border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.9)]',
@@ -199,7 +203,7 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
               repeat: Infinity,
             }}
           >
-            POPULAR
+            {plan.badge}
           </motion.span>
         )}
       </div>
@@ -246,18 +250,27 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
           rotate: [-1, 1, 0],
         }}
       >
-        GET STARTED →
+        {plan.cta || 'GET STARTED'} →
       </motion.button>
     </motion.div>
   );
 };
 
-export const PricingContainer = ({ title = 'Pricing Plans', plans, className = '' }: PricingProps) => {
+export const PricingContainer = ({ title = 'Pricing Plans', subtitle, plans, className = '' }: PricingProps) => {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
     <section id="pricing" className={cn('min-h-screen bg-[#f0f0f0] p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-[12px]', className)}>
       <PricingHeader title={title} />
+      {subtitle && (
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center text-gray-600 font-medium text-base sm:text-lg mb-6 sm:mb-8 relative z-10 max-w-2xl mx-auto"
+        >
+          {subtitle}
+        </motion.p>
+      )}
       <PricingToggle isYearly={isYearly} onToggle={() => setIsYearly(!isYearly)} />
       <BackgroundEffects />
 
