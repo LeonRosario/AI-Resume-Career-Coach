@@ -25,7 +25,7 @@ const DEMO_PLANS: PricingPlan[] = [
       "Community Support"
     ],
     isPopular: false,
-    accent: "bg-emerald-500",
+    accent: "bg-primary",
     rotation: -2,
     badge: "Perfect for Students",
     cta: "Get Started Free",
@@ -47,7 +47,7 @@ const DEMO_PLANS: PricingPlan[] = [
       "Priority Support"
     ],
     isPopular: true,
-    accent: "bg-blue-500",
+    accent: "bg-primary",
     rotation: 1,
     badge: "Most Popular",
     cta: "Upgrade to Pro",
@@ -70,7 +70,7 @@ const DEMO_PLANS: PricingPlan[] = [
       "24/7 Premium Support"
     ],
     isPopular: false,
-    accent: "bg-purple-500",
+    accent: "bg-primary",
     rotation: 2,
     badge: "Best Value",
     cta: "Go Premium",
