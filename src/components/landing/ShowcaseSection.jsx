@@ -266,7 +266,7 @@ export default function ShowcaseSection() {
     <section
       id="showcase"
       className="relative px-6 py-24 overflow-hidden"
-      style={{ background: "#F4F7FF" }}
+      style={{ background: "#FFFFFF" }}
     >
       {/* ── Background glows ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">

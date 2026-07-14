@@ -260,7 +260,7 @@ export const PricingContainer = ({ title = 'Pricing Plans', subtitle, plans, cla
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <section id="pricing" className={cn('min-h-screen p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-[12px]', className)} style={{ background: '#F4F7FF radial-gradient(ellipse at 50% 30%, rgba(37,99,235,0.06) 0%, transparent 70%)' }}>
+    <section id="pricing" className={cn('min-h-screen p-4 sm:p-6 lg:p-8 relative overflow-hidden rounded-[12px]', className)}>
       <PricingHeader title={title} />
       {subtitle && (
         <motion.p

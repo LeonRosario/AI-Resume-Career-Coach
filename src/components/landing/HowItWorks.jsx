@@ -31,7 +31,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative px-6 py-24" style={{ background: "#F4F7FF" }}>
+    <section id="how-it-works" className="relative px-6 py-24">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <Reveal variant="fade-up">

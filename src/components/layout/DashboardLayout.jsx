@@ -22,7 +22,7 @@ export default function DashboardLayout() {
   const title = titles[location.pathname] ?? "CareerAI";
 
   return (
-    <div className="relative min-h-screen" style={{ background: "#F4F7FF" }}>
+    <div className="relative min-h-screen">
       {/* Subtle mesh background */}
       <div
         className="fixed inset-0 pointer-events-none z-0"

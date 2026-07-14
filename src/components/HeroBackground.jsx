@@ -11,7 +11,7 @@ export default function HeroBackground() {
       aria-hidden="true"
     >
       {/* Base page tint */}
-      <div className="absolute inset-0" style={{ background: "#F4F7FF" }} />
+      <div className="absolute inset-0" style={{ background: "#FFFFFF" }} />
 
       {/* Radial wash — top */}
       <div

@@ -17,24 +17,13 @@ import SectionDivider from "../components/ui/SectionDivider";
 
 export default function Landing() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden" style={{ backgroundColor: "#F4F7FF" }}>
+    <div className="relative min-h-screen overflow-x-hidden">
 
       {/* Floating gradient blobs */}
       <FloatingBackground />
 
       {/* Subtle floating particles */}
       <Particles />
-
-      {/* Global subtle grid */}
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(37,99,235,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.025) 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-        aria-hidden="true"
-      />
 
       <div className="relative z-10">
         {/* ── Navigation ── */}

@@ -83,12 +83,12 @@ export default function AuroraBackground({ className, variant = "default", ...pr
       {/* Bottom fade */}
       <div
         className="absolute inset-x-0 bottom-0 h-36 pointer-events-none"
-        style={{ background: "linear-gradient(to top, #F4F7FF 0%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to top, #FFFFFF 0%, transparent 100%)" }}
       />
       {/* Top fade */}
       <div
         className="absolute inset-x-0 top-0 h-24 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, #F4F7FF 0%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to bottom, #FFFFFF 0%, transparent 100%)" }}
       />
     </motion.div>
   );

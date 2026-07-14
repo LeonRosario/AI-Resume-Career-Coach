@@ -39,7 +39,7 @@
   --glass-border-strong: rgba(37,99,235,0.20);
 
   /* Backgrounds */
-  --bg-page: #F4F7FF;
+  --bg-page: #FFFFFF;
   --bg-white: #FFFFFF;
 }
 
@@ -52,7 +52,14 @@
   body {
     margin: 0;
     color: #1E2A3B;
-    background-color: var(--bg-page);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(59,130,246,0.06), transparent 30%),
+      radial-gradient(circle at 85% 35%, rgba(59,130,246,0.05), transparent 35%),
+      radial-gradient(circle at 40% 80%, rgba(59,130,246,0.04), transparent 30%),
+      repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(59,130,246,0.06) 24px),
+      repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(59,130,246,0.06) 24px),
+      #ffffff;
+    background-attachment: fixed;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

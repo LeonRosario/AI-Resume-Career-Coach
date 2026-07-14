@@ -39,7 +39,7 @@ export default function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-20 px-6 overflow-hidden" style={{ background: "#F4F7FF" }}>
+    <section className="relative min-h-screen flex items-center pt-28 pb-20 px-6 overflow-hidden">
       <AuroraBackground />
 
       <div

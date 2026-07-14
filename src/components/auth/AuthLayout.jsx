@@ -3,7 +3,7 @@ import Logo from "../ui/Logo";
 
 export default function AuthLayout({ children, eyebrow, title, subtitle, side }) {
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 py-12 overflow-hidden" style={{ background: "#F4F7FF" }}>
+    <div className="relative min-h-screen flex items-center justify-center px-4 py-12 overflow-hidden">
       {/* Background decoration */}
       <div
         className="absolute inset-0 pointer-events-none"
