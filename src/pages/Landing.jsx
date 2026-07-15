@@ -6,8 +6,8 @@ import DashboardShowcase from "../components/landing/DashboardShowcase";
 import Features from "../components/landing/Features";
 import ShowcaseSection from "../components/landing/ShowcaseSection";
 import HowItWorks from "../components/landing/HowItWorks";
-import TestimonialsSection from "../components/ui/testimonials-columns-1";
 import Pricing from "../components/landing/Pricing";
+import TestimonialsMarquee from "../components/landing/TestimonialsMarquee";
 import CtaBand from "../components/landing/CtaBand";
 import FloatingBackground from "../components/ui/FloatingBackground";
 import Particles from "../components/ui/Particles";
@@ -59,13 +59,13 @@ export default function Landing() {
         {/* ── Wave divider ── */}
         <SectionDivider />
 
-        {/* ── Scrolling testimonials ── */}
-        {/* bg: white */}
-        <TestimonialsSection />
-
         {/* ── Pricing ── */}
         {/* bg: white */}
         <Pricing />
+
+        {/* ── Scrolling testimonials marquee ── */}
+        {/* bg: white */}
+        <TestimonialsMarquee />
 
         {/* ── CTA band ── */}
         <CtaBand />
