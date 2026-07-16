@@ -882,7 +882,7 @@ export default function ResumeBuilder() {
         {/* Mobile bottom toolbar */}
         <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
           <div className="glass-strong rounded-t-2xl px-4 py-3 flex items-center justify-between">
-            <Button variant="outline" size="xs" icon={Eye}>Preview</Button>
+            <Button variant="outline" size="xs" icon={Eye} onClick={() => setPreviewFull((p) => !p)}>Preview</Button>
             <Button variant="primary" size="xs" icon={Download} onClick={exportPDF} loading={exporting}>
               {exporting ? "..." : "PDF"}
             </Button>
