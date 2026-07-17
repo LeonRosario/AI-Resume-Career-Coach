@@ -144,7 +144,7 @@ export default function Settings() {
             </div>
 
             <div className="mt-6 flex items-center gap-3">
-              <Button variant="primary" onClick={handleSave}>
+              <Button variant="primary" typewriter onClick={handleSave}>
                 {saved ? (
                   <span className="flex items-center gap-1.5">
                     <Check size={15} /> Saved!

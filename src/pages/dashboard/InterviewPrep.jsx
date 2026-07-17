@@ -130,7 +130,7 @@ export default function InterviewPrep() {
               <p className="text-sm text-muted max-w-xs mb-6 leading-relaxed">
                 The AI will ask role-specific questions and score your answers when you're done.
               </p>
-              <Button variant="primary" icon={Play} onClick={startInterview}>
+              <Button variant="primary" icon={Play} typewriter onClick={startInterview}>
                 Start Mock Interview
               </Button>
             </div>

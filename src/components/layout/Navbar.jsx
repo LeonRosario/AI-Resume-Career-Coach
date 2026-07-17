@@ -88,6 +88,7 @@ export default function Navbar() {
             <Button
               variant="primary"
               size="sm"
+              typewriter
               onClick={() => navigate("/register")}
             >
               Get started free
@@ -156,6 +157,7 @@ export default function Navbar() {
                   variant="primary"
                   size="sm"
                   full
+                  typewriter
                   onClick={() => { setOpen(false); navigate("/register"); }}
                 >
                   Get started

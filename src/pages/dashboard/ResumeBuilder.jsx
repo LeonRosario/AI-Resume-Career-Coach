@@ -865,7 +865,7 @@ export default function ResumeBuilder() {
 
               {/* Preview Actions */}
               <div className="px-5 pb-4 flex items-center gap-2">
-                <Button variant="primary" size="xs" icon={Download} full onClick={exportPDF} loading={exporting}>
+                <Button variant="primary" size="xs" icon={Download} full typewriter onClick={exportPDF} loading={exporting}>
                   {exporting ? "Exporting..." : "Download PDF"}
                 </Button>
                 <button
@@ -883,7 +883,7 @@ export default function ResumeBuilder() {
         <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
           <div className="glass-strong rounded-t-2xl px-4 py-3 flex items-center justify-between">
             <Button variant="outline" size="xs" icon={Eye} onClick={() => setPreviewFull((p) => !p)}>Preview</Button>
-            <Button variant="primary" size="xs" icon={Download} onClick={exportPDF} loading={exporting}>
+            <Button variant="primary" size="xs" icon={Download} typewriter onClick={exportPDF} loading={exporting}>
               {exporting ? "..." : "PDF"}
             </Button>
           </div>

@@ -128,7 +128,7 @@ export default function DashboardHome() {
             )}
 
             <div className="flex flex-col sm:flex-row gap-2.5 shrink-0">
-              <Button variant="primary" size="md" icon={Upload} onClick={() => navigate("/app/resume-analyzer")}>
+              <Button variant="primary" size="md" icon={Upload} typewriter onClick={() => navigate("/app/resume-analyzer")}>
                 {hasResume ? "Upload New" : "Upload Resume"}
               </Button>
               {hasResume && (

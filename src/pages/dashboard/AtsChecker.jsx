@@ -58,6 +58,7 @@ export default function AtsChecker() {
           <Button
             variant="primary"
             icon={Scan}
+            typewriter
             onClick={handleAnalyze}
             disabled={!jd.trim() || status === "analyzing"}
           >

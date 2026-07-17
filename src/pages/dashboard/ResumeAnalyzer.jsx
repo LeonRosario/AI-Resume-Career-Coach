@@ -175,7 +175,7 @@ export default function ResumeAnalyzer() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-5 border-t border-slate-100">
-                <Button variant="primary" icon={Wand2}>
+                <Button variant="primary" icon={Wand2} typewriter>
                   Apply AI improvements
                 </Button>
                 <Button variant="secondary" icon={RefreshCw} onClick={handleClear}>

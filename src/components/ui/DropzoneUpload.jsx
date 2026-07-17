@@ -97,7 +97,7 @@ export default function DropzoneUpload({ onFile, file, onClear }) {
         </p>
         <p className="text-sm text-muted mt-2 mb-6">PDF up to 10MB</p>
 
-        <Button type="button" variant="primary" size="md">
+        <Button type="button" variant="primary" size="md" typewriter>
           Browse files
         </Button>
 

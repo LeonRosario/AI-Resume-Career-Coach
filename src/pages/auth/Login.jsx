@@ -68,6 +68,7 @@ export default function Login() {
           variant="primary"
           full
           size="lg"
+          typewriter
           disabled={loading}
           loading={loading}
           icon={loading ? undefined : ArrowRight}
