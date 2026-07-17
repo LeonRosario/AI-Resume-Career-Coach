@@ -8,6 +8,7 @@ import AuroraBackground from "../ui/aurora-background";
 import { AnimatedText } from "../ui/animated-underline-text-one";
 import { ParallaxContainer, FloatingCard } from "../ui/parallax-floating";
 import TextInertia from "../ui/text-inertia";
+import useTypewriter from "../../hooks/useTypewriter";
 
 const resumeSkills = ["AI Strategy", "UX Design", "Product Ops", "Leadership"];
 const resumeExp = [
@@ -37,6 +38,8 @@ const statData = [
 
 export default function Hero() {
   const navigate = useNavigate();
+  const heroText = "Upload your resume — free";
+  const { displayText: heroDisplay, isTyping: heroTyping, start: heroStart } = useTypewriter(heroText, { speed: 45 });
 
   return (
     <section className="relative min-h-screen flex items-center pt-28 pb-20 px-6 overflow-hidden">
@@ -106,6 +109,7 @@ export default function Hero() {
                 }}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                onHoverStart={heroStart}
                 onClick={() => navigate("/register")}
                 className="inline-flex items-center justify-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-semibold text-white"
                 style={{
@@ -119,7 +123,17 @@ export default function Hero() {
                 >
                   <Upload size={17} strokeWidth={2.2} />
                 </motion.span>
-                Upload your resume — free
+                <span className="relative inline-flex items-center shrink-0">
+                  <span className="invisible whitespace-nowrap" aria-hidden="true">
+                    Upload your resume — free
+                  </span>
+                  <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
+                    {heroDisplay}
+                    {heroTyping && (
+                      <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
+                    )}
+                  </span>
+                </span>
               </motion.button>
 
               <motion.button

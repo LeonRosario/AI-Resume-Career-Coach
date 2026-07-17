@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import useReducedMotion from "../../hooks/useReducedMotion";
+import useTypewriter from "../../hooks/useTypewriter";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -188,6 +189,8 @@ function TestimonialsRow({ items, direction = "left", speed = 40, className = ""
 
 export default function TestimonialsMarquee() {
   const navigate = useNavigate();
+  const getStartedText = "Get Started Free";
+  const { displayText: gsDisplay, isTyping: gsTyping, start: gsStart } = useTypewriter(getStartedText, { speed: 45 });
 
   const row1 = useMemo(() => testimonials.slice(0, 4), []);
   const row2 = useMemo(() => testimonials.slice(4, 8), []);
@@ -276,10 +279,21 @@ export default function TestimonialsMarquee() {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            onHoverStart={gsStart}
             onClick={() => navigate("/register")}
             className="mt-6 inline-flex items-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-semibold text-white bg-brand-gradient shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/30 transition-shadow"
           >
-            Get Started Free
+            <span className="relative inline-flex items-center shrink-0">
+              <span className="invisible whitespace-nowrap" aria-hidden="true">
+                Get Started Free
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
+                {gsDisplay}
+                {gsTyping && (
+                  <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
+                )}
+              </span>
+            </span>
             <motion.span
               animate={{ x: [0, 4, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

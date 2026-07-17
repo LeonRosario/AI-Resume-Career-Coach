@@ -6,6 +6,7 @@ import {
 import Badge from "../ui/Badge";
 import { useNavigate } from "react-router-dom";
 import CountUp from "../ui/CountUp";
+import useTypewriter from "../../hooks/useTypewriter";
 
 /* ─── Shared easing ─── */
 const ease = [0.16, 1, 0.3, 1];
@@ -261,6 +262,8 @@ function AICoachCard() {
    ────────────────────────────────────────── */
 export default function ShowcaseSection() {
   const navigate = useNavigate();
+  const tryItText = "Try it free";
+  const { displayText: tryDisplay, isTyping: tryTyping, start: tryStart } = useTypewriter(tryItText, { speed: 45 });
 
   return (
     <section
@@ -377,6 +380,7 @@ export default function ShowcaseSection() {
                 <motion.button
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
+                  onHoverStart={tryStart}
                   onClick={() => navigate("/register")}
                   className="inline-flex items-center gap-2 rounded-xl px-7 py-3 text-sm font-semibold text-white"
                   style={{
@@ -385,7 +389,17 @@ export default function ShowcaseSection() {
                   }}
                 >
                   <Sparkles size={15} strokeWidth={2.2} />
-                  Try it free
+                  <span className="relative inline-flex items-center shrink-0">
+                    <span className="invisible whitespace-nowrap" aria-hidden="true">
+                      Try it free
+                    </span>
+                    <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
+                      {tryDisplay}
+                      {tryTyping && (
+                        <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
+                      )}
+                    </span>
+                  </span>
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.02, y: -1 }}

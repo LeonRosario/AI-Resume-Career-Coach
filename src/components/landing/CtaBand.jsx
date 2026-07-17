@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import useTypewriter from "../../hooks/useTypewriter";
 
 export default function CtaBand() {
   const navigate = useNavigate();
+  const ctaText = "Get my free score";
+  const { displayText: ctaDisplay, isTyping: ctaTyping, start: ctaStart } = useTypewriter(ctaText, { speed: 45 });
 
   return (
     <section className="relative px-6 py-16">
@@ -117,6 +120,7 @@ export default function CtaBand() {
               }}
               whileTap={{ scale: 0.96 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              onHoverStart={ctaStart}
               onClick={() => navigate("/register")}
               className="mt-8 inline-flex items-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-semibold"
               style={{
@@ -125,7 +129,17 @@ export default function CtaBand() {
                 boxShadow: "0 8px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1)",
               }}
             >
-              Get my free score
+              <span className="relative inline-flex items-center shrink-0">
+                <span className="invisible whitespace-nowrap" aria-hidden="true">
+                  Get my free score
+                </span>
+                <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
+                  {ctaDisplay}
+                  {ctaTyping && (
+                    <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
+                  )}
+                </span>
+              </span>
               <motion.span
                 animate={{ x: [0, 4, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

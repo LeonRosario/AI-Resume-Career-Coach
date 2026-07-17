@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, animate } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import useTypewriter from '../../hooks/useTypewriter';
 
 interface PricingPlan {
   name: string;
@@ -134,6 +135,8 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
 
   const currentPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
   const previousPrice = !isYearly ? plan.yearlyPrice : plan.monthlyPrice;
+  const ctaLabel = plan.cta || 'GET STARTED';
+  const { displayText: ctaDisplay, isTyping: ctaTyping, start: ctaStart } = useTypewriter(ctaLabel, { speed: 45 });
 
   return (
     <motion.div
@@ -249,8 +252,20 @@ const PricingCard = ({ plan, isYearly, index }: { plan: PricingPlan; isYearly: b
           scale: 0.95,
           rotate: [-1, 1, 0],
         }}
+        onHoverStart={ctaStart}
       >
-        {plan.cta || 'GET STARTED'} →
+        <span className="relative inline-flex items-center shrink-0">
+          <span className="invisible whitespace-nowrap" aria-hidden="true">
+            {ctaLabel}
+          </span>
+          <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
+            {ctaDisplay}
+            {ctaTyping && (
+              <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
+            )}
+          </span>
+        </span>
+        {' '}→
       </motion.button>
     </motion.div>
   );
