@@ -58,7 +58,7 @@ export default function ResumePreview({ data, template = "modern" }) {
       <div className={`p-8 ${s.container}`}>
         {/* ── Header ── */}
         <div className={`pb-5 mb-5 ${s.headerBorder}`}>
-          <h1 className={s.nameClass} style={{ fontFamily: "'DM Serif Display', Georgia, serif" }}>
+          <h1 className={s.nameClass} style={{ fontFamily: "'Manrope', sans-serif" }}>
             {personal.name || "Your Name"}
           </h1>
           <p className={s.roleClass}>

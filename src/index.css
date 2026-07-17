@@ -9,8 +9,8 @@
 
 /* ── CSS Custom Properties ── */
 :root {
-  --font-heading: "DM Serif Display", Georgia, serif;
-  --font-body: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   /* Blue palette */
   --blue-50: #EFF6FF;
@@ -66,34 +66,56 @@
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5, h6, .font-heading {
     color: #0A0F1E;
-    font-family: var(--font-heading);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    font-family: var(--font-heading) !important;
+    font-weight: 800;
+    letter-spacing: -0.025em !important; /* tracking-tight */
+    line-height: 1.15; /* section headings line height */
   }
 
+  h1 {
+    font-weight: 800;
+  }
+  h2, h3 {
+    font-weight: 700;
+  }
   h4, h5, h6 {
-    color: #0A0F1E;
-    font-family: var(--font-body);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    font-weight: 700;
   }
 
-  p, span, label, li, a, button, nav, input, textarea, select {
-    font-family: var(--font-body);
+  p, span, label, li, a, button, nav, input, textarea, select, .font-body {
+    font-family: var(--font-body) !important;
   }
 
   p {
     color: #1E2A3B;
-    line-height: 1.7;
+    font-weight: 400;
+    letter-spacing: 0em; /* tracking-normal */
+    line-height: 1.7; /* Paragraphs line-height */
   }
 
-  button {
-    font-weight: 500;
-    font-family: var(--font-body);
+  button, .btn {
+    font-weight: 600 !important; /* Buttons: Inter SemiBold (600) */
+    letter-spacing: 0em !important; /* tracking-normal */
+  }
+
+  nav, nav a, nav button, .nav-link {
+    font-weight: 500 !important; /* Navigation: Inter Medium (500) */
+    letter-spacing: -0.015em !important; /* slightly tight */
+  }
+
+  /* Badge and Small Labels, Numbers */
+  .badge, [class*="badge"], [class*="pill"] {
+    font-weight: 600 !important; /* Badges: Inter SemiBold */
+  }
+
+  label, .label, [class*="label"] {
+    font-weight: 500 !important; /* Small labels: Inter Medium */
+  }
+
+  .number, .stat-value, [class*="stat-val"] {
+    font-weight: 600 !important; /* Numbers: Inter SemiBold */
   }
 
   input, textarea, select {
@@ -106,19 +128,122 @@
   }
 }
 
+/* ── Typography Scale Overrides ── */
+
+/* Hero Heading */
+h1.font-heading, 
+.hero-heading, 
+[class*="hero"] h1, 
+[class*="Hero"] h1,
+.text-4xl.font-heading,
+.text-5xl.font-heading,
+.text-\[3\.5rem\].font-heading,
+.text-\[4rem\].font-heading,
+.xl\:text-\[4rem\].font-heading {
+  font-size: 36px !important;
+  line-height: 1.05 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+}
+
+@media (min-width: 640px) {
+  h1.font-heading, 
+  .hero-heading, 
+  [class*="hero"] h1, 
+  [class*="Hero"] h1,
+  .text-4xl.font-heading,
+  .text-5xl.font-heading,
+  .text-\[3\.5rem\].font-heading,
+  .text-\[4rem\].font-heading,
+  .xl\:text-\[4rem\].font-heading {
+    font-size: 48px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1.font-heading, 
+  .hero-heading, 
+  [class*="hero"] h1, 
+  [class*="Hero"] h1,
+  .text-4xl.font-heading,
+  .text-5xl.font-heading,
+  .text-\[3\.5rem\].font-heading,
+  .text-\[4rem\].font-heading,
+  .xl\:text-\[4rem\].font-heading {
+    font-size: 60px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  h1.font-heading, 
+  .hero-heading, 
+  [class*="hero"] h1, 
+  [class*="Hero"] h1,
+  .text-4xl.font-heading,
+  .text-5xl.font-heading,
+  .text-\[3\.5rem\].font-heading,
+  .text-\[4rem\].font-heading,
+  .xl\:text-\[4rem\].font-heading {
+    font-size: 72px !important;
+  }
+}
+
+/* Section Heading */
+h2.font-heading,
+.section-heading,
+.text-3xl.font-heading,
+.text-2xl.font-heading {
+  font-size: 32px !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+}
+
+@media (min-width: 768px) {
+  h2.font-heading,
+  .section-heading,
+  .text-3xl.font-heading,
+  .text-2xl.font-heading {
+    font-size: 40px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  h2.font-heading,
+  .section-heading,
+  .text-3xl.font-heading,
+  .text-2xl.font-heading {
+    font-size: 48px !important;
+  }
+}
+
+/* Card Title */
+.card h3,
+.card h4,
+[class*="card"] h3,
+[class*="card"] h4,
+.font-heading.text-lg,
+.font-heading.text-xl,
+.font-heading.text-2xl {
+  font-size: 22px !important;
+  line-height: 1.5 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+}
+
 /* ── Utility classes ── */
 .font-heading {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading) !important;
   font-style: normal;
 }
 
 .font-heading-italic {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading) !important;
   font-style: italic;
 }
 
 .font-body {
-  font-family: var(--font-body);
+  font-family: var(--font-body) !important;
 }
 
 /* ── Selection ── */
