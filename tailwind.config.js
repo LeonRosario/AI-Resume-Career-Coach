@@ -61,9 +61,9 @@ export default {
         "5xl": ["3rem", { lineHeight: "1.1" }],
       },
       fontFamily: {
-        heading: ["'DM Serif Display'", "Georgia", "serif"],
-        sans: ["'Poppins'", "ui-sans-serif", "system-ui", "sans-serif"],
-        body: ["'Poppins'", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["'Manrope'", "sans-serif"],
+        sans: ["'Inter'", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["'Inter'", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
       backdropBlur: {
