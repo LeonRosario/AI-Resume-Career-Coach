@@ -159,6 +159,10 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        "cursor-blink": {
+          "0%, 50%": { opacity: "1" },
+          "51%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         float: "float 18s ease-in-out infinite",
@@ -173,6 +177,7 @@ export default {
         "pulse-glow": "pulseGlow 2.5s ease-in-out infinite",
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "gradient-shift": "gradientShift 6s ease infinite",
+        "cursor-blink": "cursor-blink 0.7s step-end infinite",
       },
     },
   },
