@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useTypewriter from "../../hooks/useTypewriter";
 
 const variants = {
   primary: [
@@ -64,8 +65,21 @@ export default function Button({
   iconPosition = "left",
   full = false,
   loading = false,
+  typewriter = false,
   ...props
 }) {
+  const isStringChild = typeof children === "string";
+  const { displayText, isTyping, start } = useTypewriter(
+    isStringChild ? children : "",
+    { speed: 45, enabled: typewriter && isStringChild && !loading }
+  );
+
+  const showTypewriter = typewriter && isStringChild && !loading;
+
+  const handleHoverStart = () => {
+    if (showTypewriter) start();
+  };
+
   return (
     <motion.button
       whileHover={{
@@ -76,12 +90,14 @@ export default function Button({
       }}
       whileTap={{ scale: 0.96 }}
       transition={{ type: "spring", stiffness: 420, damping: 22 }}
+      onHoverStart={handleHoverStart}
       className={[
         variants[variant] ?? variants.primary,
         sizes[size] ?? sizes.md,
         full ? "w-full" : "",
         "rounded-xl font-semibold inline-flex items-center justify-center",
-        "transition-all duration-200",
+        showTypewriter ? "duration-[250ms]" : "duration-200",
+        "transition-all",
         "disabled:opacity-50 disabled:pointer-events-none",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:ring-offset-2",
         className,
@@ -101,18 +117,32 @@ export default function Button({
           {Icon && iconPosition === "left" && (
             <motion.span
               className="shrink-0"
-              whileHover={{ x: -2 }}
-              transition={{ duration: 0.2 }}
+              whileHover={{ x: showTypewriter ? -4 : -2 }}
+              transition={{ duration: showTypewriter ? 0.25 : 0.2 }}
             >
               <Icon size={size === "lg" || size === "xl" ? 20 : 17} strokeWidth={2.2} />
             </motion.span>
           )}
-          {children}
+          {showTypewriter ? (
+            <span className="relative inline-flex items-center shrink-0">
+              <span className="invisible whitespace-nowrap" aria-hidden="true">
+                {children}
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
+                {displayText}
+                {isTyping && (
+                  <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
+                )}
+              </span>
+            </span>
+          ) : (
+            <span>{children}</span>
+          )}
           {Icon && iconPosition === "right" && (
             <motion.span
               className="shrink-0"
-              whileHover={{ x: 2 }}
-              transition={{ duration: 0.2 }}
+              whileHover={{ x: showTypewriter ? 4 : 2 }}
+              transition={{ duration: showTypewriter ? 0.25 : 0.2 }}
             >
               <Icon size={size === "lg" || size === "xl" ? 20 : 17} strokeWidth={2.2} />
             </motion.span>
