@@ -9,21 +9,12 @@ import HowItWorks from "../components/landing/HowItWorks";
 import Pricing from "../components/landing/Pricing";
 import TestimonialsMarquee from "../components/landing/TestimonialsMarquee";
 import CtaBand from "../components/landing/CtaBand";
-import FloatingBackground from "../components/ui/FloatingBackground";
-import Particles from "../components/ui/Particles";
 import BackToTop from "../components/ui/BackToTop";
-import CursorGlow from "../components/ui/CursorGlow";
 import SectionDivider from "../components/ui/SectionDivider";
 
 export default function Landing() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-
-      {/* Floating gradient blobs */}
-      <FloatingBackground />
-
-      {/* Subtle floating particles */}
-      <Particles />
 
       <div className="relative z-10">
         {/* ── Navigation ── */}
@@ -77,8 +68,7 @@ export default function Landing() {
       {/* ── Back to top button ── */}
       <BackToTop />
 
-      {/* ── Cursor glow ── */}
-      <CursorGlow />
+
     </div>
   );
 }
