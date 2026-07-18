@@ -4,7 +4,6 @@ import {
   Upload, ArrowRight, CheckCircle2,
   ShieldCheck, Award, Zap, Sparkles, TrendingUp,
 } from "lucide-react";
-import AuroraBackground from "../ui/aurora-background";
 import { AnimatedText } from "../ui/animated-underline-text-one";
 import { ParallaxContainer, FloatingCard } from "../ui/parallax-floating";
 import TextInertia from "../ui/text-inertia";
@@ -43,28 +42,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-28 pb-20 px-6 overflow-hidden">
-      <AuroraBackground />
-
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Scanning line */}
-      <motion.div
-        className="absolute inset-x-0 h-px pointer-events-none z-[1]"
-        style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(37,99,235,0.15) 50%, transparent 100%)",
-        }}
-        animate={{ top: ["0%", "100%", "0%"] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 w-full max-w-6xl mx-auto">
         <div className="grid gap-16 lg:grid-cols-[1.1fr,0.9fr] items-center">
 
