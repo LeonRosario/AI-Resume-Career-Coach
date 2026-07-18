@@ -22,24 +22,7 @@ export default function DashboardLayout() {
   const title = titles[location.pathname] ?? "CareerAI";
 
   return (
-    <div className="relative min-h-screen">
-      {/* Subtle mesh background */}
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          background: "radial-gradient(ellipse 90% 60% at 70% 10%, rgba(37,99,235,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 10% 80%, rgba(79,70,229,0.05) 0%, transparent 55%)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: "linear-gradient(rgba(37,99,235,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.025) 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-        aria-hidden="true"
-      />
-
+    <div className="relative min-h-screen bg-white">
       {/* Layout */}
       <div className="relative z-10 flex max-w-[1680px] mx-auto">
         <Sidebar open={mobileOpen} onClose={() => setMobileOpen(false)} />
