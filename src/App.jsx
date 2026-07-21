@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { ResumeProvider } from "./context/ResumeContext";
 
 import Landing from "./pages/Landing";
+import NotFound from "./pages/NotFound";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import DashboardLayout from "./components/layout/DashboardLayout";
@@ -43,7 +44,7 @@ function AppRoutes() {
           <Route path="resume-builder" element={<ResumeBuilder />} />
           <Route path="settings" element={<Settings />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
