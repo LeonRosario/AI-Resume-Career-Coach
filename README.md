@@ -2,38 +2,58 @@ CareerAI — AI Resume & Career Coach
 
 A full-featured SaaS frontend built with React, Vite, Tailwind CSS, and Framer Motion. Liquid glass UI throughout, 10 fully-built pages, mock authentication, and a working PDF export.
 
-<<<<<<< HEAD
+## Tech Stack
 
-Tech Stack
+| Tool | Purpose |
+|------|---------|
+| React 19 | UI framework |
+| Vite | Dev server & bundler |
+| Tailwind CSS 3 | Utility styling |
+| Framer Motion | Animations & transitions |
+| React Router 7 | Client-side routing |
+| react-dropzone | Resume drag-and-drop upload |
+| jsPDF + html2canvas | Client-side PDF export |
+| Lucide React | Icons |
 
-ToolPurposeReact 18UI frameworkViteDev server & bundlerTailwind CSS 3Utility stylingFramer MotionAnimations & transitionsReact Router 6Client-side routingreact-dropzoneResume drag-and-drop uploadjsPDF + html2canvasClient-side PDF exportLucide ReactIcons
+## Getting Started
 
-
-Getting Started
-
-
+```bash
 # 1. Install dependencies
 npm install
 
 # 2. Start the dev server
 npm run dev
+```
 
 Open http://localhost:5173 in your browser.
 
 To build for production:
 
-bashnpm run build
+```bash
+npm run build
+```
 
+## Pages
 
-Pages
-
-RoutePage/Landing page/loginLogin/registerRegister/appDashboard home/app/resume-analyzerResume Analyzer/app/ats-checkerATS Checker/app/skill-gapSkill Gap Analysis/app/job-matchJob Recommendations/app/interview-prepAI Interview Prep/app/resume-builderResume Builder/app/settingsProfile Settings
+| Route | Page |
+|-------|------|
+| / | Landing page |
+| /login | Login |
+| /register | Register |
+| /app | Dashboard home |
+| /app/resume-analyzer | Resume Analyzer |
+| /app/ats-checker | ATS Checker |
+| /app/skill-gap | Skill Gap Analysis |
+| /app/job-match | Job Recommendations |
+| /app/interview-prep | AI Interview Prep |
+| /app/resume-builder | Resume Builder |
+| /app/settings | Profile Settings |
 
 Dashboard routes are protected — you must be logged in to access them. Auth state is mocked and persisted to localStorage.
 
+## Project Structure
 
-Project Structure
-
+```
 src/
 ├── components/
 │   ├── auth/          # AuthLayout, AuthVisual
@@ -51,6 +71,7 @@ src/
 │   └── useResumeBuilder.js
 └── pages/
     ├── Landing.jsx
+    ├── NotFound.jsx
     ├── auth/
     │   ├── Login.jsx
     │   └── Register.jsx
@@ -63,67 +84,52 @@ src/
         ├── InterviewPrep.jsx
         ├── ResumeBuilder.jsx
         └── Settings.jsx
+```
 
+## Design System
 
-Design System
+### Colors
 
-Colors
+| Name | Value |
+|------|-------|
+| Background | #FFFFFF |
+| Ink (text) | #0B1220 |
+| Primary | #0084FF |
+| Gradient start | #60B1FF |
+| Gradient end | #319AFF |
 
-NameValueBackground#FFFFFFInk (text)#0B1220Primary#0084FFGradient start#60B1FFGradient end#319AFF
+### Glass card spec (every card)
 
-Glass card spec (every card)
-
-cssbackground: rgba(255, 255, 255, 0.35);
+```css
+background: rgba(255, 255, 255, 0.35);
 backdrop-filter: blur(30px);
 border: 1px solid rgba(255, 255, 255, 0.4);
 border-radius: 24px;
+```
 
 Three glass variants are available:
+- `.glass` — default (35% white)
+- `.glass-strong` — elevated panels (55% white)
+- `.glass-soft` — subtle inset areas (20% white)
 
+### Typography
 
-.glass — default (35% white)
-.glass-strong — elevated panels (55% white)
-.glass-soft — subtle inset areas (20% white)
+- Headings: Inter Bold / ExtraBold
+- Body & UI: Inter
 
-
-Typography
-
-
-Headings: Fustat Bold / ExtraBold
-Body & UI: Inter
-
-
-Signature visual element
+### Signature visual element
 
 The Aurora field — three slow-drifting radial gradient blobs fixed behind every page — gives glass surfaces something to refract, making the effect feel liquid rather than static.
 
+### Key Features
 
-Key Features
-
-
-Drag-and-drop resume upload with react-dropzone, simulated AI analysis with loading state
-Score ring — animated SVG circle that fills to the resume/match score on mount
-ATS checker — paste any job description, get matched/missing keyword breakdown
-Skill gap roadmap — animated timeline with week-by-week learning plan
-Job match grid — filterable by role, experience level, and location
-AI interview chat — full chat UI with typing indicator, question progression tracker, and end-of-session feedback scoring
-Resume builder — live-preview editor with 5 sections and one-click PDF download
-Profile settings — tabbed interface with resume history and animated toggle switches
-Framer Motion throughout — page fade transitions, floating hero card, hover-lift on all cards, score ring animation, roadmap step reveals
-
-=======
-Tech Stack
-ToolPurposeReact 18UI frameworkViteDev server & bundlerTailwind CSS 3Utility stylingFramer MotionAnimations & transitionsReact Router 6Client-side routingreact-dropzoneResume drag-and-drop uploadjsPDF + html2canvasClient-side PDF exportLucide ReactIcons
-Getting Started
-
-# 1. Install dependencies
-npm install
-
-# 2. Start the dev server
-npm run dev
-
-Open http://localhost:5173 in your browser.
-
-
->>>>>>> 4c37bb416fef3caf6b5d3bff833fd68cd6f299e1
+- Drag-and-drop resume upload with react-dropzone, simulated AI analysis with loading state
+- Score ring — animated SVG circle that fills to the resume/match score on mount
+- ATS checker — paste any job description, get matched/missing keyword breakdown
+- Skill gap roadmap — animated timeline with week-by-week learning plan
+- Job match grid — filterable by role, experience level, and location
+- AI interview chat — full chat UI with typing indicator, question progression tracker, and end-of-session feedback scoring
+- Resume builder — live-preview editor with 5 sections and one-click PDF download
+- Profile settings — tabbed interface with resume history and animated toggle switches
+- Framer Motion throughout — page fade transitions, floating hero card, hover-lift on all cards, score ring animation, roadmap step reveals
 
