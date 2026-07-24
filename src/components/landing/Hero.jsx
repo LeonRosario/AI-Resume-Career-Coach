@@ -42,6 +42,89 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-28 pb-20 px-6 overflow-hidden">
+      {/* ── Animated mesh background ── */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {/* Base gradient */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 100% 70% at 60% -10%, rgba(37,99,235,0.09) 0%, transparent 60%), radial-gradient(ellipse 70% 60% at 10% 80%, rgba(124,58,237,0.07) 0%, transparent 55%)",
+          }}
+        />
+        {/* Animated orbs */}
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: 560, height: 560,
+            top: "-15%", left: "-10%",
+            background: "radial-gradient(circle, rgba(37,99,235,0.13) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+          animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: 480, height: 480,
+            top: "20%", right: "-8%",
+            background: "radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)",
+            filter: "blur(70px)",
+          }}
+          animate={{ x: [0, -30, 20, 0], y: [0, 25, -20, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: 400, height: 400,
+            bottom: "-10%", left: "30%",
+            background: "radial-gradient(circle, rgba(99,102,241,0.09) 0%, transparent 70%)",
+            filter: "blur(90px)",
+          }}
+          animate={{ x: [0, 20, -30, 0], y: [0, -20, 30, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+        />
+        {/* Grid */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(37,99,235,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.035) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+          }}
+        />
+        {/* Top sheen line */}
+        <div
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(37,99,235,0.25), rgba(124,58,237,0.2), transparent)" }}
+        />
+        {/* Floating particles */}
+        {[
+          { x: "12%", y: "22%", s: 5, d: 0,   o: 0.35, c: "rgba(37,99,235,0.6)" },
+          { x: "55%", y: "14%", s: 4, d: 1.5, o: 0.28, c: "rgba(124,58,237,0.5)" },
+          { x: "80%", y: "26%", s: 6, d: 0.8, o: 0.3,  c: "rgba(99,102,241,0.55)" },
+          { x: "33%", y: "68%", s: 4, d: 2.2, o: 0.22, c: "rgba(37,99,235,0.5)" },
+          { x: "88%", y: "50%", s: 5, d: 1.1, o: 0.26, c: "rgba(124,58,237,0.45)" },
+          { x: "20%", y: "48%", s: 3, d: 0.3, o: 0.2,  c: "rgba(99,102,241,0.5)" },
+          { x: "68%", y: "72%", s: 5, d: 1.8, o: 0.24, c: "rgba(37,99,235,0.45)" },
+          { x: "45%", y: "40%", s: 3, d: 2.6, o: 0.18, c: "rgba(124,58,237,0.4)" },
+        ].map((p, i) => (
+          <motion.span
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              left: p.x, top: p.y,
+              width: p.s, height: p.s,
+              background: p.c,
+              opacity: p.o,
+              boxShadow: `0 0 ${p.s * 2}px ${p.c}`,
+            }}
+            animate={{ y: [0, -16, 0], opacity: [p.o, p.o * 0.3, p.o] }}
+            transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: p.d }}
+          />
+        ))}
+      </div>
       <div className="relative z-10 w-full max-w-6xl mx-auto">
         <div className="grid gap-16 lg:grid-cols-[1.1fr,0.9fr] items-center">
 
