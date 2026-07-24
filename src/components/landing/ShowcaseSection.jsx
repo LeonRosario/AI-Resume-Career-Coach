@@ -273,18 +273,30 @@ export default function ShowcaseSection() {
     >
       {/* ── Background glows ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div
+        <motion.div
           className="absolute -top-40 -right-32 w-[700px] h-[700px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 65%)",
+            background: "radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 65%)",
             filter: "blur(80px)",
           }}
+          animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div
+        <motion.div
           className="absolute -bottom-40 -left-32 w-[600px] h-[600px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 65%)",
+            background: "radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 65%)",
             filter: "blur(80px)",
+          }}
+          animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+        />
+        {/* Centre accent glow */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%)",
+            filter: "blur(60px)",
           }}
         />
         {/* Grid */}
