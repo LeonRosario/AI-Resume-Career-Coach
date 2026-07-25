@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   ArrowRight, Sparkles, ShieldCheck, CheckCircle2,
   FileText, BarChart3, Briefcase, MessageSquare,
-  BookOpen, Target, Star, Zap, ChevronRight,
+  Target, Star, Zap, ChevronRight,
   TrendingUp, Award,
 } from "lucide-react";
 
@@ -32,8 +32,6 @@ const steps = [
     bg: "white",
     hasGlow: true,
     hasGrid: true,
-    cta: true,
-    label: "",
   },
   {
     id: "build",
@@ -42,7 +40,6 @@ const steps = [
     description:
       "Generate a professional resume using AI. Choose modern templates. Import existing resumes. Export as ATS-friendly PDF.",
     bg: "career-light",
-    label: "Build",
   },
   {
     id: "analyze",
@@ -51,7 +48,6 @@ const steps = [
     description:
       "Upload your resume. Our AI checks formatting, keywords, readability, job compatibility, and grammar.",
     bg: "white",
-    label: "Analyze",
   },
   {
     id: "match",
@@ -60,7 +56,6 @@ const steps = [
     description:
       "Paste any job description. See your compatibility score, missing skills, and recommended improvements.",
     bg: "gray",
-    label: "Match",
   },
   {
     id: "interview",
@@ -69,7 +64,6 @@ const steps = [
     description:
       "Generate personalized interview questions. Receive instant AI feedback. Practice until you are confident.",
     bg: "blue-light",
-    label: "Interview",
   },
   {
     id: "features",
@@ -77,7 +71,6 @@ const steps = [
     heading: ["Everything you need", "to get hired."],
     description: null,
     bg: "white",
-    label: "Features",
   },
 ];
 
@@ -87,6 +80,17 @@ const bgMap = {
   gray: "bg-[#F8F9FB]",
   "blue-light": "bg-[#F5F9FF]",
 };
+
+const cardBg = "rgba(255,255,255,0.96)";
+const cardBorder = "1px solid rgba(79,140,255,0.12)";
+
+function FloatBadge({ children, className = "" }) {
+  return (
+    <div className={`animate-float-md ${className}`}>
+      {children}
+    </div>
+  );
+}
 
 export default function StorytellingScroll() {
   const navigate = useNavigate();
@@ -108,93 +112,81 @@ export default function StorytellingScroll() {
         const isFirst = i === 0;
         const isLast = i === panels.length - 1;
 
-        if (!isFirst) {
-          gsap.set(panel, {
-            rotateX: isMobile ? 8 : 15,
-            scale: isMobile ? 0.96 : 0.92,
-            transformOrigin: "50% 0%",
-            opacity: 0.95,
-          });
-
-          gsap.to(panel, {
-            rotateX: 0,
-            scale: 1,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: panel,
-              start: "top bottom",
-              end: "top top",
-              scrub: 1.5,
-            },
-            ease: "power2.out",
-          });
-        }
-
         if (!isLast) {
-          ScrollTrigger.create({
-            trigger: panel,
-            start: "top top",
-            end: "+=100%",
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-          });
+          panel.style.willChange = "transform";
         }
 
         const contentItems = panel.querySelectorAll("[data-animate]");
+        const visualItems = panel.querySelectorAll("[data-visual]");
+
+        if (!isFirst) {
+          gsap.set(panel, {
+            rotateX: isMobile ? 5 : 12,
+            scale: isMobile ? 0.97 : 0.94,
+            transformOrigin: "50% 0%",
+            opacity: 0.95,
+          });
+        }
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: panel,
+            start: isFirst ? "top top" : "top bottom",
+            end: "+=100%",
+            pin: !isLast,
+            pinSpacing: true,
+            anticipatePin: 1,
+            toggleActions: "play none none reverse",
+            fastScrollEnd: true,
+            preventOverlaps: true,
+          },
+        });
+
+        if (!isFirst) {
+          tl.to(panel, {
+            rotateX: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+            force3D: true,
+          }, 0);
+        }
+
+        const contentStart = isFirst ? 0 : 0.15;
+
         if (contentItems.length) {
-          gsap.fromTo(
+          tl.fromTo(
             contentItems,
-            { y: 30, opacity: 0 },
+            { y: 15, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              stagger: 0.1,
-              duration: 0.6,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: panel,
-                start: "top top+=10%",
-                end: "+=60%",
-                scrub: 1,
-              },
-            }
+              stagger: 0.05,
+              duration: 0.4,
+              ease: "power2.out",
+              force3D: true,
+            },
+            contentStart
           );
         }
 
-        const visualItems = panel.querySelectorAll("[data-visual]");
         if (visualItems.length) {
-          gsap.fromTo(
+          tl.fromTo(
             visualItems,
-            { y: 50, opacity: 0, scale: 0.95 },
+            { y: 20, opacity: 0, scale: 0.95 },
             {
               y: 0,
               opacity: 1,
               scale: 1,
-              stagger: 0.15,
-              duration: 0.8,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: panel,
-                start: "top top+=15%",
-                end: "+=70%",
-                scrub: 1,
-              },
-            }
+              stagger: 0.06,
+              duration: 0.45,
+              ease: "power2.out",
+              force3D: true,
+            },
+            contentStart + 0.08
           );
         }
-
-        const floatItems = panel.querySelectorAll("[data-float]");
-        floatItems.forEach((el, fi) => {
-          gsap.to(el, {
-            y: isMobile ? -6 : -14,
-            duration: 3 + fi * 0.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: fi * 0.3,
-          });
-        });
       });
 
       ScrollTrigger.refresh();
@@ -215,12 +207,10 @@ export default function StorytellingScroll() {
       {/* ── SECTION 1 ── */}
       <section
         className={`story-panel relative min-h-screen flex items-center px-6 py-24 overflow-hidden ${bgMap[steps[0].bg]}`}
+        style={{ willChange: "transform" }}
       >
         {steps[0].hasGlow && (
-          <div
-            className="absolute inset-0 pointer-events-none"
-            aria-hidden="true"
-          >
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div
               className="absolute top-[-20%] left-[-10%] w-[120%] h-[80%] opacity-60"
               style={{
@@ -232,10 +222,7 @@ export default function StorytellingScroll() {
           </div>
         )}
         {steps[0].hasGrid && (
-          <div
-            className="absolute inset-0 pointer-events-none"
-            aria-hidden="true"
-          >
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div
               className="absolute inset-0 opacity-[0.25]"
               style={{
@@ -302,7 +289,6 @@ export default function StorytellingScroll() {
             {/* Visual */}
             <div className="relative flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[480px]">
-                {/* Glow behind */}
                 <div
                   className="absolute inset-0 rounded-[32px] pointer-events-none"
                   style={{
@@ -313,15 +299,12 @@ export default function StorytellingScroll() {
                   aria-hidden="true"
                 />
 
-                {/* Main preview card */}
                 <div
                   data-visual
-                  className="relative overflow-hidden rounded-[28px] transition-shadow duration-500"
+                  className="relative overflow-hidden rounded-[28px]"
                   style={{
-                    background: "rgba(255,255,255,0.78)",
-                    backdropFilter: "blur(32px) saturate(180%)",
-                    WebkitBackdropFilter: "blur(32px) saturate(180%)",
-                    border: "1px solid rgba(79,140,255,0.15)",
+                    background: cardBg,
+                    border: cardBorder,
                     boxShadow:
                       "0 32px 80px rgba(79,140,255,0.12), 0 8px 16px rgba(79,140,255,0.06), inset 0 1px 0 rgba(255,255,255,0.9)",
                   }}
@@ -346,12 +329,8 @@ export default function StorytellingScroll() {
                       </div>
                     </div>
                     <div className="mb-4">
-                      <h3 className="font-heading text-xl text-ink">
-                        Alex Chen
-                      </h3>
-                      <p className="text-sm text-muted">
-                        Senior Product Designer
-                      </p>
+                      <h3 className="font-heading text-xl text-ink">Alex Chen</h3>
+                      <p className="text-sm text-muted">Senior Product Designer</p>
                     </div>
                     <div
                       className="rounded-2xl p-4 mb-4"
@@ -361,21 +340,19 @@ export default function StorytellingScroll() {
                       }}
                     >
                       <div className="flex flex-wrap gap-2">
-                        {["AI Strategy", "UX Design", "Product Ops"].map(
-                          (s) => (
-                            <span
-                              key={s}
-                              className="rounded-full px-3 py-1 text-[11px] font-medium"
-                              style={{
-                                background: "rgba(255,255,255,0.9)",
-                                border: "1px solid rgba(79,140,255,0.16)",
-                                color: "#4F8CFF",
-                              }}
-                            >
-                              {s}
-                            </span>
-                          )
-                        )}
+                        {["AI Strategy", "UX Design", "Product Ops"].map((s) => (
+                          <span
+                            key={s}
+                            className="rounded-full px-3 py-1 text-[11px] font-medium"
+                            style={{
+                              background: "rgba(255,255,255,0.9)",
+                              border: "1px solid rgba(79,140,255,0.16)",
+                              color: "#4F8CFF",
+                            }}
+                          >
+                            {s}
+                          </span>
+                        ))}
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -394,9 +371,7 @@ export default function StorytellingScroll() {
                             border: "1px solid rgba(79,140,255,0.06)",
                           }}
                         >
-                          <p className="text-sm font-semibold text-ink">
-                            {item.title}
-                          </p>
+                          <p className="text-sm font-semibold text-ink">{item.title}</p>
                           <p className="text-xs text-muted">{item.company}</p>
                         </div>
                       ))}
@@ -404,17 +379,11 @@ export default function StorytellingScroll() {
                   </div>
                 </div>
 
-                {/* Floating ATS Score badge */}
-                <div
-                  data-float
-                  className="absolute -top-4 -left-4 hidden md:block"
-                >
+                <FloatBadge className="absolute -top-4 -left-4 hidden md:block">
                   <div
                     className="rounded-2xl px-4 py-3 min-w-[150px]"
                     style={{
-                      background: "rgba(255,255,255,0.92)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
+                      background: "rgba(255,255,255,0.96)",
                       border: "1px solid rgba(79,140,255,0.16)",
                       boxShadow:
                         "0 8px 28px rgba(79,140,255,0.1), 0 2px 8px rgba(79,140,255,0.05)",
@@ -426,29 +395,9 @@ export default function StorytellingScroll() {
                     </div>
                     <div className="flex items-center gap-2.5">
                       <div className="relative w-9 h-9">
-                        <svg
-                          className="w-9 h-9 -rotate-90"
-                          viewBox="0 0 36 36"
-                        >
-                          <circle
-                            cx="18"
-                            cy="18"
-                            r="14.5"
-                            fill="none"
-                            stroke="rgba(79,140,255,0.1)"
-                            strokeWidth="3"
-                          />
-                          <circle
-                            cx="18"
-                            cy="18"
-                            r="14.5"
-                            fill="none"
-                            stroke="#4F8CFF"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeDasharray={`${2 * Math.PI * 14.5}`}
-                            strokeDashoffset={2 * Math.PI * 14.5 * 0.08}
-                          />
+                        <svg className="w-9 h-9 -rotate-90" viewBox="0 0 36 36">
+                          <circle cx="18" cy="18" r="14.5" fill="none" stroke="rgba(79,140,255,0.1)" strokeWidth="3" />
+                          <circle cx="18" cy="18" r="14.5" fill="none" stroke="#4F8CFF" strokeWidth="3" strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 14.5}`} strokeDashoffset={2 * Math.PI * 14.5 * 0.08} />
                         </svg>
                       </div>
                       <span className="text-lg font-bold text-ink">
@@ -456,19 +405,13 @@ export default function StorytellingScroll() {
                       </span>
                     </div>
                   </div>
-                </div>
+                </FloatBadge>
 
-                {/* Floating AI match badge */}
-                <div
-                  data-float
-                  className="absolute -bottom-3 -right-3 hidden md:block"
-                >
+                <FloatBadge className="absolute -bottom-3 -right-3 hidden md:block">
                   <div
                     className="rounded-2xl px-4 py-3 min-w-[150px]"
                     style={{
-                      background: "rgba(255,255,255,0.92)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
+                      background: "rgba(255,255,255,0.96)",
                       border: "1px solid rgba(79,140,255,0.16)",
                       boxShadow:
                         "0 8px 28px rgba(79,140,255,0.1), 0 2px 8px rgba(79,140,255,0.05)",
@@ -480,34 +423,21 @@ export default function StorytellingScroll() {
                     </div>
                     <div className="flex items-center gap-2.5">
                       <span className="text-lg font-bold text-ink">87%</span>
-                      <div
-                        className="flex-1 h-1.5 rounded-full overflow-hidden"
-                        style={{ background: "rgba(79,140,255,0.08)" }}
-                      >
+                      <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(79,140,255,0.08)" }}>
                         <div
                           className="h-full rounded-full"
-                          style={{
-                            width: "87%",
-                            background:
-                              "linear-gradient(90deg, #22C55E, #16A34A)",
-                          }}
+                          style={{ width: "87%", background: "linear-gradient(90deg, #22C55E, #16A34A)" }}
                         />
                       </div>
                     </div>
                   </div>
-                </div>
+                </FloatBadge>
 
-                {/* Floating AI sparkle */}
-                <div
-                  data-float
-                  className="absolute -top-2 -right-2 hidden lg:block"
-                >
+                <FloatBadge className="absolute -top-2 -right-2 hidden lg:block">
                   <div
                     className="rounded-2xl px-4 py-3"
                     style={{
-                      background: "rgba(255,255,255,0.92)",
-                      backdropFilter: "blur(20px)",
-                      WebkitBackdropFilter: "blur(20px)",
+                      background: "rgba(255,255,255,0.96)",
                       border: "1px solid rgba(79,140,255,0.16)",
                       boxShadow:
                         "0 8px 28px rgba(79,140,255,0.1), 0 2px 8px rgba(79,140,255,0.05)",
@@ -517,11 +447,9 @@ export default function StorytellingScroll() {
                       <Zap size={12} className="text-amber-500" />
                       AI Optimized
                     </div>
-                    <p className="text-xs font-semibold text-ink">
-                      3 improvements found
-                    </p>
+                    <p className="text-xs font-semibold text-ink">3 improvements found</p>
                   </div>
-                </div>
+                </FloatBadge>
               </div>
             </div>
           </div>
@@ -536,7 +464,6 @@ export default function StorytellingScroll() {
         >
           <div className="relative z-10 w-full max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-12 lg:gap-20 items-center">
-              {/* Content */}
               <div className="max-w-xl">
                 <span
                   data-animate
@@ -577,10 +504,8 @@ export default function StorytellingScroll() {
                       onClick={handleStartFree}
                       className="inline-flex items-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110"
                       style={{
-                        background:
-                          "linear-gradient(135deg, #4F8CFF 0%, #2563EB 100%)",
-                        boxShadow:
-                          "0 8px 32px rgba(79,140,255,0.35), 0 2px 8px rgba(79,140,255,0.2)",
+                        background: "linear-gradient(135deg, #4F8CFF 0%, #2563EB 100%)",
+                        boxShadow: "0 8px 32px rgba(79,140,255,0.35), 0 2px 8px rgba(79,140,255,0.2)",
                       }}
                     >
                       Try AI Interview
@@ -590,7 +515,6 @@ export default function StorytellingScroll() {
                 )}
               </div>
 
-              {/* Visual */}
               <div className="relative flex justify-center lg:justify-end">
                 {step.id === "build" && <BuildVisual />}
                 {step.id === "analyze" && <AnalyzeVisual />}
@@ -632,11 +556,11 @@ export default function StorytellingScroll() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {features.map((feat, fi) => (
+            {features.map((feat) => (
               <div
                 key={feat.label}
                 data-visual
-                className="rounded-2xl p-5 text-center transition-all duration-300 hover:shadow-lg"
+                className="rounded-2xl p-5 text-center"
                 style={{
                   background: "rgba(248,250,255,0.8)",
                   border: "1px solid rgba(79,140,255,0.1)",
@@ -644,10 +568,7 @@ export default function StorytellingScroll() {
               >
                 <div
                   className="inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3"
-                  style={{
-                    background: "rgba(79,140,255,0.1)",
-                    color: "#4F8CFF",
-                  }}
+                  style={{ background: "rgba(79,140,255,0.1)", color: "#4F8CFF" }}
                 >
                   <feat.icon size={20} strokeWidth={1.8} />
                 </div>
@@ -660,10 +581,7 @@ export default function StorytellingScroll() {
 
       {/* ── FINAL CTA ── */}
       <section className="story-panel relative min-h-screen flex items-center px-6 py-24 overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-        >
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div
             className="absolute inset-0"
             style={{
@@ -674,16 +592,14 @@ export default function StorytellingScroll() {
           <div
             className="absolute top-[10%] left-[5%] w-72 h-72 rounded-full opacity-30"
             style={{
-              background:
-                "radial-gradient(circle, rgba(79,140,255,0.25) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(79,140,255,0.25) 0%, transparent 70%)",
               filter: "blur(80px)",
             }}
           />
           <div
             className="absolute bottom-[15%] right-[8%] w-96 h-96 rounded-full opacity-25"
             style={{
-              background:
-                "radial-gradient(circle, rgba(107,168,255,0.2) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(107,168,255,0.2) 0%, transparent 70%)",
               filter: "blur(100px)",
             }}
           />
@@ -694,26 +610,22 @@ export default function StorytellingScroll() {
             data-animate
             className="rounded-[32px] p-10 sm:p-14 md:p-20"
             style={{
-              background: "rgba(255,255,255,0.55)",
-              backdropFilter: "blur(40px) saturate(180%)",
-              WebkitBackdropFilter: "blur(40px) saturate(180%)",
+              background: "rgba(255,255,255,0.92)",
               border: "1px solid rgba(255,255,255,0.6)",
               boxShadow:
                 "0 32px 80px rgba(79,140,255,0.12), 0 8px 24px rgba(79,140,255,0.06), inset 0 1px 0 rgba(255,255,255,0.95)",
             }}
           >
             <div className="space-y-3 mb-6">
-              {["Your dream job starts", "with a better resume."].map(
-                (line, li) => (
-                  <h2
-                    key={li}
-                    data-animate
-                    className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-ink leading-[1.08] tracking-tight"
-                  >
-                    {line}
-                  </h2>
-                )
-              )}
+              {["Your dream job starts", "with a better resume."].map((line, li) => (
+                <h2
+                  key={li}
+                  data-animate
+                  className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-ink leading-[1.08] tracking-tight"
+                >
+                  {line}
+                </h2>
+              ))}
             </div>
 
             <p
@@ -732,10 +644,8 @@ export default function StorytellingScroll() {
                 onClick={handleStartFree}
                 className="inline-flex items-center gap-2 rounded-2xl px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:brightness-110"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #4F8CFF 0%, #2563EB 100%)",
-                  boxShadow:
-                    "0 8px 32px rgba(79,140,255,0.35), 0 2px 8px rgba(79,140,255,0.2)",
+                  background: "linear-gradient(135deg, #4F8CFF 0%, #2563EB 100%)",
+                  boxShadow: "0 8px 32px rgba(79,140,255,0.35), 0 2px 8px rgba(79,140,255,0.2)",
                 }}
               >
                 Start Free
@@ -748,8 +658,7 @@ export default function StorytellingScroll() {
                   background: "rgba(248,250,255,0.8)",
                   border: "1px solid rgba(79,140,255,0.18)",
                   color: "#1E2A3B",
-                  boxShadow:
-                    "0 4px 16px rgba(79,140,255,0.06), 0 1px 4px rgba(79,140,255,0.04)",
+                  boxShadow: "0 4px 16px rgba(79,140,255,0.06), 0 1px 4px rgba(79,140,255,0.04)",
                 }}
               >
                 View Demo
@@ -759,20 +668,13 @@ export default function StorytellingScroll() {
           </div>
         </div>
 
-        {/* Floating decorative cards */}
-        <div
-          data-float
-          className="absolute top-[12%] right-[8%] hidden lg:block"
-        >
+        <FloatBadge className="absolute top-[12%] right-[8%] hidden lg:block">
           <div
             className="rounded-2xl px-5 py-4"
             style={{
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              background: "rgba(255,255,255,0.92)",
               border: "1px solid rgba(79,140,255,0.12)",
-              boxShadow:
-                "0 8px 28px rgba(79,140,255,0.08), 0 2px 8px rgba(79,140,255,0.04)",
+              boxShadow: "0 8px 28px rgba(79,140,255,0.08), 0 2px 8px rgba(79,140,255,0.04)",
             }}
           >
             <div className="flex items-center gap-2 text-xs text-muted mb-1">
@@ -783,20 +685,14 @@ export default function StorytellingScroll() {
               92<span className="text-sm text-muted">/100</span>
             </p>
           </div>
-        </div>
-        <div
-          data-float
-          className="absolute bottom-[18%] left-[6%] hidden lg:block"
-        >
+        </FloatBadge>
+        <FloatBadge className="absolute bottom-[18%] left-[6%] hidden lg:block">
           <div
             className="rounded-2xl px-5 py-4"
             style={{
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              background: "rgba(255,255,255,0.92)",
               border: "1px solid rgba(79,140,255,0.12)",
-              boxShadow:
-                "0 8px 28px rgba(79,140,255,0.08), 0 2px 8px rgba(79,140,255,0.04)",
+              boxShadow: "0 8px 28px rgba(79,140,255,0.08), 0 2px 8px rgba(79,140,255,0.04)",
             }}
           >
             <div className="flex items-center gap-2 text-xs text-muted mb-1">
@@ -805,13 +701,13 @@ export default function StorytellingScroll() {
             </div>
             <p className="font-heading text-xl text-ink">9.2 / 10</p>
           </div>
-        </div>
+        </FloatBadge>
       </section>
     </div>
   );
 }
 
-/* ── Visual components ── */
+/* ── Visual sub-components ── */
 
 function BuildVisual() {
   return (
@@ -819,19 +715,14 @@ function BuildVisual() {
       data-visual
       className="relative w-full max-w-[480px] overflow-hidden rounded-[28px]"
       style={{
-        background: "rgba(255,255,255,0.75)",
-        backdropFilter: "blur(32px) saturate(180%)",
-        WebkitBackdropFilter: "blur(32px) saturate(180%)",
-        border: "1px solid rgba(79,140,255,0.14)",
-        boxShadow:
-          "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
+        background: cardBg,
+        border: cardBorder,
+        boxShadow: "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
       }}
     >
       <div
         className="absolute inset-x-0 top-0 h-[2px]"
-        style={{
-          background: "linear-gradient(90deg, #4F8CFF, #6BA8FF, #4F8CFF)",
-        }}
+        style={{ background: "linear-gradient(90deg, #4F8CFF, #6BA8FF, #4F8CFF)" }}
         aria-hidden="true"
       />
       <div className="p-5 sm:p-6">
@@ -840,31 +731,27 @@ function BuildVisual() {
             Resume Editor
           </span>
           <div className="flex gap-1.5">
-            {["rounded-full w-2 h-2 bg-red-400", "rounded-full w-2 h-2 bg-amber-400", "rounded-full w-2 h-2 bg-emerald-400"].map(
-              (cls, i) => (
-                <span key={i} className={cls} />
-              )
-            )}
+            <span className="w-2 h-2 rounded-full bg-red-400" />
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
           </div>
         </div>
 
         <div className="grid grid-cols-[1fr,2fr] gap-3">
           <div className="space-y-2">
-            {["Experience", "Education", "Skills", "Projects"].map(
-              (section) => (
-                <div
-                  key={section}
-                  className="rounded-lg px-3 py-2 text-xs font-medium transition-colors"
-                  style={{
-                    background: "rgba(79,140,255,0.06)",
-                    border: "1px solid rgba(79,140,255,0.1)",
-                    color: "#4F8CFF",
-                  }}
-                >
-                  {section}
-                </div>
-              )
-            )}
+            {["Experience", "Education", "Skills", "Projects"].map((section) => (
+              <div
+                key={section}
+                className="rounded-lg px-3 py-2 text-xs font-medium"
+                style={{
+                  background: "rgba(79,140,255,0.06)",
+                  border: "1px solid rgba(79,140,255,0.1)",
+                  color: "#4F8CFF",
+                }}
+              >
+                {section}
+              </div>
+            ))}
           </div>
           <div
             className="rounded-xl p-3"
@@ -881,30 +768,22 @@ function BuildVisual() {
           </div>
         </div>
 
-        {/* AI suggestion popup */}
-        <div
-          data-float
-          className="absolute -bottom-2 -right-2 hidden sm:block"
-        >
+        <FloatBadge className="absolute -bottom-2 -right-2 hidden sm:block">
           <div
             className="rounded-xl px-4 py-3"
             style={{
-              background: "rgba(255,255,255,0.95)",
-              backdropFilter: "blur(16px)",
+              background: "rgba(255,255,255,0.96)",
               border: "1px solid rgba(79,140,255,0.2)",
-              boxShadow:
-                "0 8px 24px rgba(79,140,255,0.15), 0 2px 6px rgba(79,140,255,0.08)",
+              boxShadow: "0 8px 24px rgba(79,140,255,0.15), 0 2px 6px rgba(79,140,255,0.08)",
             }}
           >
             <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted mb-1">
               <Sparkles size={11} style={{ color: "#4F8CFF" }} />
               AI Suggestion
             </div>
-            <p className="text-xs font-medium text-ink">
-              Add action verbs for impact
-            </p>
+            <p className="text-xs font-medium text-ink">Add action verbs for impact</p>
           </div>
-        </div>
+        </FloatBadge>
       </div>
     </div>
   );
@@ -916,41 +795,20 @@ function AnalyzeVisual() {
       data-visual
       className="relative w-full max-w-[480px] overflow-hidden rounded-[28px] p-6 sm:p-8"
       style={{
-        background: "rgba(255,255,255,0.75)",
-        backdropFilter: "blur(32px) saturate(180%)",
-        WebkitBackdropFilter: "blur(32px) saturate(180%)",
-        border: "1px solid rgba(79,140,255,0.14)",
-        boxShadow:
-          "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
+        background: cardBg,
+        border: cardBorder,
+        boxShadow: "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
       }}
     >
       <span className="text-[10px] uppercase tracking-[0.28em] font-semibold text-[#4F8CFF] mb-6 block">
         ATS Analysis
       </span>
 
-      {/* Circular gauge */}
       <div className="flex justify-center mb-6">
         <div className="relative w-36 h-36">
           <svg className="w-36 h-36 -rotate-90" viewBox="0 0 120 120">
-            <circle
-              cx="60"
-              cy="60"
-              r="52"
-              fill="none"
-              stroke="rgba(79,140,255,0.08)"
-              strokeWidth="8"
-            />
-            <circle
-              cx="60"
-              cy="60"
-              r="52"
-              fill="none"
-              stroke="#4F8CFF"
-              strokeWidth="8"
-              strokeLinecap="round"
-              strokeDasharray={`${2 * Math.PI * 52}`}
-              strokeDashoffset={2 * Math.PI * 52 * 0.08}
-            />
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(79,140,255,0.08)" strokeWidth="8" />
+            <circle cx="60" cy="60" r="52" fill="none" stroke="#4F8CFF" strokeWidth="8" strokeLinecap="round" strokeDasharray={`${2 * Math.PI * 52}`} strokeDashoffset={2 * Math.PI * 52 * 0.08} />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <span className="font-heading text-3xl text-ink">92</span>
@@ -959,7 +817,6 @@ function AnalyzeVisual() {
         </div>
       </div>
 
-      {/* Score bars */}
       <div className="space-y-3">
         {[
           { label: "Formatting", score: 95 },
@@ -969,24 +826,13 @@ function AnalyzeVisual() {
         ].map((item) => (
           <div key={item.label}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-medium text-muted">
-                {item.label}
-              </span>
-              <span className="text-xs font-semibold text-ink">
-                {item.score}%
-              </span>
+              <span className="text-xs font-medium text-muted">{item.label}</span>
+              <span className="text-xs font-semibold text-ink">{item.score}%</span>
             </div>
-            <div
-              className="h-1.5 rounded-full overflow-hidden"
-              style={{ background: "rgba(79,140,255,0.08)" }}
-            >
+            <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(79,140,255,0.08)" }}>
               <div
-                className="h-full rounded-full transition-all"
-                style={{
-                  width: `${item.score}%`,
-                  background:
-                    "linear-gradient(90deg, #4F8CFF, #6BA8FF)",
-                }}
+                className="h-full rounded-full"
+                style={{ width: `${item.score}%`, background: "linear-gradient(90deg, #4F8CFF, #6BA8FF)" }}
               />
             </div>
           </div>
@@ -1002,22 +848,18 @@ function MatchVisual() {
       data-visual
       className="relative w-full max-w-[480px] overflow-hidden rounded-[28px] p-6 sm:p-8"
       style={{
-        background: "rgba(255,255,255,0.75)",
-        backdropFilter: "blur(32px) saturate(180%)",
-        WebkitBackdropFilter: "blur(32px) saturate(180%)",
-        border: "1px solid rgba(79,140,255,0.14)",
-        boxShadow:
-          "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
+        background: cardBg,
+        border: cardBorder,
+        boxShadow: "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
       }}
     >
       <span className="text-[10px] uppercase tracking-[0.28em] font-semibold text-[#4F8CFF] mb-5 block">
         Job Match Dashboard
       </span>
 
-      {/* Large match score */}
       <div className="flex items-center gap-4 mb-6">
         <div
-          className="rounded-2xl px-5 py-4 text-center"
+          className="rounded-2xl px-5 py-4 text-center shrink-0"
           style={{
             background: "rgba(34,197,94,0.08)",
             border: "1px solid rgba(34,197,94,0.2)",
@@ -1025,21 +867,14 @@ function MatchVisual() {
         >
           <span className="font-heading text-4xl text-emerald-600">87</span>
           <span className="text-sm text-emerald-600 ml-0.5">%</span>
-          <p className="text-[10px] text-emerald-700 font-medium mt-0.5">
-            Match Score
-          </p>
+          <p className="text-[10px] text-emerald-700 font-medium mt-0.5">Match Score</p>
         </div>
-        <div className="flex-1">
-          <p className="text-xs font-semibold text-ink mb-1">
-            Strong Match
-          </p>
-          <p className="text-[11px] text-muted">
-            Your resume aligns well with this role
-          </p>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs font-semibold text-ink mb-1">Strong Match</p>
+          <p className="text-[11px] text-muted">Your resume aligns well with this role</p>
         </div>
       </div>
 
-      {/* Skill gap cards */}
       <div className="space-y-2">
         <p className="text-[10px] uppercase tracking-wider font-medium text-placeholder mb-2">
           Skill Gaps
@@ -1058,37 +893,27 @@ function MatchVisual() {
             }}
           >
             <span className="text-sm font-medium text-ink">{item.skill}</span>
-            <span className={`text-[11px] font-semibold ${item.color}`}>
-              {item.level}
-            </span>
+            <span className={`text-[11px] font-semibold ${item.color}`}>{item.level}</span>
           </div>
         ))}
       </div>
 
-      {/* AI recommendation */}
-      <div
-        data-float
-        className="absolute -bottom-2 -left-2 hidden sm:block"
-      >
+      <FloatBadge className="absolute -bottom-2 -left-2 hidden sm:block">
         <div
           className="rounded-xl px-4 py-3"
           style={{
-            background: "rgba(255,255,255,0.95)",
-            backdropFilter: "blur(16px)",
+            background: "rgba(255,255,255,0.96)",
             border: "1px solid rgba(79,140,255,0.2)",
-            boxShadow:
-              "0 8px 24px rgba(79,140,255,0.15), 0 2px 6px rgba(79,140,255,0.08)",
+            boxShadow: "0 8px 24px rgba(79,140,255,0.15), 0 2px 6px rgba(79,140,255,0.08)",
           }}
         >
           <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted mb-1">
             <Target size={11} style={{ color: "#4F8CFF" }} />
             AI Recommendation
           </div>
-          <p className="text-xs font-medium text-ink">
-            Add TensorFlow experience
-          </p>
+          <p className="text-xs font-medium text-ink">Add TensorFlow experience</p>
         </div>
-      </div>
+      </FloatBadge>
     </div>
   );
 }
@@ -1099,19 +924,14 @@ function InterviewVisual() {
       data-visual
       className="relative w-full max-w-[480px] overflow-hidden rounded-[28px]"
       style={{
-        background: "rgba(255,255,255,0.75)",
-        backdropFilter: "blur(32px) saturate(180%)",
-        WebkitBackdropFilter: "blur(32px) saturate(180%)",
-        border: "1px solid rgba(79,140,255,0.14)",
-        boxShadow:
-          "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
+        background: cardBg,
+        border: cardBorder,
+        boxShadow: "0 32px 80px rgba(79,140,255,0.1), 0 8px 16px rgba(79,140,255,0.05)",
       }}
     >
       <div
         className="absolute inset-x-0 top-0 h-[2px]"
-        style={{
-          background: "linear-gradient(90deg, #4F8CFF, #6BA8FF, #4F8CFF)",
-        }}
+        style={{ background: "linear-gradient(90deg, #4F8CFF, #6BA8FF, #4F8CFF)" }}
         aria-hidden="true"
       />
       <div className="p-5 sm:p-6">
@@ -1119,7 +939,6 @@ function InterviewVisual() {
           AI Interview Coach
         </span>
 
-        {/* Chat messages */}
         <div className="space-y-3 mb-4">
           <div
             className="rounded-2xl rounded-bl-sm px-4 py-3 max-w-[80%]"
@@ -1139,13 +958,10 @@ function InterviewVisual() {
               border: "1px solid rgba(79,140,255,0.06)",
             }}
           >
-            <p className="text-xs text-muted">
-              I led a team of 5 designers and 3 engineers...
-            </p>
+            <p className="text-xs text-muted">I led a team of 5 designers and 3 engineers...</p>
           </div>
         </div>
 
-        {/* Waveform visualization */}
         <div
           className="rounded-xl p-4 mb-4"
           style={{
@@ -1158,24 +974,19 @@ function InterviewVisual() {
             Voice Analysis
           </div>
           <div className="flex items-end gap-[3px] h-8">
-            {[40, 55, 35, 70, 50, 80, 45, 60, 30, 65, 50, 75, 40, 55, 45, 70].map(
-              (h, i) => (
-                <div
-                  key={i}
-                  className="w-[6px] rounded-full"
-                  style={{
-                    height: `${h}%`,
-                    background:
-                      i % 3 === 0 ? "#4F8CFF" : "rgba(79,140,255,0.2)",
-                    transition: "height 0.2s",
-                  }}
-                />
-              )
-            )}
+            {[40, 55, 35, 70, 50, 80, 45, 60, 30, 65, 50, 75, 40, 55, 45, 70].map((h, i) => (
+              <div
+                key={i}
+                className="w-[6px] rounded-full"
+                style={{
+                  height: `${h}%`,
+                  background: i % 3 === 0 ? "#4F8CFF" : "rgba(79,140,255,0.2)",
+                }}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Feedback card */}
         <div
           className="rounded-xl px-4 py-3 flex items-center justify-between"
           style={{
