@@ -39,6 +39,14 @@ export default {
           800: "#5B21B6",
           900: "#4C1D95",
         },
+        // CareerAI storytelling palette
+        career: {
+          blue: "#4F8CFF",
+          accent: "#6BA8FF",
+          card: "#F8FAFF",
+          border: "#E8F0FF",
+          light: "#F8FBFF",
+        },
         // Indigo bridge between blue and violet
         indigo: {
           DEFAULT: "#4F46E5",
