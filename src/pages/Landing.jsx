@@ -5,7 +5,7 @@ import LogoCloud from "../components/ui/logo-cloud";
 import DashboardShowcase from "../components/landing/DashboardShowcase";
 import StorytellingScroll from "../components/landing/StorytellingScroll";
 import Features from "../components/landing/Features";
-import ShowcaseSection from "../components/landing/ShowcaseSection";
+
 import HowItWorks from "../components/landing/HowItWorks";
 import Pricing from "../components/landing/Pricing";
 import TestimonialsMarquee from "../components/landing/TestimonialsMarquee";
@@ -40,12 +40,7 @@ export default function Landing() {
         {/* bg: white */}
         <Features />
 
-        {/* ── Wave divider ── */}
-        <SectionDivider flip />
 
-        {/* ── AI Dashboard Showcase ── */}
-        {/* bg: #F4F7FF */}
-        <ShowcaseSection />
 
         {/* ── How it works ── */}
         {/* bg: #F4F7FF */}
