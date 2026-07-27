@@ -261,6 +261,33 @@ h2.font-heading,
   background: rgba(37,99,235,0.32);
 }
 
+/* ── Premium motion utilities ── */
+@keyframes float-soft {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(1.8deg);
+  }
+}
+
+.animate-float-md {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
