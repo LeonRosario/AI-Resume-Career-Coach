@@ -51,8 +51,8 @@ const pill = {
   color: P.primary,
 };
 
-function FloatBadge({ children, className = "" }) {
-  return <div className={`animate-float-md ${className}`}>{children}</div>;
+function FloatBadge({ children, className = "", float = false }) {
+  return <div className={`${float ? "animate-float-slow" : "animate-float-md"} ${className}`}>{children}</div>;
 }
 
 function Dots() {
@@ -75,6 +75,26 @@ function CardHeader({ label }) {
         {label}
       </span>
       <Dots />
+    </div>
+  );
+}
+
+function StoryProgress({ activeStep, total }: { activeStep: number; total: number }) {
+  return (
+    <div className="fixed right-4 top-1/2 z-30 hidden -translate-y-1/2 lg:flex">
+      <div className="flex flex-col items-center gap-3 rounded-full border border-white/70 bg-white/80 px-2.5 py-3 shadow-[0_12px_40px_rgba(79,140,255,0.12)] backdrop-blur-xl">
+        {Array.from({ length: total }).map((_, index) => {
+          const isActive = index === activeStep;
+          return (
+            <div
+              key={index}
+              className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                isActive ? "scale-125 bg-[color:var(--blue-600)]" : "bg-slate-200"
+              }`}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -178,7 +198,7 @@ function ResumeCard() {
           </div>
         </div>
       </div>
-      <FloatBadge className="absolute -top-4 -left-4 hidden md:block">
+      <FloatBadge className="absolute -top-4 -left-4 hidden md:block" float>
         <div className="rounded-2xl px-4 py-3 min-w-[150px]" style={badge}>
           <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] mb-1.5" style={{ color: P.muted }}>
             <ShieldCheck size={12} style={{ color: P.primary }} />
@@ -197,7 +217,7 @@ function ResumeCard() {
           </div>
         </div>
       </FloatBadge>
-      <FloatBadge className="absolute -bottom-3 -right-3 hidden md:block">
+      <FloatBadge className="absolute -bottom-3 -right-3 hidden md:block" float>
         <div className="rounded-2xl px-4 py-3 min-w-[150px]" style={badge}>
           <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] mb-1.5" style={{ color: P.muted }}>
             <Award size={12} className="text-emerald-500" />
@@ -661,6 +681,7 @@ export default function CareerStoryScroll() {
   const navigate = useNavigate();
   const containerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -674,13 +695,14 @@ export default function CareerStoryScroll() {
 
     panels.forEach((panel, i) => {
       const isLast = i === panels.length - 1;
+      const ambient = panel.querySelector("[data-ambient]");
 
       if (i > 0) {
         gsap.set(panel, {
-          rotateX: isMobile ? 8 : 18,
-          scale: isMobile ? 0.96 : 0.88,
+          rotateX: isMobile ? 8 : 20,
+          scale: isMobile ? 0.97 : 0.92,
           transformOrigin: "50% 0%",
-          transformPerspective: 1400,
+          transformPerspective: 1600,
           opacity: 0,
         });
       }
@@ -691,9 +713,9 @@ export default function CareerStoryScroll() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: panel,
-          start: "top bottom",
-          end: "top center",
-          toggleActions: "play none none reverse",
+          start: "top 82%",
+          end: "bottom 20%",
+          toggleActions: "restart none none reverse",
         },
       });
 
@@ -704,8 +726,8 @@ export default function CareerStoryScroll() {
             rotateX: 0,
             scale: 1,
             opacity: 1,
-            transformPerspective: 1400,
-            duration: 0.8,
+            transformPerspective: 1600,
+            duration: 0.9,
             ease: "power3.out",
           },
           0
@@ -717,12 +739,12 @@ export default function CareerStoryScroll() {
       if (content.length) {
         tl.fromTo(
           content,
-          { y: 30, opacity: 0 },
+          { y: 28, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            stagger: 0.08,
-            duration: 0.5,
+            stagger: 0.07,
+            duration: 0.55,
             ease: "power2.out",
           },
           t0
@@ -732,17 +754,31 @@ export default function CareerStoryScroll() {
       if (visuals.length) {
         tl.fromTo(
           visuals,
-          { y: 40, opacity: 0, scale: 0.93 },
+          { y: 36, opacity: 0, scale: 0.95 },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            stagger: 0.1,
-            duration: 0.5,
+            stagger: 0.08,
+            duration: 0.55,
             ease: "power2.out",
           },
-          t0 + 0.1
+          t0 + 0.08
         );
+      }
+
+      if (ambient) {
+        gsap.to(ambient, {
+          yPercent: -8,
+          xPercent: 3,
+          ease: "none",
+          scrollTrigger: {
+            trigger: panel,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
       }
 
       ScrollTrigger.create({
@@ -754,6 +790,8 @@ export default function CareerStoryScroll() {
         anticipatePin: 1,
         fastScrollEnd: true,
         preventOverlaps: true,
+        onEnter: () => setActiveStep(i),
+        onEnterBack: () => setActiveStep(i),
       });
     });
 
@@ -768,6 +806,7 @@ export default function CareerStoryScroll() {
 
   return (
     <div ref={containerRef} className="relative overflow-hidden">
+      <StoryProgress activeStep={activeStep} total={sections.length + 1} />
       {sections.map((s) => (
         <section
           key={s.id}
@@ -776,7 +815,7 @@ export default function CareerStoryScroll() {
         >
           {s.id === "hero" && (
             <>
-              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+              <div className="absolute inset-0 pointer-events-none" aria-hidden="true" data-ambient>
                 <div
                   className="absolute top-[-20%] left-[-10%] w-[120%] h-[80%] opacity-60"
                   style={{
@@ -898,7 +937,7 @@ export default function CareerStoryScroll() {
       ))}
 
       <section className="cs-panel relative min-h-screen flex items-center px-6 py-12 sm:py-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true" data-ambient>
           <div
             className="absolute inset-0"
             style={{
@@ -989,7 +1028,7 @@ export default function CareerStoryScroll() {
           </div>
         </div>
 
-        <FloatBadge className="absolute top-[12%] right-[8%] hidden lg:block">
+        <FloatBadge className="absolute top-[12%] right-[8%] hidden lg:block" float>
           <div className="rounded-2xl px-5 py-4" style={badge}>
             <div className="flex items-center gap-2 text-xs mb-1" style={{ color: P.muted }}>
               <ShieldCheck size={14} style={{ color: P.primary }} />
@@ -1000,7 +1039,7 @@ export default function CareerStoryScroll() {
             </p>
           </div>
         </FloatBadge>
-        <FloatBadge className="absolute bottom-[18%] left-[6%] hidden lg:block">
+        <FloatBadge className="absolute bottom-[18%] left-[6%] hidden lg:block" float>
           <div className="rounded-2xl px-5 py-4" style={badge}>
             <div className="flex items-center gap-2 text-xs mb-1" style={{ color: P.muted }}>
               <Star size={14} className="text-amber-500" />
