@@ -3,7 +3,6 @@ import Footer from "../components/layout/Footer";
 import Hero from "../components/landing/Hero";
 import LogoCloud from "../components/ui/logo-cloud";
 import DashboardShowcase from "../components/landing/DashboardShowcase";
-import CareerStoryScroll from "../components/landing/CareerStoryScroll";
 import Features from "../components/landing/Features";
 
 import HowItWorks from "../components/landing/HowItWorks";
@@ -24,9 +23,6 @@ export default function Landing() {
         {/* ── Hero ── */}
         <Hero />
 
-        {/* ── Premium Storytelling Scroll ── */}
-        <CareerStoryScroll />
-
         {/* ── Trusted Technologies ── */}
         <LogoCloud />
 
@@ -39,8 +35,6 @@ export default function Landing() {
         {/* ── Feature cards ── */}
         {/* bg: white */}
         <Features />
-
-
 
         {/* ── How it works ── */}
         {/* bg: #F4F7FF */}
@@ -66,7 +60,6 @@ export default function Landing() {
 
       {/* ── Back to top button ── */}
       <BackToTop />
-
 
     </div>
   );
