@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
 
-/**
- * GlassCard — the universal surface primitive.
- *
- * variant: "default" | "strong" | "soft" | "flat"
- * hover: enables lift + subtle scale on hover
- * gradient: adds a faint brand gradient tint to the background
- * accent: adds a top border gradient line
- */
 export default function GlassCard({
   children,
   className = "",
@@ -21,11 +13,11 @@ export default function GlassCard({
   ...props
 }) {
   const variantClass = {
-    default: "glass",
-    strong:  "glass-strong",
-    soft:    "glass-soft",
-    flat:    "bg-white border border-slate-100 rounded-[20px] shadow-card",
-  }[variant] ?? "glass";
+    default: "card",
+    strong:  "card",
+    soft:    "card",
+    flat:    "bg-white border border-gray-100 rounded-2xl shadow-card",
+  }[variant] ?? "card";
 
   const baseMotionProps = animate
     ? {
@@ -39,8 +31,7 @@ export default function GlassCard({
   const hoverMotionProps = hover
     ? {
         whileHover: {
-          y: -6,
-          scale: 1.015,
+          y: -4,
           transition: { type: "spring", stiffness: 300, damping: 20 },
         },
       }
@@ -52,18 +43,17 @@ export default function GlassCard({
       {...hoverMotionProps}
       className={[
         variantClass,
-        hover ? "cursor-pointer transition-shadow duration-300 hover:shadow-glass-lg" : "",
-        gradient ? "bg-gradient-to-br from-white via-white to-blue-50/60" : "",
-        "relative overflow-hidden",
+        hover ? "cursor-pointer card-hover" : "",
+        gradient ? "bg-gradient-to-br from-white via-white to-indigo-50/40" : "",
+        "relative",
         className,
       ].filter(Boolean).join(" ")}
       {...props}
     >
-      {/* Optional top accent gradient bar */}
       {accent && (
         <div
-          className="absolute inset-x-0 top-0 h-[2px] rounded-t-[20px]"
-          style={{ background: "linear-gradient(90deg, #2563EB 0%, #6366F1 50%, #7C3AED 100%)" }}
+          className="absolute inset-x-0 top-0 h-[3px] rounded-t-[16px]"
+          style={{ background: "linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%)" }}
           aria-hidden="true"
         />
       )}
