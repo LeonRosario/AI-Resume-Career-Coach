@@ -5,7 +5,7 @@ import LogoCloud from "../components/ui/logo-cloud";
 import DashboardShowcase from "../components/landing/DashboardShowcase";
 import Features from "../components/landing/Features";
 
-import HowItWorks from "../components/landing/HowItWorks";
+import HowItWorks from "../components/ui/how-it-works";
 import Pricing from "../components/landing/Pricing";
 import TestimonialsMarquee from "../components/landing/TestimonialsMarquee";
 import CtaBand from "../components/landing/CtaBand";
