@@ -7,7 +7,6 @@ import {
 import GlassCard from "../../components/ui/GlassCard";
 import Button from "../../components/ui/Button";
 import ScoreRing from "../../components/ui/ScoreRing";
-import Badge from "../../components/ui/Badge";
 import { interviewQuestions } from "../../data/mockData";
 
 function TypingDots() {
