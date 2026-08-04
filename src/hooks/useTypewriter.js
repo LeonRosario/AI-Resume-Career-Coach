@@ -10,7 +10,9 @@ export default function useTypewriter(text, { speed = 45, enabled = true } = {})
   const indexRef = useRef(0);
   const textRef = useRef(text);
 
-  textRef.current = text;
+  useEffect(() => {
+    textRef.current = text;
+  });
 
   const clearTimer = useCallback(() => {
     if (intervalRef.current) {

@@ -67,7 +67,7 @@ export function Typewriter({
     deleteSpeed,
     delay,
     displayText,
-    text,
+    textArray.length,
   ]);
 
   return (
