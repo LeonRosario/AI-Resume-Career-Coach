@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SkillCard from "./SkillCard";
 import LearningRoadmap from "./LearningRoadmap";
@@ -6,12 +6,13 @@ import { getRoleProgress } from "../../data/roadmapData";
 
 export default function SkillAnalysis({ role, roleData }) {
   const [expandedStep, setExpandedStep] = useState(null);
+  const [prevRole, setPrevRole] = useState(role);
   const progress = getRoleProgress(roleData);
 
-  useEffect(() => {
+  if (prevRole !== role) {
+    setPrevRole(role);
     setExpandedStep(null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [role]);
+  }
 
   const handleToggleStep = useCallback((stepNumber) => {
     setExpandedStep((current) => (current === stepNumber ? null : stepNumber));

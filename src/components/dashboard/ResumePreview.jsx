@@ -304,7 +304,7 @@ function AtsResume({ data }) {
     personal = {}, summary = "",
     education = [], experience = [], projects = [],
     skills = {}, certifications = [], achievements = [],
-    languages = [], interests = [], references = [],
+    languages = [],
   } = data || {};
 
   const skillEntries = Object.entries(skills).filter(([, v]) => Array.isArray(v) && v.length > 0);
