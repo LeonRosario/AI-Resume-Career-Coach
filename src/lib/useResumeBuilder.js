@@ -237,9 +237,15 @@ export function useResumeBuilder() {
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [lastSaved, setLastSaved] = useState(null);
-  const [saving, setSaving] = useState(false);
+  const [lastSavedData, setLastSavedData] = useState(() => JSON.stringify(data));
+  const saving = lastSavedData !== JSON.stringify(data);
   const isUndoRedo = useRef(false);
   const saveTimer = useRef(null);
+  const historyIndexRef = useRef(historyIndex);
+
+  useEffect(() => {
+    historyIndexRef.current = historyIndex;
+  }, [historyIndex]);
 
   useEffect(() => {
     if (isUndoRedo.current) {
@@ -248,7 +254,7 @@ export function useResumeBuilder() {
     }
     const entry = JSON.parse(JSON.stringify(data));
     setHistory((prev) => {
-      const next = prev.slice(0, historyIndex + 1);
+      const next = prev.slice(0, historyIndexRef.current + 1);
       next.push(entry);
       if (next.length > 50) next.shift();
       return next;
@@ -257,12 +263,12 @@ export function useResumeBuilder() {
   }, [data]);
 
   useEffect(() => {
-    setSaving(true);
     clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(() => {
-      localStorage.setItem("resume-builder-data", JSON.stringify(data));
+      const snapshot = JSON.stringify(data);
+      setLastSavedData(snapshot);
+      localStorage.setItem("resume-builder-data", snapshot);
       setLastSaved(new Date().toLocaleTimeString());
-      setSaving(false);
     }, 800);
     return () => clearTimeout(saveTimer.current);
   }, [data]);
