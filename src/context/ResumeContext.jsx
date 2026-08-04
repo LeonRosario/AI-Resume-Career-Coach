@@ -1,4 +1,3 @@
-// eslint-disable-next-line react-refresh/only-export-components
 import { createContext, useContext, useState } from "react";
 
 const ResumeContext = createContext(null);
@@ -55,6 +54,7 @@ export function ResumeProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useResume() {
   const context = useContext(ResumeContext);
   if (!context) {
