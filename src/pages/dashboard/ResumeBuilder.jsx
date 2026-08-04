@@ -37,10 +37,10 @@ export default function ResumeBuilder() {
   const {
     data, completion, ats, saving, lastSaved,
     canUndo, canRedo,
-    updatePersonal, updateSummary, updateSkills, addSkill, removeSkill,
+    updatePersonal, updateSummary, addSkill, removeSkill,
     updateListItem, addListItem, removeListItem,
-    addInterest, removeInterest, updateInterest,
-    setResumeName, undo, redo, reset,
+    addInterest, removeInterest,
+    setResumeName, undo, redo,
   } = useResumeBuilder();
 
   const [activeSection, setActiveSection] = useState("personal");
@@ -254,7 +254,9 @@ export default function ResumeBuilder() {
         await navigator.clipboard.writeText(window.location.href);
         alert("Link copied to clipboard!");
       }
-    } catch {}
+    } catch {
+      return;
+    }
   };
 
   const duplicateResume = () => {
