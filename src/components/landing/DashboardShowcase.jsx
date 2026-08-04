@@ -220,7 +220,7 @@ function ResumePreviewSection() {
           Experience
         </p>
         <div className="space-y-2.5">
-          {resumeExp.map((item, i) => (
+          {resumeExp.map((item) => (
             <div
               key={item.title}
               className="rounded-xl p-3"
@@ -244,7 +244,7 @@ function ResumePreviewSection() {
           Skills
         </p>
         <div className="flex flex-wrap gap-1.5">
-          {resumeSkills.map((skill, i) => (
+          {resumeSkills.map((skill) => (
             <span
               key={skill}
               className="rounded-full px-2.5 py-1 text-[10px] font-medium"
