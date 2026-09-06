@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -5,9 +6,10 @@ import {
   ShieldCheck, Award, Zap, Sparkles, TrendingUp,
 } from "lucide-react";
 import { AnimatedText } from "../ui/animated-underline-text-one";
-import { ParallaxContainer, FloatingCard } from "../ui/parallax-floating";
+import { ParallexContainer, FloatingCard } from "../ui/parallax-floating";
 import TextInertia from "../ui/text-inertia";
 import useTypewriter from "../../hooks/useTypewriter";
+import useReducedMotion from "../../hooks/useReducedMotion";
 
 const resumeSkills = ["AI Strategy", "UX Design", "Product Ops", "Leadership"];
 const resumeExp = [
