@@ -6,7 +6,7 @@ import {
   ShieldCheck, Award, Zap, Sparkles, TrendingUp,
 } from "lucide-react";
 import { AnimatedText } from "../ui/animated-underline-text-one";
-import { ParallexContainer, FloatingCard } from "../ui/parallax-floating";
+import { ParallaxContainer, FloatingCard } from "../ui/parallax-floating";
 import TextInertia from "../ui/text-inertia";
 import useTypewriter from "../../hooks/useTypewriter";
 import useReducedMotion from "../../hooks/useReducedMotion";
@@ -253,122 +253,12 @@ function HeroContent() {
             </motion.div>
           </motion.div>
 
-          <div className="relative flex justify-center lg:justify-end">
+          <ParallaxContainer speed={0.025} className="relative flex justify-center lg:justify-end">
             <div
               className="absolute inset-0 rounded-[40px] pointer-events-none"
               style={{ filter: "blur(60px)", background: "radial-gradient(ellipse at 50% 50%, rgba(37,99,235,0.18) 0%, rgba(79,70,229,0.12) 50%, transparent 80%)" }}
               aria-hidden="true"
             />
-      <div className="relative z-10 w-full max-w-6xl mx-auto">
-        <div className="grid gap-16 lg:grid-cols-[1.1fr,0.9fr] items-center">
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.div variants={itemFadeUp} className="brand-pill mb-6 w-fit">
-              <Sparkles size={13} />
-              Your AI career coach, on demand
-            </motion.div>
-
-            <motion.div variants={itemFadeUp} className="text-center lg:text-left">
-              <AnimatedText
-                text="Land your next role with a resume that actually works"
-                textClassName="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.06] text-ink"
-                underlineClassName="mx-auto lg:mx-0 w-full max-w-[420px]"
-                underlinePath="M 0,10 Q 75,0 150,10 Q 225,20 300,10"
-                underlineHoverPath="M 0,10 Q 75,20 150,10 Q 225,0 300,10"
-                underlineDuration={1.4}
-              />
-            </motion.div>
-
-            <motion.div
-              variants={itemFadeUp}
-              className="mt-6 max-w-xl"
-            >
-              <TextInertia
-                className="text-base sm:text-lg text-muted leading-relaxed text-left justify-start"
-                intensity={0.3}
-                text="Crafting refined, pixel-perfect web experiences that balance design clarity with technical excellence. Every interaction should feel responsive, intentional, and calm enough to disappear into the work. Motion adds a quiet layer of feedback, helping people sense where they are and what just changed."
-              />
-            </motion.div>
-
-            <motion.div variants={itemFadeUp} className="flex flex-col sm:flex-row gap-3 mt-9">
-              <motion.button
-                whileHover={{
-                  scale: 1.04,
-                  y: -3,
-                  boxShadow: "0 24px 56px rgba(37,99,235,0.5), 0 4px 16px rgba(37,99,235,0.35), 0 0 40px rgba(37,99,235,0.15)",
-                }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                onHoverStart={heroStart}
-                onClick={() => navigate("/register")}
-                className="inline-flex items-center justify-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-semibold text-white"
-                style={{
-                  background: "linear-gradient(135deg, #2563EB 0%, #4F46E5 60%, #7C3AED 100%)",
-                  boxShadow: "0 8px 32px rgba(37,99,235,0.35), 0 2px 8px rgba(37,99,235,0.2)",
-                }}
-              >
-                <motion.span
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Upload size={17} strokeWidth={2.2} />
-                </motion.span>
-                <span className="relative inline-flex items-center shrink-0">
-                  <span className="invisible whitespace-nowrap" aria-hidden="true">
-                    Upload your resume — free
-                  </span>
-                  <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap">
-                    {heroDisplay}
-                    {heroTyping && (
-                      <span className="ml-px w-[2px] h-[1em] bg-current animate-cursor-blink" />
-                    )}
-                  </span>
-                </span>
-              </motion.button>
-
-              <motion.button
-                whileHover={{
-                  scale: 1.03,
-                  y: -2,
-                  boxShadow: "0 16px 40px rgba(37,99,235,0.18), 0 4px 12px rgba(37,99,235,0.1)",
-                }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold text-ink"
-                style={{
-                  background: "rgba(255,255,255,0.80)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(37,99,235,0.18)",
-                  boxShadow: "0 4px 16px rgba(37,99,235,0.08)",
-                }}
-              >
-                See how it works
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ArrowRight size={17} strokeWidth={2.2} />
-                </motion.span>
-              </motion.button>
-            </motion.div>
-
-            <motion.div variants={itemFadeUp} className="flex flex-wrap gap-5 mt-9 text-sm text-muted">
-              {["No credit card", "60-second scan", "AI-powered analysis"].map((item) => (
-                <span key={item} className="flex items-center gap-1.5">
-                  <CheckCircle2 size={15} className="text-primary-500 shrink-0" />
-                  {item}
-                </span>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <ParallaxContainer speed={0.025} className="relative flex justify-center lg:justify-end">
             <div
               className="absolute inset-0 rounded-[40px] pointer-events-none"
               style={{ filter: "blur(60px)", background: "radial-gradient(ellipse at 50% 50%, rgba(37,99,235,0.18) 0%, rgba(79,70,229,0.12) 50%, transparent 80%)" }}
