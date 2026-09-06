@@ -1,16 +1,23 @@
+import { lazy, Suspense } from "react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Hero from "../components/landing/Hero";
 import LogoCloud from "../components/ui/logo-cloud";
-import DashboardShowcase from "../components/landing/DashboardShowcase";
-import Features from "../components/landing/Features";
-
-import HowItWorks from "../components/ui/how-it-works";
-import Pricing from "../components/landing/Pricing";
-import TestimonialsMarquee from "../components/landing/TestimonialsMarquee";
-import CtaBand from "../components/landing/CtaBand";
 import BackToTop from "../components/ui/BackToTop";
 import SectionDivider from "../components/ui/SectionDivider";
+
+// Lazy load components that appear below the fold
+const DashboardShowcase = lazy(() => import("../components/landing/DashboardShowcase"));
+const Features = lazy(() => import("../components/landing/Features"));
+const HowItWorks = lazy(() => import("../components/ui/how-it-works"));
+const Pricing = lazy(() => import("../components/landing/Pricing"));
+const TestimonialsMarquee = lazy(() => import("../components/landing/TestimonialsMarquee"));
+const CtaBand = lazy(() => import("../components/landing/CtaBand"));
+
+// Minimal loading placeholder
+function SectionPlaceholder() {
+  return <div className="h-96 bg-gradient-to-b from-white to-gray-50" />;
+}
 
 export default function Landing() {
   return (
@@ -20,39 +27,48 @@ export default function Landing() {
         {/* ── Navigation ── */}
         <Navbar />
 
-        {/* ── Hero ── */}
+        {/* ── Hero (above fold) ── */}
         <Hero />
 
         {/* ── Trusted Technologies ── */}
         <LogoCloud />
 
-        {/* ── Product Showcase (Container Scroll) ── */}
-        <DashboardShowcase />
+        {/* ── Lazy loaded sections (below fold) ── */}
+        <Suspense fallback={<SectionPlaceholder />}>
+          {/* ── Product Showcase (Container Scroll) ── */}
+          <DashboardShowcase />
+        </Suspense>
 
         {/* ── Wave divider ── */}
         <SectionDivider />
 
         {/* ── Feature cards ── */}
-        {/* bg: white */}
-        <Features />
+        <Suspense fallback={<SectionPlaceholder />}>
+          <Features />
+        </Suspense>
 
         {/* ── How it works ── */}
-        {/* bg: #F4F7FF */}
-        <HowItWorks />
+        <Suspense fallback={<SectionPlaceholder />}>
+          <HowItWorks />
+        </Suspense>
 
         {/* ── Wave divider ── */}
         <SectionDivider />
 
         {/* ── Pricing ── */}
-        {/* bg: white */}
-        <Pricing />
+        <Suspense fallback={<SectionPlaceholder />}>
+          <Pricing />
+        </Suspense>
 
         {/* ── Scrolling testimonials marquee ── */}
-        {/* bg: white */}
-        <TestimonialsMarquee />
+        <Suspense fallback={<SectionPlaceholder />}>
+          <TestimonialsMarquee />
+        </Suspense>
 
         {/* ── CTA band ── */}
-        <CtaBand />
+        <Suspense fallback={<SectionPlaceholder />}>
+          <CtaBand />
+        </Suspense>
 
         {/* ── Footer ── */}
         <Footer />
